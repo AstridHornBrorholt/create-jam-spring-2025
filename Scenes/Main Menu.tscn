@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://dvxbu51ao307x" path="res://Sprites/buttons/Option hover.png" id="17_5nn3m"]
 [ext_resource type="Texture2D" uid="uid://dn2p3hsoe73fh" path="res://Sprites/buttons/Exit hover.png" id="17_vqcsk"]
 
-[node name="Menu2" type="Node2D"]
+[node name="Main Menu" type="Node2D"]
 script = ExtResource("1_eotax")
 
 [node name="Backdrop" type="Sprite2D" parent="."]

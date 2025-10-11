@@ -23,6 +23,7 @@ buses/default_bus_layout="uid://bwj40mov5jiam"
 
 MainTickEvent="*res://Scripts/MainTickEvent.gd"
 CurrentRun="*res://Scripts/RunState.gd"
+Options="*res://Scripts/Options.gd"
 
 [display]
 

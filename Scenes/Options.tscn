@@ -1,11 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cch7wmbkejfmi"]
+[gd_scene load_steps=8 format=3 uid="uid://cch7wmbkejfmi"]
 
-[ext_resource type="Script" uid="uid://ci4fvd71m5x3i" path="res://Scripts/Options.gd" id="1_5hy3q"]
+[ext_resource type="Script" uid="uid://ci4fvd71m5x3i" path="res://Scripts/OptionsMenu.gd" id="1_5hy3q"]
 [ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="2_cbhj7"]
 [ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="3_q4at1"]
+[ext_resource type="AudioStream" uid="uid://bkslgyuj1ovc7" path="res://Sound/Tetrogue - Menu.wav" id="4_q4at1"]
+[ext_resource type="Script" uid="uid://bx82estqdp3a7" path="res://Scripts/LoopMusic.gd" id="5_6f4k2"]
+[ext_resource type="AudioStream" uid="uid://bgkjb0evdblx6" path="res://SFX/pick.wav" id="6_bdxpv"]
+[ext_resource type="AudioStream" uid="uid://cb6j4bnup52id" path="res://SFX/rotate.wav" id="7_bdxpv"]
 
-[node name="Credits" type="Node2D"]
+[node name="OptionsMenu" type="Node2D"]
 script = ExtResource("1_5hy3q")
+
+[node name="OBS! Root name OptionsMenu is hard-coded in the Options_gd script" type="Node" parent="."]
 
 [node name="Backdrop" type="Sprite2D" parent="."]
 texture = ExtResource("2_cbhj7")
@@ -52,6 +58,9 @@ focus_neighbor_bottom = NodePath("../SFX Slider")
 focus_next = NodePath("../SFX Slider")
 focus_previous = NodePath("../Interactive/BackButton")
 theme = ExtResource("3_q4at1")
+max_value = 1.0
+step = 0.05
+value = 1.0
 
 [node name="SFX Volume" type="RichTextLabel" parent="."]
 anchors_preset = 5
@@ -80,6 +89,9 @@ focus_neighbor_bottom = NodePath("../Interactive/BackButton")
 focus_next = NodePath("../Interactive/BackButton")
 focus_previous = NodePath("../Music Volume Slider")
 theme = ExtResource("3_q4at1")
+max_value = 1.0
+step = 0.05
+value = 1.0
 
 [node name="Interactive" type="Node2D" parent="."]
 
@@ -96,4 +108,23 @@ theme = ExtResource("3_q4at1")
 theme_override_font_sizes/font_size = 90
 text = "[Back]"
 
+[node name="Tetrogue-Menu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_q4at1")
+volume_db = -5.0
+autoplay = true
+script = ExtResource("5_6f4k2")
+
+[node name="Grab" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_bdxpv")
+
+[node name="Release" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_bdxpv")
+
+[connection signal="drag_ended" from="Music Volume Slider" to="." method="_on_music_volume_slider_drag_ended"]
+[connection signal="drag_started" from="Music Volume Slider" to="." method="_on_music_volume_slider_drag_started"]
+[connection signal="value_changed" from="Music Volume Slider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="drag_ended" from="SFX Slider" to="." method="_on_sfx_slider_drag_ended"]
+[connection signal="drag_started" from="SFX Slider" to="." method="_on_sfx_slider_drag_started"]
+[connection signal="value_changed" from="SFX Slider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="pressed" from="Interactive/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="finished" from="Tetrogue-Menu" to="Tetrogue-Menu" method="_on_finished"]
