@@ -1,16 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://cgm7kv1ut1wu8"]
 
-[ext_resource type="Texture2D" uid="uid://bb72uply2u8hi" path="res://Sprites/Black.png" id="1_7xmno"]
+[ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="2_7xmno"]
 [ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="2_uy3b0"]
 [ext_resource type="Script" uid="uid://cb8yt3moiakpn" path="res://Scripts/Credits.gd" id="3_iynit"]
 
 [node name="Credits" type="Node2D"]
 script = ExtResource("3_iynit")
 
-[node name="Black" type="Sprite2D" parent="."]
-position = Vector2(958.5, 539.5)
-scale = Vector2(120.188, 67.1875)
-texture = ExtResource("1_7xmno")
+[node name="Backdrop" type="Sprite2D" parent="."]
+texture = ExtResource("2_7xmno")
+centered = false
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = 95.0

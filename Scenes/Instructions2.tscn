@@ -1,17 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://ccggcah8x2y63"]
 
 [ext_resource type="Script" uid="uid://cb8yt3moiakpn" path="res://Scripts/Credits.gd" id="1_4uyco"]
-[ext_resource type="Texture2D" uid="uid://bb72uply2u8hi" path="res://Sprites/Black.png" id="2_1cyd4"]
+[ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="2_1cyd4"]
 [ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="3_m48fc"]
 [ext_resource type="PackedScene" uid="uid://bbnjt3yj141lc" path="res://Prefabs/block_instructions.tscn" id="4_1cyd4"]
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_4uyco")
 
-[node name="Black" type="Sprite2D" parent="."]
-position = Vector2(960.5, 537.5)
-scale = Vector2(120.188, 67.1875)
+[node name="Backdrop" type="Sprite2D" parent="."]
 texture = ExtResource("2_1cyd4")
+centered = false
 
 [node name="Interactive" type="Node2D" parent="."]
 
