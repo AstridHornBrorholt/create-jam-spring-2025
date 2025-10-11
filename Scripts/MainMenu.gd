@@ -6,12 +6,13 @@ func _ready() -> void:
 func _on_play_button_pressed() -> void:
 	CurrentRun.reset()
 	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
-	pass # Replace with function body.
 
 
+func _on_options_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/Options.tscn")
+	
 func _on_credits_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Credits.tscn")
-	pass # Replace with function body.
 
 
 func _on_instructions_button_pressed() -> void:

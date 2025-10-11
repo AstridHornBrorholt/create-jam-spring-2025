@@ -1,0 +1,99 @@
+[gd_scene load_steps=4 format=3 uid="uid://cch7wmbkejfmi"]
+
+[ext_resource type="Script" uid="uid://ci4fvd71m5x3i" path="res://Scripts/Options.gd" id="1_5hy3q"]
+[ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="2_cbhj7"]
+[ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="3_q4at1"]
+
+[node name="Credits" type="Node2D"]
+script = ExtResource("1_5hy3q")
+
+[node name="Backdrop" type="Sprite2D" parent="."]
+texture = ExtResource("2_cbhj7")
+centered = false
+
+[node name="Options" type="RichTextLabel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 12.0
+offset_top = 23.0
+offset_right = 664.0
+offset_bottom = 180.0
+grow_horizontal = 2
+theme = ExtResource("3_q4at1")
+theme_override_font_sizes/normal_font_size = 140
+text = "Options
+"
+
+[node name="Music Volume" type="RichTextLabel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 248.536
+offset_top = 351.0
+offset_right = 754.091
+offset_bottom = 426.0
+grow_horizontal = 2
+theme = ExtResource("3_q4at1")
+theme_override_font_sizes/normal_font_size = 70
+text = "Music volume"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+
+[node name="Music Volume Slider" type="HSlider" parent="."]
+offset_left = 775.0
+offset_top = 363.0
+offset_right = 1094.0
+offset_bottom = 395.0
+tooltip_text = "music volume"
+focus_neighbor_top = NodePath("../Interactive/BackButton")
+focus_neighbor_bottom = NodePath("../SFX Slider")
+focus_next = NodePath("../SFX Slider")
+focus_previous = NodePath("../Interactive/BackButton")
+theme = ExtResource("3_q4at1")
+
+[node name="SFX Volume" type="RichTextLabel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 248.536
+offset_top = 448.0
+offset_right = 754.091
+offset_bottom = 523.0
+grow_horizontal = 2
+theme = ExtResource("3_q4at1")
+theme_override_font_sizes/normal_font_size = 70
+text = "SFX Volume"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+
+[node name="SFX Slider" type="HSlider" parent="."]
+offset_left = 775.0
+offset_top = 457.0
+offset_right = 1094.0
+offset_bottom = 489.0
+tooltip_text = "sfx volume"
+focus_neighbor_top = NodePath("../Music Volume Slider")
+focus_neighbor_bottom = NodePath("../Interactive/BackButton")
+focus_next = NodePath("../Interactive/BackButton")
+focus_previous = NodePath("../Music Volume Slider")
+theme = ExtResource("3_q4at1")
+
+[node name="Interactive" type="Node2D" parent="."]
+
+[node name="BackButton" type="Button" parent="Interactive"]
+offset_left = 583.0
+offset_top = 889.0
+offset_right = 1291.0
+offset_bottom = 1003.0
+focus_neighbor_top = NodePath("../../SFX Slider")
+focus_neighbor_bottom = NodePath("../../Music Volume Slider")
+focus_next = NodePath("../../Music Volume Slider")
+focus_previous = NodePath("../../SFX Slider")
+theme = ExtResource("3_q4at1")
+theme_override_font_sizes/font_size = 90
+text = "[Back]"
+
+[connection signal="pressed" from="Interactive/BackButton" to="." method="_on_back_button_pressed"]

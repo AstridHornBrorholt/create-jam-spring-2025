@@ -1,6 +1,8 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://0guyg45mewl2"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://0guyg45mewl2"]
 
+[ext_resource type="Texture2D" uid="uid://y3dlc1ixvo3o" path="res://Sprites/Grabber.png" id="1_5vll4"]
 [ext_resource type="FontFile" uid="uid://ckluv6kderyi0" path="res://Theming/Minecraft Ten/MinecraftTen-VGORe.ttf" id="1_ve1wj"]
+[ext_resource type="Texture2D" uid="uid://dpcpmq047r4n4" path="res://Sprites/Grabber hover.png" id="2_0gems"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ve1wj"]
 
@@ -9,6 +11,11 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5vll4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0gems"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_31f2i"]
+color = Color(1, 1, 1, 1)
+grow_begin = 0.0
+thickness = 16
 
 [resource]
 default_font = ExtResource("1_ve1wj")
@@ -21,4 +28,7 @@ Button/styles/focus = SubResource("StyleBoxEmpty_ve1wj")
 Button/styles/hover = SubResource("StyleBoxEmpty_cfjhi")
 Button/styles/normal = SubResource("StyleBoxEmpty_5vll4")
 Button/styles/pressed = SubResource("StyleBoxEmpty_0gems")
+HSlider/icons/grabber = ExtResource("1_5vll4")
+HSlider/icons/grabber_highlight = ExtResource("2_0gems")
+HSlider/styles/slider = SubResource("StyleBoxLine_31f2i")
 Label/font_sizes/font_size = 20

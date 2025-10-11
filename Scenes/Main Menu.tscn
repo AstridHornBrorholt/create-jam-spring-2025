@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cx20x3knm431p"]
+[gd_scene load_steps=24 format=3 uid="uid://cx20x3knm431p"]
 
 [ext_resource type="Script" uid="uid://vt4epfuxfljr" path="res://Scripts/MainMenu.gd" id="1_eotax"]
 [ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="1_totuj"]
@@ -18,7 +18,10 @@
 [ext_resource type="Texture2D" uid="uid://ykx5scuddj1s" path="res://Sprites/buttons/Instructions hover.png" id="11_c131k"]
 [ext_resource type="Texture2D" uid="uid://d2rmmxiqdtanx" path="res://Sprites/buttons/Credits click.png" id="13_ryust"]
 [ext_resource type="Texture2D" uid="uid://1dq0lbf1o6yw" path="res://Sprites/buttons/Credits hover.png" id="14_5nn3m"]
+[ext_resource type="Texture2D" uid="uid://4cjgplvugvvl" path="res://Sprites/buttons/Option.png" id="15_c131k"]
 [ext_resource type="Texture2D" uid="uid://7blmack0q821" path="res://Sprites/buttons/Exit click.png" id="16_fr4vf"]
+[ext_resource type="Texture2D" uid="uid://pb7kjqk3b5tm" path="res://Sprites/buttons/Option click.png" id="16_ryust"]
+[ext_resource type="Texture2D" uid="uid://dvxbu51ao307x" path="res://Sprites/buttons/Option hover.png" id="17_5nn3m"]
 [ext_resource type="Texture2D" uid="uid://dn2p3hsoe73fh" path="res://Sprites/buttons/Exit hover.png" id="17_vqcsk"]
 
 [node name="Menu2" type="Node2D"]
@@ -48,10 +51,9 @@ text = "TETROGUE"
 position = Vector2(960, 540)
 
 [node name="PlayButton" type="TextureButton" parent="Interactive"]
-offset_left = -557.2
-offset_top = -60.0
-offset_right = 557.2
-offset_bottom = 94.0
+offset_left = -554.0
+offset_top = -154.0
+offset_right = 560.4
 scale = Vector2(0.998327, 1)
 focus_neighbor_top = NodePath("../ExitButton")
 focus_neighbor_bottom = NodePath("../InstructionsButton")
@@ -67,12 +69,12 @@ stretch_mode = 5
 
 [node name="InstructionsButton" type="TextureButton" parent="Interactive"]
 offset_left = -210.0
-offset_top = 167.0
+offset_top = 89.0
 offset_right = 210.0
-offset_bottom = 245.0
+offset_bottom = 145.0
 scale = Vector2(0.998327, 1)
 focus_neighbor_top = NodePath("../PlayButton")
-focus_neighbor_bottom = NodePath("../CreditsButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
 focus_next = NodePath("../CreditsButton")
 focus_previous = NodePath("../PlayButton")
 theme = ExtResource("1_totuj")
@@ -83,16 +85,34 @@ texture_focused = ExtResource("10_apm58")
 ignore_texture_size = true
 stretch_mode = 5
 
+[node name="OptionsButton" type="TextureButton" parent="Interactive"]
+offset_left = -210.0
+offset_top = 144.0
+offset_right = 210.0
+offset_bottom = 245.0
+scale = Vector2(0.998327, 1)
+focus_neighbor_top = NodePath("../InstructionsButton")
+focus_neighbor_bottom = NodePath("../CreditsButton")
+focus_next = NodePath("../CreditsButton")
+focus_previous = NodePath("../PlayButton")
+theme = ExtResource("1_totuj")
+texture_normal = ExtResource("15_c131k")
+texture_pressed = ExtResource("16_ryust")
+texture_hover = ExtResource("17_5nn3m")
+texture_focused = ExtResource("16_ryust")
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="CreditsButton" type="TextureButton" parent="Interactive"]
 offset_left = -210.0
 offset_top = 245.0
 offset_right = 210.0
 offset_bottom = 334.6
 scale = Vector2(0.998327, 1)
-focus_neighbor_top = NodePath("../InstructionsButton")
+focus_neighbor_top = NodePath("../OptionsButton")
 focus_neighbor_bottom = NodePath("../ExitButton")
 focus_next = NodePath("../ExitButton")
-focus_previous = NodePath("../InstructionsButton")
+focus_previous = NodePath("../OptionsButton")
 theme = ExtResource("1_totuj")
 texture_normal = ExtResource("8_ns28u")
 texture_pressed = ExtResource("13_ryust")
@@ -130,6 +150,7 @@ script = ExtResource("6_0126h")
 
 [connection signal="pressed" from="Interactive/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Interactive/InstructionsButton" to="." method="_on_instructions_button_pressed"]
+[connection signal="pressed" from="Interactive/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="Interactive/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="Interactive/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="finished" from="Tetrogue-Menu" to="Tetrogue-Menu" method="_on_finished"]
