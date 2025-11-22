@@ -78,7 +78,7 @@ func _init() -> void:
 
 func reset():
 	# var tetrimino_generator = TetriminoGenerator.new()
-	stash = [ L, J, T, T, I, I, S, Z, O, O ]
+	stash = [ L, J, T, I, S, Z, O ]
 	level = 0
 	accumulated_score = 0
 	highest_score = 0
