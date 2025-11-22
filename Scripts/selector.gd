@@ -143,7 +143,7 @@ func register_picked(index):
 				child.start_fading_out()
 		animation_state = State.FadeOut
 		await get_tree().create_timer(0.5).timeout
-		get_tree().change_scene_to_file("res://Scenes/GetReadyScreen.tscn")
+		get_tree().change_scene_to_file("res://Scenes/next_level_select.tscn")
 
 func reassign_focus() -> void:
 	for option in spawnedminos:

@@ -21,6 +21,7 @@ const selector_prefab: PackedScene = preload("res://Scenes/Selector.tscn")
 @onready var next_tetriminos:Tetriminos = $"Next/Wiggler/NextTetriminos"
 @onready var held_tetriminos:Tetriminos = $"Held/Wiggler/HeldTetriminos"
 @onready var continue_button = $"ContinueButton"
+@onready var reward_indicator:RewardIndicator = $"RewardIndicator"
 
 @onready var move_sound:AudioStreamPlayer = $"Sounds/Move"
 @onready var spin_sound:AudioStreamPlayer = $"Sounds/Spin"
@@ -67,12 +68,13 @@ func _ready() -> void:
 		grid.append(r)
 	
 	if run_state.level != 0:
-		choose_map()
+		load_map()
 	
 	run_state.new_game()
-	var lvl = run_state.get_level()
-	score_goal = lvl[0]
-	remaining_time = lvl[1]
+	score_goal = run_state.next_score_goal
+	remaining_time = run_state.next_time_limit
+	reward_indicator.set_reward_type(run_state.next_reward)
+	reward_indicator.set_wiggle(false)
 	max_time = remaining_time
 	remaining_time_label.set_max_time(max_time)
 	#win()
@@ -510,6 +512,7 @@ func win():
 	win_sound.play()
 	held.visible = false
 	next.visible = false
+	reward_indicator.set_wiggle(true)
 	continue_button.visible = true
 	continue_button.grab_focus()
 
@@ -531,8 +534,8 @@ func _on_continue_button_pressed() -> void:
 	else:
 		get_tree().change_scene_to_file("res://Scenes/Selector.tscn")
 	
-func choose_map():
-	var map = MapSelector.get_random_map(0.5).to_array(WIDTH, HEIGHT)
+func load_map():
+	var map = run_state.get_map()
 	
 	for row in WIDTH:
 		for col in HEIGHT:

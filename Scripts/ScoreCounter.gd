@@ -6,7 +6,7 @@ class_name ScoreCounter
 @onready var current_multiplier_text:RichTextLabel = $"CurrentMultiplier"
 @onready var progress:Sprite2D = $"Bar/Progress"
 @onready var progress_width = progress.scale.x
-@onready var score_goal = CurrentRun.get_level()[0]
+@onready var score_goal = CurrentRun.next_score_goal
 
 var score_effect: PackedScene = preload("res://Prefabs/ScoreEffect.tscn")
 

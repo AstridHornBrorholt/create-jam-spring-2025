@@ -5,9 +5,8 @@ extends Node2D
 
 func _ready() -> void:
 	begin_button.grab_focus()
-	var level_info = CurrentRun.get_level()
-	var score_target = level_info[0]
-	var time = level_info[1]
+	var score_target = CurrentRun.next_score_goal
+	var time = CurrentRun.next_time_limit
 	var minutes = floor(time/60)
 	var seconds = time - minutes*60
 	stats.text = ("[color=blue]Level\t" + str(CurrentRun.level) + "[/color]\n" +

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq6ukaem2e0ba"
-path="res://.godot/imported/ChunkIcon.png-0f6d28b7e4e1be14ada8c6db2efc6593.ctex"
+uid="uid://dq3eiija18jea"
+path="res://.godot/imported/Destroy.png-958d812d88dddc15125e9d3d455fafef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/ChunkIcon.png"
-dest_files=["res://.godot/imported/ChunkIcon.png-0f6d28b7e4e1be14ada8c6db2efc6593.ctex"]
+source_file="res://Sprites/Destroy.png"
+dest_files=["res://.godot/imported/Destroy.png-958d812d88dddc15125e9d3d455fafef.ctex"]
 
 [params]
 

@@ -1,79 +1,102 @@
-[gd_scene load_steps=6 format=3 uid="uid://bj8ojqkevgliv"]
+[gd_scene load_steps=5 format=3 uid="uid://cv432m57b4l8c"]
 
 [ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="1_7u28y"]
-[ext_resource type="PackedScene" uid="uid://qgj3w5fl5ufa" path="res://Prefabs/level_option.tscn" id="2_7u28y"]
+[ext_resource type="Script" uid="uid://ch1goylophwdu" path="res://Scripts/next_level_select.gd" id="1_sf5mr"]
+[ext_resource type="PackedScene" uid="uid://dwb4ki65x1qgx" path="res://Prefabs/level_option.tscn" id="2_7u28y"]
 [ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="3_8argl"]
-[ext_resource type="Texture2D" uid="uid://tlpgps5yd22j" path="res://Sprites/ArrowLeft.png" id="4_264ax"]
-[ext_resource type="Texture2D" uid="uid://cdw1s136kba0v" path="res://Sprites/ArrowRight.png" id="5_75evq"]
 
 [node name="NextLevelSelect" type="Node2D"]
+script = ExtResource("1_sf5mr")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
 texture = ExtResource("1_7u28y")
 
-[node name="LevelOption" parent="." instance=ExtResource("2_7u28y")]
-position = Vector2(960, 361)
+[node name="LevelOption1" parent="." instance=ExtResource("2_7u28y")]
+modulate = Color(0.650128, 0.650128, 0.650128, 1)
+position = Vector2(384, 512)
+scale = Vector2(0.911208, 0.911208)
 
-[node name="NextOptions" type="Node2D" parent="."]
-position = Vector2(960, 832)
-
-[node name="LevelOption1" parent="NextOptions" instance=ExtResource("2_7u28y")]
-modulate = Color(0.481789, 0.481789, 0.481789, 1)
-position = Vector2(-532, 0)
-
-[node name="LevelOption2" parent="NextOptions" instance=ExtResource("2_7u28y")]
-modulate = Color(0.481789, 0.481789, 0.481789, 1)
-
-[node name="LevelOption3" parent="NextOptions" instance=ExtResource("2_7u28y")]
-modulate = Color(0.481789, 0.481789, 0.481789, 1)
-position = Vector2(598, -9)
-
-[node name="SelectButton" type="Button" parent="."]
-offset_left = 722.0
-offset_top = 29.0
-offset_right = 1222.0
-offset_bottom = 179.0
+[node name="SelectButton1" type="Button" parent="."]
+offset_left = 131.0
+offset_top = 132.875
+offset_right = 631.0
+offset_bottom = 1032.88
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../SelectButton3")
+focus_neighbor_right = NodePath("../SelectButton2")
+focus_next = NodePath("../SelectButton2")
+focus_previous = NodePath("../SelectButton3")
 theme = ExtResource("3_8argl")
 theme_override_font_sizes/font_size = 90
-text = "[select]"
+text = "
 
-[node name="ArrowLeft" type="TextureRect" parent="SelectButton"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.287
-anchor_right = 0.5
-anchor_bottom = 0.287
-offset_left = -339.0
-offset_top = -3.05
-offset_right = -305.0
-offset_bottom = 30.95
-scale = Vector2(2, 2)
-texture = ExtResource("4_264ax")
 
-[node name="ArrowRight" type="TextureRect" parent="SelectButton"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.287
-anchor_right = 0.5
-anchor_bottom = 0.287
-offset_left = 271.0
-offset_top = -3.05
-offset_right = 305.0
-offset_bottom = 30.95
-scale = Vector2(2, 2)
-texture = ExtResource("5_75evq")
 
-[node name="Reward Label2" type="RichTextLabel" parent="."]
-offset_left = 497.0
-offset_top = 584.0
-offset_right = 1424.0
-offset_bottom = 661.0
+
+
+
+
+[Select]"
+
+[node name="LevelOption2" parent="." instance=ExtResource("2_7u28y")]
+modulate = Color(0.650128, 0.650128, 0.650128, 1)
+position = Vector2(960, 512)
+scale = Vector2(0.911208, 0.911208)
+
+[node name="SelectButton2" type="Button" parent="."]
+offset_left = 709.0
+offset_top = 132.875
+offset_right = 1209.0
+offset_bottom = 1032.88
+focus_neighbor_left = NodePath("../SelectButton1")
+focus_neighbor_right = NodePath("../SelectButton3")
+focus_next = NodePath("../SelectButton3")
+focus_previous = NodePath("../SelectButton1")
 theme = ExtResource("3_8argl")
-theme_override_font_sizes/normal_font_size = 90
-bbcode_enabled = true
-text = "[color=blue]choices next level:[/color]"
-scroll_active = false
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 90
+text = "
+
+
+
+
+
+
+
+[Select]"
+
+[node name="LevelOption3" parent="." instance=ExtResource("2_7u28y")]
+modulate = Color(0.650128, 0.650128, 0.650128, 1)
+position = Vector2(1536, 512)
+scale = Vector2(0.911208, 0.911208)
+
+[node name="SelectButton3" type="Button" parent="."]
+offset_left = 1284.0
+offset_top = 132.875
+offset_right = 1784.0
+offset_bottom = 1032.88
+focus_neighbor_left = NodePath("../SelectButton2")
+focus_neighbor_right = NodePath("../SelectButton1")
+focus_next = NodePath("../SelectButton1")
+focus_previous = NodePath("../SelectButton2")
+theme = ExtResource("3_8argl")
+theme_override_font_sizes/font_size = 90
+text = "
+
+
+
+
+
+
+
+[Select]"
+
+[connection signal="button_down" from="SelectButton1" to="." method="_on_select_button_1_button_down"]
+[connection signal="focus_entered" from="SelectButton1" to="." method="_on_select_button_1_focus_entered"]
+[connection signal="mouse_entered" from="SelectButton1" to="." method="_on_select_button_1_mouse_entered"]
+[connection signal="button_down" from="SelectButton2" to="." method="_on_select_button_2_button_down"]
+[connection signal="focus_entered" from="SelectButton2" to="." method="_on_select_button_2_focus_entered"]
+[connection signal="mouse_entered" from="SelectButton2" to="." method="_on_select_button_2_mouse_entered"]
+[connection signal="button_down" from="SelectButton3" to="." method="_on_select_button_3_button_down"]
+[connection signal="focus_entered" from="SelectButton3" to="." method="_on_select_button_3_focus_entered"]
+[connection signal="mouse_entered" from="SelectButton3" to="." method="_on_select_button_3_mouse_entered"]

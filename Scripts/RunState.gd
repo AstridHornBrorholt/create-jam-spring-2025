@@ -7,6 +7,11 @@ class_name RunState
 # The player's stash, minus all the ones that have already been put in play.
 var current_stash: Array[TetriminosTemplate] = stash.duplicate();
 
+var next_map:Array[Array] = MapSelector.get_random_map(1).to_array()
+var next_score_goal = 100
+var next_time_limit = 90
+var next_reward:LevelOption.RewardType
+
 # All the player's tetriminos. Hard-coded to starting values
 var stash: Array[TetriminosTemplate] = []
 var level: int = 0
@@ -105,6 +110,9 @@ func get_level():
 		# Increase goal quadratically from now
 		var n = level - levels.size()
 		return [5*n**2 + 250*n + 1000, 90]
+
+func get_map() -> Array[Array]:
+	return next_map
 
 func increment_level():
 	level += 1

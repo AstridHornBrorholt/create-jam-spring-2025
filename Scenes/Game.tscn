@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dtj6g7cn5y1ah" path="res://Prefabs/tetris_game.tscn" id="1_iukft"]
 [ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="1_j5yw3"]
-[ext_resource type="PackedScene" uid="uid://c64whjj1tvf5n" path="res://Prefabs/AnimatedBackground.tscn" id="2_kldst"]
+[ext_resource type="PackedScene" path="res://Prefabs/AnimatedBackground.tscn" id="2_kldst"]
 [ext_resource type="Texture2D" uid="uid://t27wqlp1hsc5" path="res://Sprites/BlockSprites.png" id="3_j5yw3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j5yw3"]

@@ -1,7 +1,9 @@
 extends TileMapLayer
 class_name Map
 
-func to_array(width, height):
+func to_array() -> Array[Array]:
+	var width = TetrisGame.WIDTH
+	var height = TetrisGame.HEIGHT
 	# Build dictionary maping from atlas coordinates to Type.
 	# The Cell class already has a map from sprite pixel position to Type.
 	# So we just convert the pixel position to atlas coordinates: From (32, 64) to (2, 4)
