@@ -2,7 +2,6 @@ extends Button
 
 @onready var run_state:RunState = CurrentRun
 @onready var selection_option:SelectionOption = $".."
-const game_prefab: PackedScene = preload("res://Scenes/Game.tscn")
 
 func _on_button_down():
 	#Add reward to stash
