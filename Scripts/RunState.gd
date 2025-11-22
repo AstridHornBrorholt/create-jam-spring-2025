@@ -18,6 +18,10 @@ var level: int = 0
 var accumulated_score = 0
 var highest_score = 0
 
+# Keep track of the pieces that were previously in the "held" and "next
+var previously_held:TetriminosTemplate = TetriminosTemplate.new([])
+var previously_next:TetriminosTemplate = TetriminosTemplate.new([])
+
 var L = TetriminosTemplate.new([
 		CellTemplate.new(-1, 0, Cell.Type.Standard),
 		CellTemplate.new(0, 0, Cell.Type.Standard),
@@ -94,7 +98,26 @@ func peek_next():
 		current_stash = stash.duplicate()
 		current_stash.shuffle()
 	return current_stash.back()
+
+func remove_from_curent_stash(tetriminos:TetriminosTemplate):
+	var hash = tetriminos.get_hash()
+	for i in current_stash.size():
+		if current_stash[i].get_hash() == hash:
+			current_stash.remove_at(i)
+			return
 	
+	assert(false, "Failed to remove tetriminos with hash  " + str(hash) +  " because it does not apear to be in current_stash.")
+
+func remove_from_permanent_stash(tetriminos:TetriminosTemplate):
+	var hash = tetriminos.get_hash()
+	for i in stash.size():
+		if stash[i].get_hash() == hash:
+			stash.remove_at(i)
+			return
+	
+	assert(false, "Failed to remove tetriminos with hash  " + str(hash) +  " because it does not apear to be in stash.")
+
+
 
 func get_level():
 	const levels = [

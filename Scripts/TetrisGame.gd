@@ -77,7 +77,10 @@ func _ready() -> void:
 	reward_indicator.set_wiggle(false)
 	max_time = remaining_time
 	remaining_time_label.set_max_time(max_time)
-	#win()
+	
+	if !run_state.previously_held.is_empty():
+		held_tetriminos.setup(run_state.previously_held)
+		run_state.remove_from_curent_stash(run_state.previously_held)
 
 func out_of_bounds(x: int, y: int) -> bool:
 	# NOTE: There is no lower bound on y axis (upwards)
@@ -507,11 +510,11 @@ func clear_full_rows():
 func win():
 	run_state.register_score(score_counter.current_score)
 	run_state.increment_level()
+	run_state.previously_held = held_tetriminos.template
+	run_state.previously_next = next_tetriminos.template
 	status_label.text = "[color=green]Winner! :-)[/color]"
 	pause = true
 	win_sound.play()
-	held.visible = false
-	next.visible = false
 	reward_indicator.set_wiggle(true)
 	continue_button.visible = true
 	continue_button.grab_focus()
@@ -523,8 +526,6 @@ func dead():
 	status_label.text = "[color=red]DIED :'([/color]"
 	pause = true
 	died = true
-	held.visible = false
-	next.visible = false
 	continue_button.visible = true
 	continue_button.grab_focus()
 

@@ -5,6 +5,15 @@ var cells: Array[CellTemplate] = []
 func _init(cells: Array[CellTemplate]) -> void:
 	self.cells = cells
 
+func is_empty() -> bool:
+	return cells.size() == 0
+
+func get_hash() -> int:
+	var _hash = 0
+	for cell in cells:
+		_hash ^= cell.pos.x + cell.pos.y * 100
+	return _hash
+
 # Get width of tetrimino
 func get_width():
 	var lower = 0
