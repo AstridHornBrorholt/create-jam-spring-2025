@@ -78,7 +78,7 @@ func _ready() -> void:
 	max_time = remaining_time
 	remaining_time_label.set_max_time(max_time)
 	
-	if !run_state.previously_held.is_empty():
+	if run_state.previously_held != null and !run_state.previously_held.is_empty():
 		held_tetriminos.setup(run_state.previously_held)
 		run_state.remove_from_curent_stash(run_state.previously_held)
 
@@ -533,7 +533,14 @@ func _on_continue_button_pressed() -> void:
 	if died:
 		get_tree().change_scene_to_file("res://Scenes/EndScreen.tscn")
 	else:
-		get_tree().change_scene_to_file("res://Scenes/Selector.tscn")
+		match run_state.next_reward:
+			LevelOption.RewardType.Create:
+				get_tree().change_scene_to_file("res://Scenes/Selector.tscn")
+			LevelOption.RewardType.Destroy:
+				get_tree().change_scene_to_file("res://Scenes/Destroy.tscn")
+			#LevelOption.RewardType.Modify:
+			_:
+				assert(false, "Not supported")
 	
 func load_map():
 	var map = run_state.get_map()

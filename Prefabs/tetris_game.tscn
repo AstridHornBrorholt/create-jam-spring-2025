@@ -67,9 +67,9 @@ autostart = true
 [node name="ContinueButton" type="Button" parent="."]
 visible = false
 offset_left = -644.0
-offset_top = 164.0
+offset_top = 489.0
 offset_right = -33.0
-offset_bottom = 424.0
+offset_bottom = 749.0
 theme = ExtResource("2_blw18")
 theme_override_font_sizes/font_size = 90
 text = "[Continue]"
@@ -132,6 +132,7 @@ text = "<status>"
 scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Next" type="Node2D" parent="."]
 position = Vector2(-644, -4)
@@ -204,6 +205,7 @@ theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
 text = "[color=blue]Level:[/color]"
 scroll_active = false
+metadata/_edit_use_anchors_ = true
 
 [node name="CurrentLevel" type="RichTextLabel" parent="."]
 offset_left = 83.0
@@ -217,6 +219,7 @@ bbcode_enabled = true
 text = "15"
 scroll_active = false
 horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Tetrogue-Main" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_2fiad")

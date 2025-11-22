@@ -47,8 +47,9 @@ func initialize(reward_type:RewardType, new_map:Map, score_goal, time_limit):
 	level_info.text = level_info.text.replace("??:??:???", ftime)
 
 func _ready() -> void:
-	var reward = [RewardType.Create, RewardType.Modify, RewardType.Destroy].pick_random()
-	reward = RewardType.Create # The others are unsupported as of now.
+	
+	var reward = pick_random_reward()
+	
 	var map = MapSelector.get_random_map(0.5)
 	var base_score = CurrentRun.get_level()[0]
 	var base_time = CurrentRun.get_level()[1]
@@ -57,3 +58,13 @@ func _ready() -> void:
 	var time:int = round(base_time*randf_range(0.9, 1.1))
 	time = snapped(time, 5)
 	initialize(reward, map, score, time)
+
+func pick_random_reward() -> RewardType:
+	if CurrentRun.stash.size() == 1:
+		return RewardType.Create
+	else:
+		return [
+			RewardType.Create, 
+			#RewardType.Modify, # Not implemented
+			RewardType.Destroy
+			].pick_random()

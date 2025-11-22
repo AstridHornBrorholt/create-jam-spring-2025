@@ -1,0 +1,111 @@
+[gd_scene load_steps=7 format=3 uid="uid://c053ay2segwlv"]
+
+[ext_resource type="Script" uid="uid://4e7gdc8ctiho" path="res://Scripts/destroy.gd" id="1_2sqnx"]
+[ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="1_88i36"]
+[ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="1_nh5yv"]
+[ext_resource type="Script" uid="uid://c1u6qwtwgcpxy" path="res://Scripts/Wiggler.gd" id="2_2sqnx"]
+[ext_resource type="Script" uid="uid://0mya0f5x0amh" path="res://Scripts/Tetriminos.gd" id="3_tuyx0"]
+[ext_resource type="AudioStream" uid="uid://dfdw01nor3p0w" path="res://SFX/explosion.wav" id="6_2sqnx"]
+
+[node name="Destroy" type="Node2D"]
+script = ExtResource("1_2sqnx")
+
+[node name="Backdrop" type="Sprite2D" parent="."]
+texture = ExtResource("1_88i36")
+centered = false
+
+[node name="Next" type="Node2D" parent="."]
+position = Vector2(512, 224)
+
+[node name="Wiggler" type="Node2D" parent="Next"]
+position = Vector2(6, -3)
+script = ExtResource("2_2sqnx")
+rotation_multiplier = 0.05
+
+[node name="NextTetriminos" type="Node2D" parent="Next/Wiggler"]
+position = Vector2(-32, -32)
+script = ExtResource("3_tuyx0")
+metadata/_custom_type_script = "uid://0mya0f5x0amh"
+
+[node name="Held" type="Node2D" parent="."]
+position = Vector2(480, 416)
+
+[node name="Wiggler" type="Node2D" parent="Held"]
+position = Vector2(3, -7)
+script = ExtResource("2_2sqnx")
+rotation_multiplier = 0.05
+
+[node name="HeldTetriminos" type="Node2D" parent="Held/Wiggler"]
+position = Vector2(2, 1)
+script = ExtResource("3_tuyx0")
+metadata/_custom_type_script = "uid://0mya0f5x0amh"
+
+[node name="SelectNext" type="Button" parent="."]
+offset_left = 256.0
+offset_top = 128.0
+offset_right = 768.0
+offset_bottom = 1028.0
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../SelectHeld")
+focus_neighbor_right = NodePath("../SelectHeld")
+focus_next = NodePath("../SelectHeld")
+focus_previous = NodePath("../SelectHeld")
+theme = ExtResource("1_nh5yv")
+theme_override_font_sizes/font_size = 90
+text = "
+
+
+
+
+
+
+
+[Destroy]"
+
+[node name="SelectHeld" type="Button" parent="."]
+offset_left = 1152.0
+offset_top = 96.0
+offset_right = 1664.0
+offset_bottom = 1028.0
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../SelectNext")
+focus_neighbor_right = NodePath("../SelectNext")
+focus_next = NodePath("../SelectNext")
+focus_previous = NodePath("../SelectNext")
+theme = ExtResource("1_nh5yv")
+theme_override_font_sizes/font_size = 90
+text = "
+
+
+
+
+
+
+
+[Destroy]"
+
+[node name="NextTarget" type="Node2D" parent="."]
+position = Vector2(512, 512)
+
+[node name="HeldTarget" type="Node2D" parent="."]
+position = Vector2(1408, 512)
+
+[node name="HeldMissingText" type="RichTextLabel" parent="."]
+offset_left = 1152.0
+offset_top = 160.0
+offset_right = 1728.0
+offset_bottom = 832.0
+theme = ExtResource("1_nh5yv")
+theme_override_font_sizes/normal_font_size = 89
+text = "Tip: 
+Held pieces show up here"
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="DestroySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_2sqnx")
+
+[connection signal="button_down" from="SelectNext" to="." method="_on_select_next_button_down"]
+[connection signal="mouse_entered" from="SelectNext" to="." method="_on_select_next_mouse_entered"]
+[connection signal="button_down" from="SelectHeld" to="." method="_on_select_held_button_down"]
+[connection signal="mouse_entered" from="SelectHeld" to="." method="_on_select_held_mouse_entered"]

@@ -1,4 +1,5 @@
 extends Node2D
+class_name Wiggler
 
 var wiggle = true
 var rotation_progress = 0
