@@ -1,6 +1,7 @@
 extends Node2D
 class_name RewardIndicator
 
+@export var type:LevelOption.RewardType = LevelOption.RewardType.Create
 
 @onready var icon = $"Wiggler/Icon"
 @onready var label = $"Label"
@@ -10,10 +11,14 @@ var create_icon:Texture2D = preload("res://Sprites/Create.png")
 var modify_icon:Texture2D = preload("res://Sprites/ModifyIcon.png")
 var destroy_icon:Texture2D = preload("res://Sprites/Destroy.png")
 
+func _ready() -> void:
+	set_reward_type(self.type)
+
 func set_wiggle(state:bool):
 	wiggler.wiggle = state
 
 func set_reward_type(reward_type:LevelOption.RewardType):
+	self.type = reward_type
 	match reward_type:
 		LevelOption.RewardType.Create:
 			icon.texture = create_icon

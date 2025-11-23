@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c053ay2segwlv"]
+[gd_scene load_steps=8 format=3 uid="uid://c053ay2segwlv"]
 
 [ext_resource type="Script" uid="uid://4e7gdc8ctiho" path="res://Scripts/destroy.gd" id="1_2sqnx"]
 [ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="1_88i36"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c1u6qwtwgcpxy" path="res://Scripts/Wiggler.gd" id="2_2sqnx"]
 [ext_resource type="Script" uid="uid://0mya0f5x0amh" path="res://Scripts/Tetriminos.gd" id="3_tuyx0"]
 [ext_resource type="AudioStream" uid="uid://dfdw01nor3p0w" path="res://SFX/explosion.wav" id="6_2sqnx"]
+[ext_resource type="PackedScene" uid="uid://b7njvl3j3a8jx" path="res://Prefabs/RewardIndicator.tscn" id="7_tuyx0"]
 
 [node name="Destroy" type="Node2D"]
 script = ExtResource("1_2sqnx")
@@ -92,7 +93,7 @@ position = Vector2(1408, 512)
 
 [node name="HeldMissingText" type="RichTextLabel" parent="."]
 offset_left = 1152.0
-offset_top = 160.0
+offset_top = 288.0
 offset_right = 1728.0
 offset_bottom = 832.0
 theme = ExtResource("1_nh5yv")
@@ -104,6 +105,11 @@ horizontal_alignment = 1
 
 [node name="DestroySound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_2sqnx")
+
+[node name="RewardIndicator" parent="." instance=ExtResource("7_tuyx0")]
+position = Vector2(968, 32)
+scale = Vector2(2, 2)
+type = 2
 
 [connection signal="button_down" from="SelectNext" to="." method="_on_select_next_button_down"]
 [connection signal="mouse_entered" from="SelectNext" to="." method="_on_select_next_mouse_entered"]

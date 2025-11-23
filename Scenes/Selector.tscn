@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bmlcob562vhmb"]
+[gd_scene load_steps=14 format=3 uid="uid://bmlcob562vhmb"]
 
 [ext_resource type="Script" uid="uid://b8gaikrmlclxy" path="res://Scripts/selector.gd" id="1_k2e2o"]
 [ext_resource type="Texture2D" uid="uid://bb72uply2u8hi" path="res://Sprites/Black.png" id="2_ji8yk"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bti3rquj6gvmu" path="res://SFX/powerUp.wav" id="10_6c46q"]
 [ext_resource type="PackedScene" uid="uid://bfvv4jth18nh8" path="res://Prefabs/BreakableChunk.tscn" id="11_6c46q"]
 [ext_resource type="Texture2D" uid="uid://clavpgclb5vwm" path="res://Sprites/Neutral Point Light.webp" id="12_xgtsy"]
+[ext_resource type="PackedScene" uid="uid://b7njvl3j3a8jx" path="res://Prefabs/RewardIndicator.tscn" id="13_0imom"]
 
 [node name="Selector" type="Node2D"]
 script = ExtResource("1_k2e2o")
@@ -79,5 +80,9 @@ texture = ExtResource("12_xgtsy")
 z_index = 1
 position = Vector2(613, 482)
 layers = 3
+
+[node name="RewardIndicator" parent="." instance=ExtResource("13_0imom")]
+position = Vector2(1548, 670)
+scale = Vector2(2, 2)
 
 [connection signal="finished" from="Tetrogue-Menu" to="Tetrogue-Menu" method="_on_finished"]
