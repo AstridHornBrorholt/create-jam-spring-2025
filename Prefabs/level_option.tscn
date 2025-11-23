@@ -36,11 +36,11 @@ offset_bottom = -100.0
 theme = ExtResource("3_xspn1")
 theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
-text = "[color=yellow]score[/color]
+text = "[color=yellow]score:[/color]
 ###
-[color=blue]time[/color]
+[color=blue]time:[/color]
 ??:??:???
-[color=green]Reward:[/color]
+[color=purple]Reward:[/color]
 "
 fit_content = true
 scroll_active = false
@@ -48,4 +48,4 @@ horizontal_alignment = 1
 
 [node name="RewardIndicator" parent="." instance=ExtResource("6_jd67p")]
 visible = true
-position = Vector2(-5, -82)
+position = Vector2(-5, -101)
