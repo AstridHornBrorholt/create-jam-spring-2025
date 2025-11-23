@@ -24,12 +24,15 @@ text = "How play"
 offset_left = 85.0
 offset_top = 250.0
 offset_right = 1826.0
-offset_bottom = 792.0
+offset_bottom = 957.0
 theme = ExtResource("3_mq808")
 theme_override_font_sizes/normal_font_size = 81
 bbcode_enabled = true
-text = "ARROWS	= Move blocks
-SPACE		= Slam block down
+text = "ARROWS	= Move piece
+SPACE		= Slam piece down
+SHIFT		= Hold piece
+
+Controller is supported.
 
 Reach score target before time runs out.
 Tip: Keep your [color=red] score multiplier[/color] high"
@@ -39,9 +42,9 @@ position = Vector2(0, -63)
 
 [node name="BackButton" type="Button" parent="Interactive"]
 offset_left = 92.0
-offset_top = 878.0
+offset_top = 1006.0
 offset_right = 800.0
-offset_bottom = 992.0
+offset_bottom = 1120.0
 focus_neighbor_left = NodePath("../NextButton")
 focus_neighbor_right = NodePath("../NextButton")
 theme = ExtResource("3_mq808")
@@ -50,9 +53,9 @@ text = "[Back]"
 
 [node name="NextButton" type="Button" parent="Interactive"]
 offset_left = 1007.0
-offset_top = 878.0
+offset_top = 1006.0
 offset_right = 1715.0
-offset_bottom = 992.0
+offset_bottom = 1120.0
 focus_neighbor_left = NodePath("../BackButton")
 focus_neighbor_right = NodePath(".")
 theme = ExtResource("3_mq808")
