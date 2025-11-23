@@ -8,11 +8,17 @@ func _init(cells: Array[CellTemplate]) -> void:
 func is_empty() -> bool:
 	return cells.size() == 0
 
-func get_hash() -> int:
-	var _hash = 0
-	for cell in cells:
-		_hash ^= cell.pos.x + cell.pos.y * 100
-	return _hash
+func equals(other:TetriminosTemplate) -> bool:
+	if self.cells.size() != other.cells.size():
+		return false
+	for cell in self.cells:
+		var contains = false
+		for cellʹ in other.cells:
+			if cell.equals(cellʹ):
+				contains = true
+		if !contains:
+			return false
+	return true
 
 # Get width of tetrimino
 func get_width():

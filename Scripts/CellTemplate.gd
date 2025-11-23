@@ -9,6 +9,9 @@ var neighbours: Dictionary[String, bool] = {
 	"down": false,
 }
 
+func equals(other:CellTemplate) -> bool:
+	return self.pos == other.pos and self.type == other.type
+
 func _init(x: int, y: int, type: Cell.Type) -> void:
 	self.pos = Vector2i(x, y)
 	self.type = type

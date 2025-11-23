@@ -100,22 +100,20 @@ func peek_next():
 	return current_stash.back()
 
 func remove_from_curent_stash(tetriminos:TetriminosTemplate):
-	var hash = tetriminos.get_hash()
 	for i in current_stash.size():
-		if current_stash[i].get_hash() == hash:
+		if current_stash[i].equals(tetriminos):
 			current_stash.remove_at(i)
 			return
 	
-	assert(false, "Failed to remove tetriminos with hash  " + str(hash) +  " because it does not apear to be in current_stash.")
+	assert(false, "Failed to remove tetriminos because it does not apear to be in current_stash.")
 
 func remove_from_permanent_stash(tetriminos:TetriminosTemplate):
-	var hash = tetriminos.get_hash()
 	for i in stash.size():
-		if stash[i].get_hash() == hash:
+		if stash[i].equals(tetriminos):
 			stash.remove_at(i)
 			return
 	
-	assert(false, "Failed to remove tetriminos with hash  " + str(hash) +  " because it does not apear to be in stash.")
+	assert(false, "Failed to remove tetriminos because it does not apear to be in stash.")
 
 
 
