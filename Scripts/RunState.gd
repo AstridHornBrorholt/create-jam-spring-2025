@@ -77,6 +77,9 @@ func _init() -> void:
 	reset()
 
 func reset():
+	next_reward = LevelOption.RewardType.Create
+	next_score_goal = get_level()[0]
+	next_time_limit = get_level()[1]
 	# var tetrimino_generator = TetriminoGenerator.new()
 	stash = [ L, J, T, I, S, Z, O ]
 	level = 0
