@@ -104,7 +104,7 @@ func _on_select_held_mouse_entered() -> void:
 	select_held_button.grab_focus()
 
 func _on_select_next_button_down() -> void:
-	if next_tetriminos.template.equals(held_tetriminos.template):
+	if held_tetriminos != null and held_tetriminos.template != null and next_tetriminos.template.equals(held_tetriminos.template):
 		CurrentRun.previously_held = TetriminosTemplate.new([])
 	destroy(next_tetriminos)
 
