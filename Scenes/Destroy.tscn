@@ -15,32 +15,6 @@ script = ExtResource("1_2sqnx")
 texture = ExtResource("1_88i36")
 centered = false
 
-[node name="Next" type="Node2D" parent="."]
-position = Vector2(512, 224)
-
-[node name="Wiggler" type="Node2D" parent="Next"]
-position = Vector2(6, -3)
-script = ExtResource("2_2sqnx")
-rotation_multiplier = 0.05
-
-[node name="NextTetriminos" type="Node2D" parent="Next/Wiggler"]
-position = Vector2(-32, -32)
-script = ExtResource("3_tuyx0")
-metadata/_custom_type_script = "uid://0mya0f5x0amh"
-
-[node name="Held" type="Node2D" parent="."]
-position = Vector2(480, 416)
-
-[node name="Wiggler" type="Node2D" parent="Held"]
-position = Vector2(3, -7)
-script = ExtResource("2_2sqnx")
-rotation_multiplier = 0.05
-
-[node name="HeldTetriminos" type="Node2D" parent="Held/Wiggler"]
-position = Vector2(2, 1)
-script = ExtResource("3_tuyx0")
-metadata/_custom_type_script = "uid://0mya0f5x0amh"
-
 [node name="SelectNext" type="Button" parent="."]
 offset_left = 256.0
 offset_top = 128.0
@@ -110,6 +84,33 @@ stream = ExtResource("6_2sqnx")
 position = Vector2(968, 32)
 scale = Vector2(2, 2)
 type = 2
+wiggle = false
+
+[node name="Next" type="Node2D" parent="."]
+position = Vector2(512, 224)
+
+[node name="Wiggler" type="Node2D" parent="Next"]
+position = Vector2(6, -3)
+script = ExtResource("2_2sqnx")
+rotation_multiplier = 0.05
+
+[node name="NextTetriminos" type="Node2D" parent="Next/Wiggler"]
+position = Vector2(-32, -32)
+script = ExtResource("3_tuyx0")
+metadata/_custom_type_script = "uid://0mya0f5x0amh"
+
+[node name="Held" type="Node2D" parent="."]
+position = Vector2(480, 416)
+
+[node name="Wiggler" type="Node2D" parent="Held"]
+position = Vector2(3, -7)
+script = ExtResource("2_2sqnx")
+rotation_multiplier = 0.05
+
+[node name="HeldTetriminos" type="Node2D" parent="Held/Wiggler"]
+position = Vector2(2, 1)
+script = ExtResource("3_tuyx0")
+metadata/_custom_type_script = "uid://0mya0f5x0amh"
 
 [connection signal="button_down" from="SelectNext" to="." method="_on_select_next_button_down"]
 [connection signal="mouse_entered" from="SelectNext" to="." method="_on_select_next_mouse_entered"]

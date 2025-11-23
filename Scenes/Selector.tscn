@@ -84,5 +84,6 @@ layers = 3
 [node name="RewardIndicator" parent="." instance=ExtResource("13_0imom")]
 position = Vector2(1548, 670)
 scale = Vector2(2, 2)
+wiggle = false
 
 [connection signal="finished" from="Tetrogue-Menu" to="Tetrogue-Menu" method="_on_finished"]
