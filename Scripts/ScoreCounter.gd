@@ -10,7 +10,7 @@ class_name ScoreCounter
 
 var score_effect: PackedScene = preload("res://Prefabs/ScoreEffect.tscn")
 
-const MULT_DECREASE_RATE = 1.0/5.0
+const MULT_DECREASE_RATE = 0
 const STREAK_DECREASE_RATE = 1.0/5.0
 
 var mult_timeout: float = 0
@@ -63,7 +63,7 @@ func set_mult(mult: int):
 
 func bump_streak():
 	if streak_timeout > 0:
-		add_mult(1)
+		pass # add_mult(1)
 	streak_timeout = 1
 
 
