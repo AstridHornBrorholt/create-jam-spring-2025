@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bmlcob562vhmb"]
+[gd_scene format=3 uid="uid://bmlcob562vhmb"]
 
 [ext_resource type="Script" uid="uid://b8gaikrmlclxy" path="res://Scripts/selector.gd" id="1_k2e2o"]
 [ext_resource type="Texture2D" uid="uid://bb72uply2u8hi" path="res://Sprites/Black.png" id="2_ji8yk"]
@@ -14,37 +14,37 @@
 [ext_resource type="Texture2D" uid="uid://clavpgclb5vwm" path="res://Sprites/Neutral Point Light.webp" id="12_xgtsy"]
 [ext_resource type="PackedScene" uid="uid://b7njvl3j3a8jx" path="res://Prefabs/RewardIndicator.tscn" id="13_0imom"]
 
-[node name="Selector" type="Node2D"]
+[node name="Selector" type="Node2D" unique_id=2123133051]
 script = ExtResource("1_k2e2o")
 
-[node name="Black" type="Sprite2D" parent="."]
+[node name="Black" type="Sprite2D" parent="." unique_id=19990072]
 position = Vector2(960, 540)
 texture = ExtResource("2_ypq5c")
 
-[node name="Gray" type="Sprite2D" parent="."]
+[node name="Gray" type="Sprite2D" parent="." unique_id=1332346166]
 modulate = Color(1, 1, 1, 0.14902)
 position = Vector2(619, 462.5)
 scale = Vector2(5.68159, 3.42324)
 texture = ExtResource("3_h32ys")
 
-[node name="Tetrogue-Menu" type="AudioStreamPlayer" parent="."]
+[node name="Tetrogue-Menu" type="AudioStreamPlayer" parent="." unique_id=2082560957]
 stream = ExtResource("2_q75pq")
 volume_db = -8.0
 autoplay = true
 script = ExtResource("3_c44gr")
 
-[node name="InstructionsPopup" type="Node2D" parent="."]
+[node name="InstructionsPopup" type="Node2D" parent="." unique_id=111262685]
 position = Vector2(1241, 50)
 scale = Vector2(0.5, 0.5)
 
-[node name="BlockInstructions" parent="InstructionsPopup" instance=ExtResource("6_h32ys")]
+[node name="BlockInstructions" parent="InstructionsPopup" unique_id=458044079 instance=ExtResource("6_h32ys")]
 position = Vector2(-78, 0)
 scale = Vector2(1.11686, 1.11686)
 
-[node name="LevelUpContainer" type="Node2D" parent="."]
+[node name="LevelUpContainer" type="Node2D" parent="." unique_id=1238826598]
 script = ExtResource("8_1tlbm")
 
-[node name="LevelUpText" type="RichTextLabel" parent="LevelUpContainer"]
+[node name="LevelUpText" type="RichTextLabel" parent="LevelUpContainer" unique_id=315656032]
 visible = false
 offset_left = 120.0
 offset_top = 418.0
@@ -57,31 +57,31 @@ Now add 2 bricks"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PowerUp" type="AudioStreamPlayer2D" parent="."]
+[node name="PowerUp" type="AudioStreamPlayer2D" parent="." unique_id=708337023]
 position = Vector2(0, 4)
 stream = ExtResource("10_6c46q")
 pitch_scale = 0.8
 
-[node name="Black-fade" type="Sprite2D" parent="."]
+[node name="Black-fade" type="Sprite2D" parent="." unique_id=2115992164]
 visible = false
 modulate = Color(1, 1, 1, 0)
 position = Vector2(982, 612)
 scale = Vector2(133.688, 79.8125)
 texture = ExtResource("2_ji8yk")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=696796481]
 position = Vector2(615, 484)
 scale = Vector2(5.32031, 5.32031)
 color = Color(1, 1, 1, 0.796078)
 shadow_enabled = true
 texture = ExtResource("12_xgtsy")
 
-[node name="BreakableChunk" parent="." instance=ExtResource("11_6c46q")]
+[node name="BreakableChunk" parent="." unique_id=1784891826 instance=ExtResource("11_6c46q")]
 z_index = 1
 position = Vector2(613, 482)
 layers = 3
 
-[node name="RewardIndicator" parent="." instance=ExtResource("13_0imom")]
+[node name="RewardIndicator" parent="." unique_id=1965597530 instance=ExtResource("13_0imom")]
 position = Vector2(1548, 670)
 scale = Vector2(2, 2)
 wiggle = false

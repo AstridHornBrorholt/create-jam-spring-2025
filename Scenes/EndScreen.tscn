@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dc5p0aausbw13"]
+[gd_scene format=3 uid="uid://dc5p0aausbw13"]
 
 [ext_resource type="Script" uid="uid://cog16yksrpnpa" path="res://Scripts/end_screen.gd" id="1_3gukv"]
 [ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="2_jh5rx"]
@@ -6,20 +6,20 @@
 [ext_resource type="PackedScene" uid="uid://d0e4h7e60xinr" path="res://Prefabs/ScrollingMinos.tscn" id="5_jh5rx"]
 [ext_resource type="Texture2D" uid="uid://dj7j4put16rls" path="res://Sprites/Gray.png" id="6_d234m"]
 
-[node name="EndScreen" type="Node2D"]
+[node name="EndScreen" type="Node2D" unique_id=1807551764]
 script = ExtResource("1_3gukv")
 
-[node name="Black" type="Sprite2D" parent="."]
+[node name="Black" type="Sprite2D" parent="." unique_id=954717351]
 position = Vector2(960, 540)
 texture = ExtResource("2_jh5rx")
 
-[node name="Gray" type="Sprite2D" parent="."]
+[node name="Gray" type="Sprite2D" parent="." unique_id=2057876876]
 modulate = Color(1, 1, 1, 0.14902)
 position = Vector2(961, 769)
 scale = Vector2(9.55846, 0.838174)
 texture = ExtResource("6_d234m")
 
-[node name="Run Ended" type="RichTextLabel" parent="."]
+[node name="Run Ended" type="RichTextLabel" parent="." unique_id=213852024]
 offset_left = 85.0
 offset_top = 44.0
 offset_right = 1826.0
@@ -29,7 +29,7 @@ theme_override_font_sizes/normal_font_size = 140
 text = "Game Over!"
 horizontal_alignment = 1
 
-[node name="Stats" type="RichTextLabel" parent="."]
+[node name="Stats" type="RichTextLabel" parent="." unique_id=375089460]
 offset_left = 85.0
 offset_top = 250.0
 offset_right = 1826.0
@@ -39,9 +39,9 @@ theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
 text = "stats go here"
 
-[node name="Interactive" type="Node2D" parent="."]
+[node name="Interactive" type="Node2D" parent="." unique_id=1243149582]
 
-[node name="BackButton" type="Button" parent="Interactive"]
+[node name="BackButton" type="Button" parent="Interactive" unique_id=640982441]
 offset_left = 607.0
 offset_top = 883.0
 offset_right = 1315.0
@@ -50,7 +50,7 @@ theme = ExtResource("3_jh5rx")
 theme_override_font_sizes/font_size = 90
 text = "[Return to Menu]"
 
-[node name="ScrollingMinos" parent="." instance=ExtResource("5_jh5rx")]
+[node name="ScrollingMinos" parent="." unique_id=141167371 instance=ExtResource("5_jh5rx")]
 position = Vector2(-62, 762)
 
 [connection signal="pressed" from="Interactive/BackButton" to="." method="_on_back_button_pressed"]

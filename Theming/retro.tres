@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://0guyg45mewl2"]
+[gd_resource type="Theme" format=3 uid="uid://0guyg45mewl2"]
 
 [ext_resource type="Texture2D" uid="uid://y3dlc1ixvo3o" path="res://Sprites/Grabber.png" id="1_5vll4"]
 [ext_resource type="FontFile" uid="uid://ckluv6kderyi0" path="res://Theming/Minecraft Ten/MinecraftTen-VGORe.ttf" id="1_ve1wj"]

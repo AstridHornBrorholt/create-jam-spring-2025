@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cch7wmbkejfmi"]
+[gd_scene format=3 uid="uid://cch7wmbkejfmi"]
 
 [ext_resource type="Script" uid="uid://ci4fvd71m5x3i" path="res://Scripts/OptionsMenu.gd" id="1_5hy3q"]
 [ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="2_cbhj7"]
@@ -8,16 +8,16 @@
 [ext_resource type="AudioStream" uid="uid://bgkjb0evdblx6" path="res://SFX/pick.wav" id="6_bdxpv"]
 [ext_resource type="AudioStream" uid="uid://cb6j4bnup52id" path="res://SFX/rotate.wav" id="7_bdxpv"]
 
-[node name="OptionsMenu" type="Node2D"]
+[node name="OptionsMenu" type="Node2D" unique_id=649521194]
 script = ExtResource("1_5hy3q")
 
-[node name="OBS! Root name OptionsMenu is hard-coded in the Options_gd script" type="Node" parent="."]
+[node name="OBS! Root name OptionsMenu is hard-coded in the Options_gd script" type="Node" parent="." unique_id=1766621774]
 
-[node name="Backdrop" type="Sprite2D" parent="."]
+[node name="Backdrop" type="Sprite2D" parent="." unique_id=1995345581]
 texture = ExtResource("2_cbhj7")
 centered = false
 
-[node name="Options" type="RichTextLabel" parent="."]
+[node name="Options" type="RichTextLabel" parent="." unique_id=635511719]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -31,7 +31,7 @@ theme_override_font_sizes/normal_font_size = 140
 text = "Options
 "
 
-[node name="Music Volume" type="RichTextLabel" parent="."]
+[node name="Music Volume" type="RichTextLabel" parent="." unique_id=1832372534]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -47,7 +47,7 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 2
 
-[node name="Music Volume Slider" type="HSlider" parent="."]
+[node name="Music Volume Slider" type="HSlider" parent="." unique_id=40553211]
 offset_left = 1090.46
 offset_top = 410.0
 offset_right = 1409.46
@@ -62,7 +62,7 @@ max_value = 1.0
 step = 0.05
 value = 1.0
 
-[node name="SFX Volume" type="RichTextLabel" parent="."]
+[node name="SFX Volume" type="RichTextLabel" parent="." unique_id=1661609867]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -78,7 +78,7 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 2
 
-[node name="SFX Slider" type="HSlider" parent="."]
+[node name="SFX Slider" type="HSlider" parent="." unique_id=1099781341]
 offset_left = 1090.46
 offset_top = 504.0
 offset_right = 1409.46
@@ -93,9 +93,9 @@ max_value = 1.0
 step = 0.05
 value = 1.0
 
-[node name="Interactive" type="Node2D" parent="."]
+[node name="Interactive" type="Node2D" parent="." unique_id=692754781]
 
-[node name="BackButton" type="Button" parent="Interactive"]
+[node name="BackButton" type="Button" parent="Interactive" unique_id=1487235718]
 offset_left = 583.0
 offset_top = 889.0
 offset_right = 1291.0
@@ -108,16 +108,16 @@ theme = ExtResource("3_q4at1")
 theme_override_font_sizes/font_size = 90
 text = "[Back]"
 
-[node name="Tetrogue-Menu" type="AudioStreamPlayer" parent="."]
+[node name="Tetrogue-Menu" type="AudioStreamPlayer" parent="." unique_id=1780645430]
 stream = ExtResource("4_q4at1")
 volume_db = -5.0
 autoplay = true
 script = ExtResource("5_6f4k2")
 
-[node name="Grab" type="AudioStreamPlayer" parent="."]
+[node name="Grab" type="AudioStreamPlayer" parent="." unique_id=1152378066]
 stream = ExtResource("6_bdxpv")
 
-[node name="Release" type="AudioStreamPlayer" parent="."]
+[node name="Release" type="AudioStreamPlayer" parent="." unique_id=501339358]
 stream = ExtResource("7_bdxpv")
 
 [connection signal="drag_ended" from="Music Volume Slider" to="." method="_on_music_volume_slider_drag_ended"]

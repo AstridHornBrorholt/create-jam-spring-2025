@@ -1,23 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://cv432m57b4l8c"]
+[gd_scene format=3 uid="uid://cv432m57b4l8c"]
 
 [ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="1_7u28y"]
 [ext_resource type="Script" uid="uid://ch1goylophwdu" path="res://Scripts/next_level_select.gd" id="1_sf5mr"]
 [ext_resource type="PackedScene" uid="uid://dwb4ki65x1qgx" path="res://Prefabs/level_option.tscn" id="2_7u28y"]
 [ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="3_8argl"]
 
-[node name="NextLevelSelect" type="Node2D"]
+[node name="NextLevelSelect" type="Node2D" unique_id=1298706304]
 script = ExtResource("1_sf5mr")
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="." unique_id=417709331]
 position = Vector2(960, 540)
 texture = ExtResource("1_7u28y")
 
-[node name="LevelOption1" parent="." instance=ExtResource("2_7u28y")]
+[node name="LevelOption1" parent="." unique_id=362132782 instance=ExtResource("2_7u28y")]
 modulate = Color(0.650128, 0.650128, 0.650128, 1)
 position = Vector2(384, 512)
 scale = Vector2(0.911208, 0.911208)
 
-[node name="SelectButton1" type="Button" parent="."]
+[node name="SelectButton1" type="Button" parent="." unique_id=2071795419]
 offset_left = 131.0
 offset_top = 132.875
 offset_right = 631.0
@@ -38,13 +38,14 @@ text = "
 
 
 [Select]"
+autowrap_trim_flags = 0
 
-[node name="LevelOption2" parent="." instance=ExtResource("2_7u28y")]
+[node name="LevelOption2" parent="." unique_id=1961918189 instance=ExtResource("2_7u28y")]
 modulate = Color(0.650128, 0.650128, 0.650128, 1)
 position = Vector2(960, 512)
 scale = Vector2(0.911208, 0.911208)
 
-[node name="SelectButton2" type="Button" parent="."]
+[node name="SelectButton2" type="Button" parent="." unique_id=327025428]
 offset_left = 709.0
 offset_top = 132.875
 offset_right = 1209.0
@@ -64,13 +65,14 @@ text = "
 
 
 [Select]"
+autowrap_trim_flags = 0
 
-[node name="LevelOption3" parent="." instance=ExtResource("2_7u28y")]
+[node name="LevelOption3" parent="." unique_id=1574975411 instance=ExtResource("2_7u28y")]
 modulate = Color(0.650128, 0.650128, 0.650128, 1)
 position = Vector2(1536, 512)
 scale = Vector2(0.911208, 0.911208)
 
-[node name="SelectButton3" type="Button" parent="."]
+[node name="SelectButton3" type="Button" parent="." unique_id=1900888032]
 offset_left = 1284.0
 offset_top = 132.875
 offset_right = 1784.0
@@ -90,6 +92,7 @@ text = "
 
 
 [Select]"
+autowrap_trim_flags = 0
 
 [connection signal="button_down" from="SelectButton1" to="." method="_on_select_button_1_button_down"]
 [connection signal="focus_entered" from="SelectButton1" to="." method="_on_select_button_1_focus_entered"]

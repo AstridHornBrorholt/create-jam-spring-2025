@@ -1,17 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1hqtmp8wnpd"]
+[gd_scene format=3 uid="uid://d1hqtmp8wnpd"]
 
 [ext_resource type="Script" uid="uid://cb8yt3moiakpn" path="res://Scripts/Credits.gd" id="1_vs51u"]
 [ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="2_67s64"]
 [ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="3_mq808"]
 
-[node name="Menu3" type="Node2D"]
+[node name="Menu3" type="Node2D" unique_id=1046178724]
 script = ExtResource("1_vs51u")
 
-[node name="Backdrop" type="Sprite2D" parent="."]
+[node name="Backdrop" type="Sprite2D" parent="." unique_id=1956522066]
 texture = ExtResource("2_67s64")
 centered = false
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=778597558]
 offset_left = 95.0
 offset_top = 44.0
 offset_right = 1092.0
@@ -20,7 +20,7 @@ theme = ExtResource("3_mq808")
 theme_override_font_sizes/normal_font_size = 140
 text = "How play"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+[node name="RichTextLabel2" type="RichTextLabel" parent="." unique_id=201333652]
 offset_left = 85.0
 offset_top = 250.0
 offset_right = 1826.0
@@ -37,10 +37,10 @@ Controller is supported.
 Reach score target before time runs out.
 Tip: Keep your [color=red] score multiplier[/color] high"
 
-[node name="Interactive" type="Node2D" parent="."]
+[node name="Interactive" type="Node2D" parent="." unique_id=1541108675]
 position = Vector2(0, -63)
 
-[node name="BackButton" type="Button" parent="Interactive"]
+[node name="BackButton" type="Button" parent="Interactive" unique_id=2023079857]
 offset_left = 92.0
 offset_top = 1006.0
 offset_right = 800.0
@@ -51,7 +51,7 @@ theme = ExtResource("3_mq808")
 theme_override_font_sizes/font_size = 90
 text = "[Back]"
 
-[node name="NextButton" type="Button" parent="Interactive"]
+[node name="NextButton" type="Button" parent="Interactive" unique_id=367660424]
 offset_left = 1007.0
 offset_top = 1006.0
 offset_right = 1715.0

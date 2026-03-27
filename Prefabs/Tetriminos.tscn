@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmexrcsp4jh1v"]
+[gd_scene format=3 uid="uid://dmexrcsp4jh1v"]
 
 [ext_resource type="Script" uid="uid://0mya0f5x0amh" path="res://Scripts/Tetriminos.gd" id="1_br4m3"]
 
-[node name="Tetriminos" type="Node2D"]
+[node name="Tetriminos" type="Node2D" unique_id=444252499]
 script = ExtResource("1_br4m3")

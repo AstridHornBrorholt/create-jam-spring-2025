@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://ctihikfxioa4t"]
+[gd_scene format=4 uid="uid://ctihikfxioa4t"]
 
 [ext_resource type="PackedScene" uid="uid://dtj6g7cn5y1ah" path="res://Prefabs/tetris_game.tscn" id="1_iukft"]
 [ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="1_j5yw3"]
@@ -81,22 +81,22 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_j5yw3")
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" unique_id=61963214]
 
-[node name="Backdrop" type="Sprite2D" parent="."]
+[node name="Backdrop" type="Sprite2D" parent="." unique_id=178740258]
 modulate = Color(1.3, 1.3, 1.3, 1)
 z_index = -10
 texture = ExtResource("1_j5yw3")
 centered = false
 
-[node name="AnimatedBackground" parent="." instance=ExtResource("2_kldst")]
+[node name="AnimatedBackground" parent="." unique_id=312281787 instance=ExtResource("2_kldst")]
 modulate = Color(0, 0, 0, 0.569)
 z_index = -9
 
-[node name="Border" type="TileMapLayer" parent="."]
+[node name="Border" type="TileMapLayer" parent="." unique_id=651549500]
 self_modulate = Color(0.704573, 0.79076, 0.881203, 1)
 position = Vector2(800, 200)
 tile_map_data = PackedByteArray("AAABABQAAAAAAAAAAAACABQAAAAAAAAAAAADABQAAAAAAAAAAAAEABQAAAAAAAAAAAAFABQAAAAAAAAAAAAGABQAAAAAAAAAAAAHABQAAAAAAAAAAAAIABQAAAAAAAAAAAAJABQAAAAAAAAAAAAKABQAAAAAAAAAAAAKABMAAAAAAAAAAAAKABIAAAAAAAAAAAAKABEAAAAAAAAAAAAKABAAAAAAAAAAAAAKAA8AAAAAAAAAAAAKAA4AAAAAAAAAAAAKAA0AAAAAAAAAAAAKAAwAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAoAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAgAAAAAAAAAAAAKAAcAAAAAAAAAAAAKAAYAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAEAAAAAAAAAAAAAABQAAAAAAAAAAAD//xQAAAAAAAAAAAD//xMAAAAAAAAAAAD//xIAAAAAAAAAAAD//xEAAAAAAAAAAAD//xAAAAAAAAAAAAD//w8AAAAAAAAAAAD//w4AAAAAAAAAAAD//w0AAAAAAAAAAAD//wwAAAAAAAAAAAD//wsAAAAAAAAAAAD//woAAAAAAAAAAAD//wkAAAAAAAAAAAD//wgAAAAAAAAAAAD//wcAAAAAAAAAAAD//wYAAAAAAAAAAAD//wUAAAAAAAAAAAD//wQAAAAAAAAAAAD//wMAAAAAAAAAAAD//wIAAAAAAAAAAAD//wEAAAAAAAAAAAD//wAAAAAAAAAAAAAKAAAAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_kldst")
 
-[node name="TetrisGame" parent="Border" instance=ExtResource("1_iukft")]
+[node name="TetrisGame" parent="Border" unique_id=996205003 instance=ExtResource("1_iukft")]

@@ -1,20 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccggcah8x2y63"]
+[gd_scene format=3 uid="uid://ccggcah8x2y63"]
 
 [ext_resource type="Script" uid="uid://cb8yt3moiakpn" path="res://Scripts/Credits.gd" id="1_4uyco"]
 [ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="2_1cyd4"]
 [ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="3_m48fc"]
 [ext_resource type="PackedScene" uid="uid://bbnjt3yj141lc" path="res://Prefabs/block_instructions.tscn" id="4_1cyd4"]
 
-[node name="Menu" type="Node2D"]
+[node name="Menu" type="Node2D" unique_id=1805274739]
 script = ExtResource("1_4uyco")
 
-[node name="Backdrop" type="Sprite2D" parent="."]
+[node name="Backdrop" type="Sprite2D" parent="." unique_id=2145205842]
 texture = ExtResource("2_1cyd4")
 centered = false
 
-[node name="Interactive" type="Node2D" parent="."]
+[node name="Interactive" type="Node2D" parent="." unique_id=568735179]
 
-[node name="BackButton" type="Button" parent="Interactive"]
+[node name="BackButton" type="Button" parent="Interactive" unique_id=946257408]
 offset_left = -151.0
 offset_top = 49.0
 offset_right = 557.0
@@ -23,7 +23,7 @@ theme = ExtResource("3_m48fc")
 theme_override_font_sizes/font_size = 90
 text = "[Back]"
 
-[node name="BlockInstructions" parent="." instance=ExtResource("4_1cyd4")]
+[node name="BlockInstructions" parent="." unique_id=1238618631 instance=ExtResource("4_1cyd4")]
 position = Vector2(436, 69)
 
 [connection signal="pressed" from="Interactive/BackButton" to="." method="_on_back_button_pressed"]

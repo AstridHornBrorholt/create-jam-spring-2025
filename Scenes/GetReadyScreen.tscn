@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4f5w76p72kpr"]
+[gd_scene format=3 uid="uid://b4f5w76p72kpr"]
 
 [ext_resource type="Script" uid="uid://7c536jhjo1mq" path="res://Scripts/GetReadyScreen.gd" id="1_4rw7v"]
 [ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="2_peiy7"]
@@ -6,23 +6,23 @@
 [ext_resource type="PackedScene" uid="uid://d0e4h7e60xinr" path="res://Prefabs/ScrollingMinos.tscn" id="3_peiy7"]
 [ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="4_uecyn"]
 
-[node name="GetReadyScreen" type="Node2D"]
+[node name="GetReadyScreen" type="Node2D" unique_id=1039866389]
 script = ExtResource("1_4rw7v")
 
-[node name="Black" type="Sprite2D" parent="."]
+[node name="Black" type="Sprite2D" parent="." unique_id=1053784586]
 position = Vector2(960, 540)
 texture = ExtResource("2_peiy7")
 
-[node name="Gray" type="Sprite2D" parent="."]
+[node name="Gray" type="Sprite2D" parent="." unique_id=227666254]
 modulate = Color(1, 1, 1, 0.14902)
 position = Vector2(961, 769)
 scale = Vector2(9.55846, 0.838174)
 texture = ExtResource("3_4rw7v")
 
-[node name="EndScreenTetriminos" parent="." instance=ExtResource("3_peiy7")]
+[node name="EndScreenTetriminos" parent="." unique_id=71575191 instance=ExtResource("3_peiy7")]
 position = Vector2(-3, 769)
 
-[node name="Stats" type="RichTextLabel" parent="."]
+[node name="Stats" type="RichTextLabel" parent="." unique_id=1346514609]
 offset_left = 764.0
 offset_top = 356.0
 offset_right = 1655.0
@@ -34,9 +34,9 @@ text = "stats go here"
 fit_content = true
 scroll_active = false
 
-[node name="Interactive" type="Node2D" parent="."]
+[node name="Interactive" type="Node2D" parent="." unique_id=1065887600]
 
-[node name="BeginButton" type="Button" parent="Interactive"]
+[node name="BeginButton" type="Button" parent="Interactive" unique_id=646526710]
 offset_left = 607.0
 offset_top = 883.0
 offset_right = 1315.0
