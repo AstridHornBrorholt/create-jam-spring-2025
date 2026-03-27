@@ -120,20 +120,20 @@ func remove_from_permanent_stash(tetriminos:TetriminosTemplate):
 
 
 
-func get_level():
+func get_level(): # returns [score_goal, time_limit]
 	const levels = [
-		[100, 90],
-		[250, 90],
-		[400, 90],
-		[550, 90],
+		[500, 90],
 		[750, 90],
+		[1500, 90],
+		[2000, 90],
 	]
 	if level < levels.size():
 		return levels[level]
+	elif level < 8:
+		return [(level)*500, 90]
 	else:
 		# Increase goal quadratically from now
-		var n = level - levels.size()
-		return [5*n**2 + 250*n + 1000, 90]
+		return [5*(level - 8)**2 + 500*(level - 1), 90]
 
 func get_map() -> Array[Array]:
 	return next_map

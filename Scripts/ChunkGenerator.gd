@@ -20,24 +20,28 @@ func generate_chunk() -> Array[Cell.Type]:
 	var level = CurrentRun.level
 	
 	if level >= 5 and randf() < 0.1: # Chance of "OOPS! All X!" effect, for X in oops_types
-		return [oops_types.pick_random()]
+		return [ oops_types.pick_random() ]
 	
 	if level <= 10:
-		var result:Array[Cell.Type] = [ standard, standard, standard, rand() ]
 		if randf() <= 0.5:
-			result.append(rand())
-		return result
+			return [ standard, standard, rand(), rand() ]
+		return [ standard, standard, standard, rand() ]
 	elif level <= 15:
-		return [ standard, standard, rand(), rand() ]
+		if randf() <= 0.5:
+			return [ standard, rand(), rand() ]
+		return [ standard, standard, rand() ]
 	elif level <= 20:
-		return [ standard, standard, rand(), rand(), rand() ]
+		if randf() <= 0.5:
+			return [ standard, rand() ]
+		var r = rand()
+		return [ standard, r, r, rand() ]
 	elif level <= 25:
-		return [ rand(), rand() ]
+		if randf() <= 0.5:
+			return [ rand(), rand() ]
+		var r = rand()
+		return [ r, r, rand() ]
 	else:
-		var result:Array[Cell.Type] = []
-		for i in 4:
-			if randf() < 0.5:
-				result.append(standard)
-			else:
-				result.append(rand())
-		return result
+		if randf() <= 0.5:
+			return [ rand(), rand(), rand(), rand() ]
+		var r = rand()
+		return [ r, r, r, rand() ]
