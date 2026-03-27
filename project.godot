@@ -25,6 +25,13 @@ MainTickEvent="*res://Scripts/MainTickEvent.gd"
 CurrentRun="*res://Scripts/RunState.gd"
 Options="*res://Scripts/Options.gd"
 
+[debug]
+
+gdscript/warnings/unused_variable=0
+gdscript/warnings/unused_local_constant=0
+gdscript/warnings/shadowed_variable=0
+gdscript/warnings/confusable_identifier=0
+
 [display]
 
 window/size/viewport_width=1920

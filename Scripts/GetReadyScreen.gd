@@ -7,7 +7,7 @@ func _ready() -> void:
 	begin_button.grab_focus()
 	var score_target = CurrentRun.next_score_goal
 	var time = CurrentRun.next_time_limit
-	var minutes = floor(time/60)
+	var minutes = floor(time/60.)
 	var seconds = time - minutes*60
 	stats.text = ("[color=blue]Level\t" + str(CurrentRun.level) + "[/color]\n" +
 				  "Target\t[color=yellow]" + str(score_target) + "[/color]\n" +
