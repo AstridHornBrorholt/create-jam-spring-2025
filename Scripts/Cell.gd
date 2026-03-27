@@ -104,8 +104,6 @@ func destroy(game: TetrisGame):
 	match type:
 		Type.Monster:
 			score = 20
-		Type.Mole:
-			score = 15
 		Type.Concrete:
 			score = 10
 		Type.ConcreteSemiBroken:
@@ -210,12 +208,17 @@ func on_tick(game: TetrisGame, tick: int):
 				if c != null:
 					c.destroy(game)
 		Type.Mole:
-			if tick % 75 == 0:
-				# Swap with a random adjacent cell
-				var dir = [Vector2i(1,0), Vector2i(-1,0), Vector2i(0,1), Vector2i(0,-1)][randi() % 4]
-				var target = grid_pos + dir
-				if game.get_at(target.x, target.y) != null:
-					game.swap(grid_pos.x, grid_pos.y, target.x, target.y)
+			if tick % 20 == 0:
+				# Teleport downwards through blocks
+				var target = Vector2(grid_pos.x, grid_pos.y)
+				while true: 
+					target.y += 1
+					if game.out_of_bounds(target.x, target.y):
+						break
+					var c = game.get_at(target.x, target.y)
+					if c == null:
+						break
+				game.try_move_cell(grid_pos.x, grid_pos.y, target.x, target.y)
 		Type.Anvil:
 			if tick % 3 == 1:
 				for y in range(grid_pos.y, game.HEIGHT):
