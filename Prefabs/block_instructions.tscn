@@ -1,114 +1,114 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbnjt3yj141lc"]
+[gd_scene format=3 uid="uid://bbnjt3yj141lc"]
 
 [ext_resource type="Texture2D" uid="uid://dj7j4put16rls" path="res://Sprites/Gray.png" id="1_u0mki"]
 [ext_resource type="Texture2D" uid="uid://t27wqlp1hsc5" path="res://Sprites/BlockSprites.png" id="2_4oh6a"]
 [ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="3_v6a76"]
 
-[node name="BlockInstructions" type="Node2D"]
+[node name="BlockInstructions" type="Node2D" unique_id=2026511998]
 
-[node name="Gray" type="Sprite2D" parent="."]
+[node name="Gray" type="Sprite2D" parent="." unique_id=467705124]
 modulate = Color(1, 1, 1, 0.14902)
 position = Vector2(605.25, 477.5)
 scale = Vector2(6.02239, 3.96265)
 texture = ExtResource("1_u0mki")
 
-[node name="BlockSprites" type="Sprite2D" parent="."]
+[node name="BlockSprites" type="Sprite2D" parent="." unique_id=1590933209]
 position = Vector2(71, 56)
 texture = ExtResource("2_4oh6a")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
 
-[node name="BlockSprites1" type="Sprite2D" parent="."]
+[node name="BlockSprites1" type="Sprite2D" parent="." unique_id=1288165311]
 position = Vector2(71, 105)
 texture = ExtResource("2_4oh6a")
 region_enabled = true
 region_rect = Rect2(160, 32, 32, 32)
 
-[node name="BlockSprites2" type="Sprite2D" parent="."]
+[node name="BlockSprites2" type="Sprite2D" parent="." unique_id=681791055]
 position = Vector2(71, 158)
 texture = ExtResource("2_4oh6a")
 region_enabled = true
 region_rect = Rect2(0, 64, 32, 32)
 
-[node name="BlockSprites3" type="Sprite2D" parent="."]
+[node name="BlockSprites3" type="Sprite2D" parent="." unique_id=699229465]
 position = Vector2(71, 208)
 texture = ExtResource("2_4oh6a")
 region_enabled = true
 region_rect = Rect2(32, 64, 32, 32)
 
-[node name="BlockSprites4" type="Sprite2D" parent="."]
+[node name="BlockSprites4" type="Sprite2D" parent="." unique_id=1923978864]
 position = Vector2(71, 262)
 texture = ExtResource("2_4oh6a")
 region_enabled = true
 region_rect = Rect2(0, 32, 32, 32)
 
-[node name="BlockSprites5" type="Sprite2D" parent="."]
+[node name="BlockSprites5" type="Sprite2D" parent="." unique_id=1258108459]
 position = Vector2(71, 312)
 texture = ExtResource("2_4oh6a")
 region_enabled = true
 region_rect = Rect2(32, 32, 32, 32)
 
-[node name="BlockSprites6" type="Sprite2D" parent="."]
+[node name="BlockSprites6" type="Sprite2D" parent="." unique_id=843582748]
 position = Vector2(71, 367)
 texture = ExtResource("2_4oh6a")
 region_enabled = true
 region_rect = Rect2(32, 0, 32, 32)
 
-[node name="BlockSprites7" type="Sprite2D" parent="."]
+[node name="BlockSprites7" type="Sprite2D" parent="." unique_id=1942306683]
 position = Vector2(71, 418)
 texture = ExtResource("2_4oh6a")
 region_enabled = true
 region_rect = Rect2(64, 0, 32, 32)
 
-[node name="BlockSprites8" type="Sprite2D" parent="."]
+[node name="BlockSprites8" type="Sprite2D" parent="." unique_id=697215928]
 position = Vector2(71, 469)
 texture = ExtResource("2_4oh6a")
 region_enabled = true
 region_rect = Rect2(128, 0, 32, 32)
 
-[node name="BlockSprites9" type="Sprite2D" parent="."]
+[node name="BlockSprites9" type="Sprite2D" parent="." unique_id=582707972]
 position = Vector2(71, 522)
 texture = ExtResource("2_4oh6a")
 region_enabled = true
 region_rect = Rect2(128, 32, 32, 32)
 
-[node name="BlockSprites10" type="Sprite2D" parent="."]
+[node name="BlockSprites10" type="Sprite2D" parent="." unique_id=1273477290]
 position = Vector2(71, 572)
 texture = ExtResource("2_4oh6a")
 region_enabled = true
 region_rect = Rect2(128, 64, 32, 32)
 
-[node name="BlockSprites11" type="Sprite2D" parent="."]
+[node name="BlockSprites11" type="Sprite2D" parent="." unique_id=510957281]
 position = Vector2(71, 627)
 texture = ExtResource("2_4oh6a")
 region_enabled = true
 region_rect = Rect2(96, 0, 32, 32)
 
-[node name="BlockSprites12" type="Sprite2D" parent="."]
+[node name="BlockSprites12" type="Sprite2D" parent="." unique_id=29311179]
 position = Vector2(71, 677)
 texture = ExtResource("2_4oh6a")
 region_enabled = true
 region_rect = Rect2(96, 64, 32, 32)
 
-[node name="BlockSprites13" type="Sprite2D" parent="."]
+[node name="BlockSprites13" type="Sprite2D" parent="." unique_id=1994916124]
 position = Vector2(71, 728)
 texture = ExtResource("2_4oh6a")
 region_enabled = true
 region_rect = Rect2(160, 0, 32, 32)
 
-[node name="BlockSprites14" type="Sprite2D" parent="."]
+[node name="BlockSprites14" type="Sprite2D" parent="." unique_id=2112764674]
 position = Vector2(71, 781)
 texture = ExtResource("2_4oh6a")
 region_enabled = true
 region_rect = Rect2(64, 32, 32, 32)
 
-[node name="BlockSprites15" type="Sprite2D" parent="."]
+[node name="BlockSprites15" type="Sprite2D" parent="." unique_id=572605550]
 position = Vector2(71, 833)
 texture = ExtResource("2_4oh6a")
 region_enabled = true
 region_rect = Rect2(96, 32, 32, 32)
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+[node name="RichTextLabel2" type="RichTextLabel" parent="." unique_id=267238027]
 offset_left = 104.0
 offset_top = 33.0
 offset_right = 1170.0
@@ -121,7 +121,7 @@ Compressed block. +20 points.
 Multiplier block. [color=red]+1 mult[/color].
 Balloon, floats up. +5 points [color=red]+2 mult[/color].
 Gold, steady income. +5 points.
-Bomb, explodes. +5 points.
+Bomb, clears below. +5 points.
 Sand, falls down. +5 points.
 Clock. +5 points [color=blue]+5 seconds[/color].
 Lightning, clears column. +5 points.

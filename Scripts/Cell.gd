@@ -81,11 +81,10 @@ func destroy(game: TetrisGame):
 		Type.Bomb:
 			var particle_instance = explosion_particle.instantiate()
 			get_parent().add_child(particle_instance)
-			particle_instance.setup(grid_pos, Rect2i(0, grid_pos.y - 1, 10, 3), CELL_SIZE)
+			particle_instance.setup(grid_pos, Rect2i(0, grid_pos.y, 10, 2), CELL_SIZE)
 			game.remove_at(grid_pos.x, grid_pos.y)
-			game.queue_line_clear(grid_pos.y - 1)
-			game.queue_line_clear(grid_pos.y)
 			game.queue_line_clear(grid_pos.y + 1)
+			game.queue_line_clear(grid_pos.y)
 			
 			# Play sound
 			if not explosion_sound.playing:
