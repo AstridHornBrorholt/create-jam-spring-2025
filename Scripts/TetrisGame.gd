@@ -50,7 +50,7 @@ var grid: Array = []
 var falling_tetriminos: Tetriminos = null
 var ticks_since_last_down_move: int = 0
 var ticks_since_last_sideways_move: int = 0
-var just_spawned_new_tetriminos = false     # The flag is used to prevent feel-bad of accidentally slamming a newly spawned one rather than the one you were in the process of placing
+var tetriminos_just_landed = false     # The flag is used to prevent feel-bad of accidentally slamming a newly spawned tetriminos when you were trying to slam the one that just landed
 
 var queued_line_clears = []
 
@@ -231,13 +231,13 @@ func _process(delta):
 			background_music.volume_linear -= delta*0.5
 		return
 	if Input.is_action_just_pressed("slam_down"):
-		if falling_tetriminos != null and !smash_next and !just_spawned_new_tetriminos:
+		if falling_tetriminos != null and !smash_next and !tetriminos_just_landed:
 			smash_sound.pitch_scale = 1.
 			smash_sound.play()
 			smash_next = true
 		else:
-			smash_sound.pitch_scale = 1.7
-			smash_sound.play()
+			move_sound.pitch_scale = 0.7
+			move_sound.play()
 	if Input.is_action_just_pressed("hold") and !hold_next and !hold_locked:
 		hold_sound.pitch_scale = 1
 		hold_sound.play()
@@ -246,7 +246,7 @@ func _process(delta):
 		hold_sound.pitch_scale = 0.7
 		hold_sound.play()
 	if Input.is_action_just_pressed("ui_right"):
-		just_spawned_new_tetriminos = false
+		tetriminos_just_landed = false
 		if try_move_falling_tetriminos_x(1):
 			move_sound.pitch_scale = 1
 			move_sound.play()
@@ -255,7 +255,7 @@ func _process(delta):
 			move_sound.pitch_scale = 0.7
 			move_sound.play()
 	elif Input.is_action_just_pressed("ui_left"):
-		just_spawned_new_tetriminos = false
+		tetriminos_just_landed = false
 		if try_move_falling_tetriminos_x(-1):
 			move_sound.pitch_scale = 1
 			move_sound.play()
@@ -264,11 +264,11 @@ func _process(delta):
 			move_sound.pitch_scale = 0.7
 			move_sound.play()
 	elif Input.is_action_just_pressed("ui_down"):
-		just_spawned_new_tetriminos = false
+		tetriminos_just_landed = false
 		if try_move_falling_tetriminos_down():
 			ticks_since_last_down_move = 0
 	elif Input.is_action_just_pressed("ui_up"):
-		just_spawned_new_tetriminos = false
+		tetriminos_just_landed = false 
 		if try_rotate_falling_tetriminos():
 			spin_sound.pitch_scale = 1
 			spin_sound.play()
@@ -354,15 +354,16 @@ func _on_tick() -> void:
 			
 		if falling_tetriminos != null:
 			# Move down
-			try_move_falling_tetriminos_down()
-			just_spawned_new_tetriminos = false
+			if try_move_falling_tetriminos_down():
+				tetriminos_just_landed = false
+			else:
+				tetriminos_just_landed = true
 			return
 	
 	# Fallback: If we do not have a falling tetriminos, spawn one instead
 	spawn_new_tetriminos()
 
 func spawn_new_tetriminos(template:TetriminosTemplate=null):
-	just_spawned_new_tetriminos = true
 	if template == null:
 		template = get_next_tetriminos_from_deck()
 	falling_tetriminos = tetriminos_prefab.instantiate()
