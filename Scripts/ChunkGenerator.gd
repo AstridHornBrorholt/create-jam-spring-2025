@@ -1,14 +1,18 @@
 extends Node
 class_name ChunkGenerator
 
-const oops_types: Array[Cell.Type] = [
+const common_oops_types: Array[Cell.Type] = [
 	Cell.Type.Compressed,
-	Cell.Type.Multiplier,
 	Cell.Type.Sand,
 	Cell.Type.Concrete,
-	Cell.Type.Clock,
 	Cell.Type.PlantPot,
-	Cell.Type.Lightning
+]
+
+const legendary_oops_types: Array[Cell.Type] = [
+	Cell.Type.Multiplier,
+	Cell.Type.Clock,
+	Cell.Type.Lightning,
+	Cell.Type.Lightning,
 ]
 
 const standard = Cell.Type.Standard
@@ -19,8 +23,11 @@ func rand() -> Cell.Type:
 func generate_chunk() -> Array[Cell.Type]:
 	var level = CurrentRun.level
 	
-	if level >= 5 and randf() < 0.1: # Chance of "OOPS! All X!" effect, for X in oops_types
-		return [ oops_types.pick_random() ]
+	if randf() < 0.2: # Chance of "OOPS! All X!" effect
+		return [ common_oops_types.pick_random() ]
+		
+	if level >= 5 and randf() < 0.05: # This is the good stuff
+		return [ legendary_oops_types.pick_random() ]
 	
 	if level <= 10:
 		if randf() <= 0.5:
