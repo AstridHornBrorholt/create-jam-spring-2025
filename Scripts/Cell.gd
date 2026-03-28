@@ -4,6 +4,8 @@ class_name Cell
 @onready var lightning_sound:AudioStreamPlayer = $"../Sounds/Lightning"
 @onready var explosion_sound:AudioStreamPlayer = $"../Sounds/Explosion"
 
+var being_destroyed = false # Useful for e.g. bombs that might get destroy called on them twice
+
 const SPRITE_SIZE = 32
 const CELL_SIZE: int = 32
 
@@ -74,6 +76,9 @@ func _draw() -> void:
 
 func destroy(game: TetrisGame):
 	# Do effects
+	if being_destroyed:
+		return
+	being_destroyed = true
 	match type:
 		Type.Concrete:
 			game.remove_at(grid_pos.x, grid_pos.y)
@@ -81,14 +86,17 @@ func destroy(game: TetrisGame):
 		Type.Bomb:
 			var particle_instance = explosion_particle.instantiate()
 			get_parent().add_child(particle_instance)
-			particle_instance.setup(grid_pos, Rect2i(0, grid_pos.y, 10, 2), CELL_SIZE)
-			game.remove_at(grid_pos.x, grid_pos.y)
-			game.queue_line_clear(grid_pos.y + 1)
-			game.queue_line_clear(grid_pos.y)
-			
+			particle_instance.setup(grid_pos, Rect2i(grid_pos.x - 1, grid_pos.y, 3, 2), CELL_SIZE)
+			for i in 3:
+				for j in 3:
+					var x = grid_pos.x - 1 + i
+					var y = grid_pos.y - 1 + j
+					var c = game.get_at(x, y)
+					game.destroy_at(x, y)
 			# Play sound
 			if not explosion_sound.playing:
 				explosion_sound.play()
+			game.remove_at(grid_pos.x, grid_pos.y)
 		Type.Clock:
 			var time_effect_instance = time_effect.instantiate()
 			get_parent().add_child(time_effect_instance)
