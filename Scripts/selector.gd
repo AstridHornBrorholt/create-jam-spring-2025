@@ -44,16 +44,14 @@ func spawn_minos():
 	
 	# Size: We want a good chance of generating the nice size-4 pieces
 	# And then we want more awkward sizes to become more common in the higher levels.
-	var prob_regular_size = 0.5
-	var prob_extra_standard = 0.5
-	var prob_extra_type = 0.9
-	var size_min = 3
-	var size_max = 4
+	var prob_regular_size = 0.4
+	var size_min = 4
+	var size_max = 5
 	if level >= 15:
 		size_max = 7
+		size_min = 5
 	elif level >= 10:
 		size_max = 6
-		size_min = 4
 	elif level >= 5:
 		size_max = 5
 
