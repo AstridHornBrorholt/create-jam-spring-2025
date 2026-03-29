@@ -53,7 +53,7 @@ offset_bottom = 568.0
 theme = ExtResource("4_c44gr")
 theme_override_font_sizes/normal_font_size = 50
 text = "Reached Level ??!
-Now add 2 bricks"
+Now add 2 pieces"
 horizontal_alignment = 1
 vertical_alignment = 1
 
