@@ -1,26 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://cam00wyvm1d7v"]
+[gd_scene format=3 uid="uid://cam00wyvm1d7v"]
 
 [ext_resource type="Script" uid="uid://drx246b0dacf8" path="res://Scripts/ScoreCounter.gd" id="1_sc4lm"]
 [ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="2_1ac0v"]
 [ext_resource type="FontFile" uid="uid://23q2k2ipj02t" path="res://Theming/Minecraft Ten/MinecraftTen-mono.ttf" id="3_1ac0v"]
 [ext_resource type="Texture2D" uid="uid://ufj5ulowrf58" path="res://Sprites/White.png" id="5_4v2mb"]
 
-[node name="ScoreCounter" type="Node2D"]
+[node name="ScoreCounter" type="Node2D" unique_id=1581817498]
 script = ExtResource("1_sc4lm")
 metadata/_edit_vertical_guides_ = [506.0]
 
-[node name="Goal Value" type="RichTextLabel" parent="."]
+[node name="Goal Value" type="RichTextLabel" parent="." unique_id=811804131]
 offset_left = 228.0
 offset_top = 88.0
 offset_right = 509.0
 offset_bottom = 163.0
 theme = ExtResource("2_1ac0v")
+theme_override_fonts/normal_font = ExtResource("3_1ac0v")
 theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
 text = "??"
 horizontal_alignment = 2
 
-[node name="CurrentScore" type="RichTextLabel" parent="."]
+[node name="CurrentScore" type="RichTextLabel" parent="." unique_id=49056841]
 offset_left = 240.0
 offset_top = 194.0
 offset_right = 513.0
@@ -35,7 +36,7 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 2
 
-[node name="CurrentMultiplier" type="RichTextLabel" parent="."]
+[node name="CurrentMultiplier" type="RichTextLabel" parent="." unique_id=495016584]
 offset_left = 240.0
 offset_top = 296.0
 offset_right = 513.0
@@ -49,7 +50,7 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 2
 
-[node name="Score Label" type="RichTextLabel" parent="."]
+[node name="Score Label" type="RichTextLabel" parent="." unique_id=713521099]
 offset_top = 194.0
 offset_right = 240.0
 offset_bottom = 294.0
@@ -58,7 +59,7 @@ theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
 text = "[color=yellow]Score:[/color]"
 
-[node name="Mult Label" type="RichTextLabel" parent="."]
+[node name="Mult Label" type="RichTextLabel" parent="." unique_id=412404554]
 offset_top = 302.0
 offset_right = 240.0
 offset_bottom = 402.0
@@ -67,7 +68,7 @@ theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
 text = "[color=red]Mult:[/color]"
 
-[node name="Goal Label" type="RichTextLabel" parent="."]
+[node name="Goal Label" type="RichTextLabel" parent="." unique_id=119211820]
 offset_top = 87.0
 offset_right = 240.0
 offset_bottom = 162.0
@@ -76,14 +77,14 @@ theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
 text = "[color=yellow]Goal:[/color]"
 
-[node name="Bar" type="Sprite2D" parent="."]
+[node name="Bar" type="Sprite2D" parent="." unique_id=1927703089]
 self_modulate = Color(1, 1, 1, 0.2)
 position = Vector2(253.929, 17.0967)
 scale = Vector2(29.2493, 3.03946)
 skew = 0.911062
 texture = ExtResource("5_4v2mb")
 
-[node name="Progress" type="Sprite2D" parent="Bar"]
+[node name="Progress" type="Sprite2D" parent="Bar" unique_id=861087607]
 modulate = Color(0, 0.869586, 0.459424, 1)
 position = Vector2(-7.595, 0)
 scale = Vector2(0.947475, 0.5625)
