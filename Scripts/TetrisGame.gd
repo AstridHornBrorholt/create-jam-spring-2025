@@ -31,6 +31,8 @@ const selector_prefab: PackedScene = preload("res://Scenes/Selector.tscn")
 @onready var win_sound:AudioStreamPlayer = $"Sounds/NextLevel"
 @onready var background_music:AudioStreamPlayer = $"Tetrogue-Main"
 
+@onready var animation_speed = Options.get_animation_speed()
+
 @export var remaining_time: float = 50
 @export var max_time: float = 50
 @export var score_goal: int = 100
@@ -38,13 +40,15 @@ var tick_number: int = 0 # The current tick count
 @export var move_interval_ticks: int = 14
 @export var move_fast_interval_ticks: int = 2
 @export var move_sideways_interval_ticks: int = 2
+@export var row_clear_modulation: Color = Color(1.2, 1.2, 1.2)
 
 var pause: bool = false
 var died: bool = false
 
 var smash_next: bool = false
 var hold_next: bool = false
-var hold_locked = false
+var hold_locked:bool = false
+var clearing: bool = false
 
 var grid: Array = []
 var falling_tetriminos: Tetriminos = null
@@ -230,6 +234,10 @@ func _process(delta):
 		else:
 			background_music.volume_linear -= delta*0.5
 		return
+	
+	if clearing:
+		return
+	
 	if Input.is_action_just_pressed("slam_down"):
 		if falling_tetriminos != null and !smash_next and !tetriminos_just_landed:
 			smash_sound.pitch_scale = 1.
@@ -290,7 +298,7 @@ func _process(delta):
 
 
 func _on_tick() -> void:
-	if pause:
+	if pause or clearing:
 		return
 	tick_number += 1
 	
@@ -369,7 +377,7 @@ func spawn_new_tetriminos(template:TetriminosTemplate=null):
 	falling_tetriminos = tetriminos_prefab.instantiate()
 	add_child(falling_tetriminos)
 	falling_tetriminos.setup(template)
-	var grid_pos = Vector2i(WIDTH / 2, 0)
+	@warning_ignore("integer_division") var grid_pos = Vector2i(WIDTH / 2, 0)
 	falling_tetriminos.position = grid_pos * CELL_SIZE
 	falling_tetriminos.grid_pos = grid_pos
 
@@ -490,17 +498,28 @@ func clear_full_rows():
 	
 	if len(queued_line_clears) > 0:
 		score_counter.bump_streak()
+		clearing = true
+		
+		for y in queued_line_clears:
+			for x in WIDTH:
+				var cell = get_at(x, y)
+				if cell != null:
+					cell.modulate = row_clear_modulation
+		
 		var mult = len(queued_line_clears) - 1
 		if mult > 0:
 			var pos = get_at(WIDTH - 1, queued_line_clears.min()).position
 			pos.x += 50
-		clear_sound.play()
+			clear_sound.pitch_scale = 0.5
+			clear_sound.play()
 			score_counter.add_mult(mult, pos)
+			await get_tree().create_timer(0.8/animation_speed).timeout
 	
 	var cleared_lines = []
 	
 	# Destroy all tiles in the cleared rows, applying mult
 	var first = true
+	var pitch = 1.0
 	while len(queued_line_clears) > 0:
 		# NOTE: More lines may be queued by cells during this loop, e.g. by bombs
 		var y = queued_line_clears.pop_front()
@@ -512,7 +531,11 @@ func clear_full_rows():
 			var c: Cell = get_at(x, y)
 			if c == null:
 				pass
+			clear_sound.pitch_scale = pitch
+			clear_sound.play()
+			pitch += 0.1
 			destroy_at(x, y)
+			await get_tree().create_timer(0.1/animation_speed).timeout
 		
 	# Then shift cells down (affects resolution order)
 	cleared_lines.sort()
@@ -520,8 +543,9 @@ func clear_full_rows():
 		for x in range(WIDTH):
 			shift_above_cells_down(x, y)
 	
+	clearing = false
 	queued_line_clears.clear()
-	
+	return len(cleared_lines) > 0
 
 func win():
 	run_state.register_score(score_counter.current_score)

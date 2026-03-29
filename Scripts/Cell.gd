@@ -86,7 +86,7 @@ func destroy(game: TetrisGame):
 		Type.Bomb:
 			var particle_instance = explosion_particle.instantiate()
 			get_parent().add_child(particle_instance)
-			particle_instance.setup(grid_pos, Rect2i(grid_pos.x - 1, grid_pos.y, 3, 2), CELL_SIZE)
+			particle_instance.setup(grid_pos, Rect2i(grid_pos.x - 1, grid_pos.y - 1, 3, 3), CELL_SIZE)
 			for i in 3:
 				for j in 3:
 					var x = grid_pos.x - 1 + i
