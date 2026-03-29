@@ -85,6 +85,8 @@ func reset():
 	stash = [ L, J, T, I, S, Z, O ]
 	accumulated_score = 0
 	highest_score = 0
+	previously_held = TetriminosTemplate.new([])
+	previously_next = TetriminosTemplate.new([])
 
 func new_game():
 	current_stash = stash.duplicate()
