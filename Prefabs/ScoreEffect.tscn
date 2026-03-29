@@ -1,20 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl58xmnqnaa6o"]
+[gd_scene format=3 uid="uid://dl58xmnqnaa6o"]
 
 [ext_resource type="Script" uid="uid://jp5wo41b5yo6" path="res://Scripts/score_effect.gd" id="1_ka2of"]
-[ext_resource type="FontFile" uid="uid://dcoieaqmmkyva" path="res://Theming/MozartNbp-93Ey.ttf" id="1_uneyr"]
+[ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="2_ka2of"]
 
-[node name="ScoreEffect" type="Node2D"]
+[node name="ScoreEffect" type="Node2D" unique_id=1862649449]
 script = ExtResource("1_ka2of")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=168632421]
 gravity_scale = 0.2
 
-[node name="Label" type="Label" parent="RigidBody2D"]
+[node name="Label" type="Label" parent="RigidBody2D" unique_id=562563720]
 offset_left = -15.0
 offset_top = -28.0
 offset_right = 42.0
 offset_bottom = 7.0
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_uneyr")
+theme = ExtResource("2_ka2of")
 theme_override_font_sizes/font_size = 34
 text = "+1"

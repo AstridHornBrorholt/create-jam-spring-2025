@@ -43,15 +43,19 @@ func _process(delta: float) -> void:
 	mult_timeout -= delta * MULT_DECREASE_RATE
 	streak_timeout -= delta * STREAK_DECREASE_RATE
 
-func _spawn_score_effect(score: int, position: Vector2):
+func _spawn_score_effect(score: int, position: Vector2, mult=false):
 	var score_effect_instance = score_effect.instantiate()
 	get_parent().add_child(score_effect_instance)
+	if mult:
+		score_effect_instance.set_is_mult(true)
 	score_effect_instance.position = position
 	score_effect_instance.set_score(score)
 
-func add_mult(mult: int):
+func add_mult(mult: int, position:Vector2):
 	mult_timeout = 1
-	set_mult(current_mult + 1)
+	set_mult(current_mult + mult)
+	if mult > 0:
+		_spawn_score_effect(mult, position, true)
 
 func set_mult(mult: int):
 	current_mult = mult
@@ -68,6 +72,7 @@ func bump_streak():
 
 
 func apply_score(points: int, position: Vector2):
-	_spawn_score_effect(points*current_mult, position)
+	if points > 0:
+		_spawn_score_effect(points*current_mult, position)
 	current_score += points*current_mult
 	current_score_text.text = str(current_score)

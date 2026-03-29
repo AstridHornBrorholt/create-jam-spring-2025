@@ -120,10 +120,10 @@ func destroy(game: TetrisGame):
 			score = 20
 		Type.Multiplier:
 			score = 0
-			game.score_counter.add_mult(1)
+			game.score_counter.add_mult(1, position)
 		Type.Balloon:
 			score = 5
-			game.score_counter.add_mult(2)
+			game.score_counter.add_mult(2, position)
 		Type.Anvil:
 			score = 0
 		_:

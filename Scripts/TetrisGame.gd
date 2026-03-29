@@ -490,7 +490,12 @@ func clear_full_rows():
 	
 	if len(queued_line_clears) > 0:
 		score_counter.bump_streak()
+		var mult = len(queued_line_clears) - 1
+		if mult > 0:
+			var pos = get_at(WIDTH - 1, queued_line_clears.min()).position
+			pos.x += 50
 		clear_sound.play()
+			score_counter.add_mult(mult, pos)
 	
 	var cleared_lines = []
 	
@@ -502,8 +507,6 @@ func clear_full_rows():
 		if y in cleared_lines:
 			continue  # Do not double clear
 		cleared_lines.append(y)
-		if !first:
-			score_counter.add_mult(1)
 		first = false
 		for x in range(WIDTH):
 			var c: Cell = get_at(x, y)
