@@ -12,6 +12,8 @@ var rotation_counter = 0 # For wiggling the tetriminos
 const CELL_SIZE: int = 32
 @export var tetrimino_spacing = CELL_SIZE*3
 
+@onready var animation_speed = Options.get_animation_speed()
+
 const tetriminos_prefab: PackedScene = preload("res://Prefabs/Tetriminos.tscn")
 
 func _ready() -> void:
@@ -40,7 +42,7 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	# Scroll accross screen
-	position.x += scroll_speed*delta
+	position.x += scroll_speed*delta*animation_speed
 	if position.x > reset_at:
 		position.x = initial_position
 	

@@ -1,7 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0e4h7e60xinr"]
+[gd_scene format=3 uid="uid://d0e4h7e60xinr"]
 
 [ext_resource type="Script" uid="uid://33r5glsquigc" path="res://Scripts/end_screen_tetriminos.gd" id="1_m1bnw"]
 
-[node name="EndScreenTetriminos" type="Node2D"]
+[node name="EndScreenTetriminos" type="Node2D" unique_id=344184529]
 script = ExtResource("1_m1bnw")
 scroll_speed = 200

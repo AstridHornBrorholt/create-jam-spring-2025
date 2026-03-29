@@ -3,7 +3,7 @@ extends Node
 
 var config:ConfigFile
 const OPTIONS_FILE = "user://options.cfg"
-const OPTIONS_VERSION = "🐢"
+const OPTIONS_VERSION = "🦂"
 
 func _ready() -> void:
 	config = load_or_create_config()
@@ -42,22 +42,29 @@ func load_or_create_config() -> ConfigFile:
 		config = ConfigFile.new()
 		print("Resetting options")
 		config.set_value("Options", "Version", OPTIONS_VERSION)
-		config.set_value("Volume", "Music", 1)
-		config.set_value("Volume", "SFX", 1)
+		config.set_value("Volume", "Music", 1.)
+		config.set_value("Volume", "SFX", 1.)
+		config.set_value("Gameplay", "AnimationSpeed", 1.)
 		config.save(OPTIONS_FILE)
 	
 	return config
 
-func set_music_volume(value):
+func set_music_volume(value:float):
 	config.set_value("Volume", "Music", value)
 	return config.save(OPTIONS_FILE)
 
-func get_music_volume():
+func get_music_volume() -> float:
 	return config.get_value("Volume", "Music")
 
-func set_sfx_volume(value):
+func set_sfx_volume(value:float):
 	config.set_value("Volume", "SFX", value)
 	return config.save(OPTIONS_FILE)
 
-func get_sfx_volume():
+func get_sfx_volume() -> float:
 	return config.get_value("Volume", "SFX")
+
+func set_animation_speed(value:float):
+	config.set_value("Gameplay", "AnimationSpeed", value)
+
+func get_animation_speed() -> float:
+	return config.get_value("Gameplay", "AnimationSpeed")

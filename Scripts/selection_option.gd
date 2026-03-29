@@ -5,6 +5,8 @@ class_name SelectionOption
 @export var rotation_rate = 4 # How quickly they rotate
 @export var rotation_multiplier = 0.2 # Set to less than 1 to make them just wiggle a little.
 
+@onready var animation_speed = Options.get_animation_speed()
+
 @onready var cell_occluder_prefab = preload("res://Prefabs/CellOccluder.tscn")
 @onready var selector:Selector = $"/root/Selector"
 @onready var button:Button = $"SelectorButton"
@@ -38,7 +40,7 @@ func _process(delta: float) -> void:
 			global_position = starting_position
 		Status.FlyingIn:
 			button.visible = false
-			flying_in_progress += delta*flying_in_speed
+			flying_in_progress += delta*flying_in_speed*animation_speed
 			global_position = lerp(starting_position, target, flying_in_progress)
 			if flying_in_progress >= 1:
 				global_position = target
@@ -50,7 +52,7 @@ func _process(delta: float) -> void:
 			# button.visible = true # Had to set it elsewhere
 			pass
 		Status.FadingOut:
-			fade_progress += delta
+			fade_progress += delta*animation_speed
 			if picked:
 				tetriminos.scale = Vector2(1 + fade_progress/5, 1 + fade_progress/5)
 			else:

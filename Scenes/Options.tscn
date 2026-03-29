@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ci4fvd71m5x3i" path="res://Scripts/OptionsMenu.gd" id="1_5hy3q"]
 [ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="2_cbhj7"]
 [ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="3_q4at1"]
+[ext_resource type="FontFile" uid="uid://23q2k2ipj02t" path="res://Theming/Minecraft Ten/MinecraftTen-mono.ttf" id="4_cja8r"]
 [ext_resource type="AudioStream" uid="uid://bkslgyuj1ovc7" path="res://Sound/Tetrogue - Menu.wav" id="4_q4at1"]
 [ext_resource type="Script" uid="uid://bx82estqdp3a7" path="res://Scripts/LoopMusic.gd" id="5_6f4k2"]
 [ext_resource type="AudioStream" uid="uid://bgkjb0evdblx6" path="res://SFX/pick.wav" id="6_bdxpv"]
@@ -85,13 +86,61 @@ offset_right = 1409.46
 offset_bottom = 536.0
 tooltip_text = "sfx volume"
 focus_neighbor_top = NodePath("../Music Volume Slider")
-focus_neighbor_bottom = NodePath("../Interactive/BackButton")
-focus_next = NodePath("../Interactive/BackButton")
+focus_neighbor_bottom = NodePath("../Animation Speed Slider")
+focus_next = NodePath("../Animation Speed Slider")
 focus_previous = NodePath("../Music Volume Slider")
 theme = ExtResource("3_q4at1")
 max_value = 1.0
 step = 0.05
 value = 1.0
+
+[node name="Animation Speed" type="RichTextLabel" parent="." unique_id=815972405]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 301.0
+offset_top = 687.0
+offset_right = 1069.55
+offset_bottom = 762.0
+grow_horizontal = 2
+theme = ExtResource("3_q4at1")
+theme_override_font_sizes/normal_font_size = 70
+text = "Animation speed"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+
+[node name="Animation Speed Slider" type="HSlider" parent="." unique_id=680664481]
+offset_left = 1090.46
+offset_top = 696.0
+offset_right = 1409.46
+offset_bottom = 728.0
+tooltip_text = "Animation speed"
+focus_neighbor_top = NodePath("../SFX Slider")
+focus_neighbor_bottom = NodePath("../Interactive/BackButton")
+focus_next = NodePath("../Interactive/BackButton")
+focus_previous = NodePath("../SFX Slider")
+theme = ExtResource("3_q4at1")
+min_value = 0.3
+max_value = 6.0
+step = 0.1
+value = 1.0
+
+[node name="Spinner" type="RichTextLabel" parent="." unique_id=998112095]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 1433.0
+offset_top = 664.0
+offset_right = 1731.0
+offset_bottom = 746.0
+grow_horizontal = 2
+theme = ExtResource("3_q4at1")
+theme_override_fonts/normal_font = ExtResource("4_cja8r")
+theme_override_font_sizes/normal_font_size = 70
+text = "⣾"
+fit_content = true
+scroll_active = false
 
 [node name="Interactive" type="Node2D" parent="." unique_id=692754781]
 
@@ -100,10 +149,10 @@ offset_left = 583.0
 offset_top = 889.0
 offset_right = 1291.0
 offset_bottom = 1003.0
-focus_neighbor_top = NodePath("../../SFX Slider")
+focus_neighbor_top = NodePath("../../Animation Speed Slider")
 focus_neighbor_bottom = NodePath("../../Music Volume Slider")
 focus_next = NodePath("../../Music Volume Slider")
-focus_previous = NodePath("../../SFX Slider")
+focus_previous = NodePath("../../Animation Speed Slider")
 theme = ExtResource("3_q4at1")
 theme_override_font_sizes/font_size = 90
 text = "[Back]"
@@ -126,5 +175,8 @@ stream = ExtResource("7_bdxpv")
 [connection signal="drag_ended" from="SFX Slider" to="." method="_on_sfx_slider_drag_ended"]
 [connection signal="drag_started" from="SFX Slider" to="." method="_on_sfx_slider_drag_started"]
 [connection signal="value_changed" from="SFX Slider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="drag_ended" from="Animation Speed Slider" to="." method="_on_animation_speed_slider_drag_ended"]
+[connection signal="drag_started" from="Animation Speed Slider" to="." method="_on_animation_speed_slider_drag_started"]
+[connection signal="value_changed" from="Animation Speed Slider" to="." method="_on_animation_speed_slider_value_changed"]
 [connection signal="pressed" from="Interactive/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="finished" from="Tetrogue-Menu" to="Tetrogue-Menu" method="_on_finished"]

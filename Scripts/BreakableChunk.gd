@@ -28,6 +28,9 @@ var notified_broken = false # for debounce
 
 const cell_prefab = preload("res://Prefabs/Cell.tscn")
 const cell_occluder_prefab = preload("res://Prefabs/CellOccluder.tscn")
+
+@onready var animation_speed = Options.get_animation_speed()
+
 @onready var cells_container = $"Cells"
 @onready var break_button:Button = $"Break"
 @onready var re_roll_button:Button = $"Re-roll"
@@ -102,13 +105,13 @@ func _process(delta):
 				notified_breaking = true
 				chunk_breaking_sound.play()
 			cells_container.rotation = 0
-			shake_progress += delta
+			shake_progress += delta*animation_speed
 			for cell:Cell in cells_container.get_children():
 				cell.position += Vector2(randf() - 0.5, randf() - 0.5)
 		elif flyaway_time > flyaway_progress:
 			cells_container.rotation = 0
 			var i = 0
-			flyaway_progress += delta*flyaway_speed
+			flyaway_progress += delta*flyaway_speed*animation_speed
 			for cell:Cell in cells_container.get_children():
 				cell.position = lerp(cell_starting_points[i], cell_targets[i], flyaway_progress/flyaway_time)
 				i += 1
