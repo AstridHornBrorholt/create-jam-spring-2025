@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dtj6g7cn5y1ah"]
+[gd_scene format=4 uid="uid://dtj6g7cn5y1ah"]
 
 [ext_resource type="Script" uid="uid://dhcv8k3pcomjn" path="res://Scripts/TetrisGame.gd" id="1_43n6e"]
 [ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="2_blw18"]
@@ -55,16 +55,16 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_4fu76")
 
-[node name="TetrisGame" type="Node2D" groups=["TetrisGame"]]
+[node name="TetrisGame" type="Node2D" unique_id=1994422528 groups=["TetrisGame"]]
 script = ExtResource("1_43n6e")
 metadata/_edit_vertical_guides_ = [-32.0, 349.0, -640.0, 955.0]
 metadata/_edit_horizontal_guides_ = [748.0]
 
-[node name="TickTimer" type="Timer" parent="."]
+[node name="TickTimer" type="Timer" parent="." unique_id=1386156874]
 wait_time = 0.05
 autostart = true
 
-[node name="ContinueButton" type="Button" parent="."]
+[node name="ContinueButton" type="Button" parent="." unique_id=1432293586]
 visible = false
 offset_left = -644.0
 offset_top = 489.0
@@ -74,7 +74,7 @@ theme = ExtResource("2_blw18")
 theme_override_font_sizes/font_size = 90
 text = "[Continue]"
 
-[node name="Remaining Time" type="RichTextLabel" parent="."]
+[node name="Remaining Time" type="RichTextLabel" parent="." unique_id=1763020174]
 clip_contents = false
 offset_left = -140.0
 offset_top = 695.0
@@ -91,10 +91,10 @@ horizontal_alignment = 1
 script = ExtResource("3_arn4l")
 metadata/_edit_use_anchors_ = true
 
-[node name="ScoreCounter" parent="." instance=ExtResource("3_cdei4")]
+[node name="ScoreCounter" parent="." unique_id=1420828696 instance=ExtResource("3_cdei4")]
 position = Vector2(448, 0)
 
-[node name="Reward" type="RichTextLabel" parent="."]
+[node name="Reward" type="RichTextLabel" parent="." unique_id=1257549993]
 anchors_preset = -1
 anchor_left = -2.89583
 anchor_top = -0.909091
@@ -111,17 +111,16 @@ text = "[color=green]Reward: [/color]"
 scroll_active = false
 metadata/_edit_use_anchors_ = true
 
-[node name="RewardIndicator" parent="." instance=ExtResource("6_x4vxl")]
-visible = true
+[node name="RewardIndicator" parent="." unique_id=1050963377 instance=ExtResource("6_x4vxl")]
 position = Vector2(786, 622)
 
-[node name="Status Wiggler" type="Node2D" parent="."]
+[node name="Status Wiggler" type="Node2D" parent="." unique_id=567444037]
 position = Vector2(152, -168)
 script = ExtResource("5_hkvcf")
 rotation_rate = 10
 rotation_multiplier = 0.1
 
-[node name="Status Label" type="RichTextLabel" parent="Status Wiggler"]
+[node name="Status Label" type="RichTextLabel" parent="Status Wiggler" unique_id=1609807461]
 offset_left = -184.0
 offset_right = 197.0
 offset_bottom = 75.0
@@ -134,10 +133,10 @@ autowrap_mode = 0
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Next" type="Node2D" parent="."]
+[node name="Next" type="Node2D" parent="." unique_id=1162209575]
 position = Vector2(-644, -4)
 
-[node name="Label" type="RichTextLabel" parent="Next"]
+[node name="Label" type="RichTextLabel" parent="Next" unique_id=1643915780]
 anchors_preset = -1
 anchor_left = -2.89583
 anchor_top = -0.909091
@@ -152,19 +151,19 @@ text = "next:"
 scroll_active = false
 metadata/_edit_use_anchors_ = true
 
-[node name="Wiggler" type="Node2D" parent="Next"]
+[node name="Wiggler" type="Node2D" parent="Next" unique_id=146213413]
 position = Vector2(362, 25)
 script = ExtResource("5_hkvcf")
 
-[node name="NextTetriminos" type="Node2D" parent="Next/Wiggler"]
+[node name="NextTetriminos" type="Node2D" parent="Next/Wiggler" unique_id=1344634896]
 position = Vector2(-32, -32)
 script = ExtResource("14_sbb0m")
 metadata/_custom_type_script = "uid://0mya0f5x0amh"
 
-[node name="Held" type="Node2D" parent="."]
+[node name="Held" type="Node2D" parent="." unique_id=815853627]
 position = Vector2(-643, 213)
 
-[node name="Label" type="RichTextLabel" parent="Held"]
+[node name="Label" type="RichTextLabel" parent="Held" unique_id=1606884286]
 anchors_preset = -1
 anchor_left = -2.89583
 anchor_top = -0.909091
@@ -179,23 +178,23 @@ text = "held:"
 scroll_active = false
 metadata/_edit_use_anchors_ = true
 
-[node name="Wiggler" type="Node2D" parent="Held"]
+[node name="Wiggler" type="Node2D" parent="Held" unique_id=200577123]
 position = Vector2(361, 29)
 script = ExtResource("5_hkvcf")
 
-[node name="HeldTetriminos" type="Node2D" parent="Held/Wiggler"]
+[node name="HeldTetriminos" type="Node2D" parent="Held/Wiggler" unique_id=1083666255]
 position = Vector2(-32, -32)
 script = ExtResource("14_sbb0m")
 metadata/_custom_type_script = "uid://0mya0f5x0amh"
 
-[node name="Lock" type="Sprite2D" parent="Held/Wiggler"]
+[node name="Lock" type="Sprite2D" parent="Held/Wiggler" unique_id=1574036328]
 visible = false
 position = Vector2(84, 54)
 scale = Vector2(5.15625, 5.15625)
 texture = ExtResource("20_unx4p")
 script = ExtResource("9_e7tmm")
 
-[node name="Level Label" type="RichTextLabel" parent="."]
+[node name="Level Label" type="RichTextLabel" parent="." unique_id=840539091]
 offset_left = -35.0
 offset_top = -79.0
 offset_right = 205.0
@@ -207,7 +206,7 @@ text = "[color=blue]Level:[/color]"
 scroll_active = false
 metadata/_edit_use_anchors_ = true
 
-[node name="CurrentLevel" type="RichTextLabel" parent="."]
+[node name="CurrentLevel" type="RichTextLabel" parent="." unique_id=1170698947]
 offset_left = 83.0
 offset_top = -79.0
 offset_right = 356.0
@@ -221,39 +220,40 @@ scroll_active = false
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Tetrogue-Main" type="AudioStreamPlayer" parent="."]
+[node name="Tetrogue-Main" type="AudioStreamPlayer" parent="." unique_id=1471120749]
 stream = ExtResource("5_2fiad")
 volume_db = -5.0
 autoplay = true
 script = ExtResource("6_aowk6")
 
-[node name="Sounds" type="Node2D" parent="."]
+[node name="Sounds" type="Node2D" parent="." unique_id=2102360477]
 
-[node name="Move" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Move" type="AudioStreamPlayer" parent="Sounds" unique_id=1381599801]
 stream = ExtResource("7_l56uk")
 
-[node name="Spin" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Spin" type="AudioStreamPlayer" parent="Sounds" unique_id=1448367234]
 stream = ExtResource("8_xqelj")
 
-[node name="Smash" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Smash" type="AudioStreamPlayer" parent="Sounds" unique_id=328123267]
 stream = ExtResource("9_vlfn3")
 
-[node name="Explosion" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Explosion" type="AudioStreamPlayer" parent="Sounds" unique_id=549131333]
 stream = ExtResource("12_bswl6")
 
-[node name="Lightning" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Lightning" type="AudioStreamPlayer" parent="Sounds" unique_id=351401716]
 stream = ExtResource("13_6lloh")
 
-[node name="Clear" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Clear" type="AudioStreamPlayer" parent="Sounds" unique_id=1873862006]
 stream = ExtResource("10_4fu76")
+volume_db = -3.782
 
-[node name="Hold" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Hold" type="AudioStreamPlayer" parent="Sounds" unique_id=1459890707]
 stream = ExtResource("16_plmhb")
 
-[node name="NextLevel" type="AudioStreamPlayer" parent="Sounds"]
+[node name="NextLevel" type="AudioStreamPlayer" parent="Sounds" unique_id=758073684]
 stream = ExtResource("11_xqelj")
 
-[node name="background" type="TileMapLayer" parent="."]
+[node name="background" type="TileMapLayer" parent="." unique_id=1964334333]
 z_index = -1
 tile_map_data = PackedByteArray("AAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAABAAgAAAAAAAAAAAABAAkAAAAAAAAAAAABAAoAAAAAAAAAAAABAAsAAAAAAAAAAAABAAwAAAAAAAAAAAABAA0AAAAAAAAAAAABAA4AAAAAAAAAAAABAA8AAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAACAAgAAAAAAAAAAAACAAkAAAAAAAAAAAACAAoAAAAAAAAAAAACAAsAAAAAAAAAAAACAAwAAAAAAAAAAAACAA0AAAAAAAAAAAACAA4AAAAAAAAAAAACAA8AAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAAAAAADAAgAAAAAAAAAAAADAAkAAAAAAAAAAAADAAoAAAAAAAAAAAADAAsAAAAAAAAAAAADAAwAAAAAAAAAAAADAA0AAAAAAAAAAAADAA4AAAAAAAAAAAADAA8AAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAgAAAAAAAAAAAAEAAkAAAAAAAAAAAAEAAoAAAAAAAAAAAAEAAsAAAAAAAAAAAAEAAwAAAAAAAAAAAAEAA0AAAAAAAAAAAAEAA4AAAAAAAAAAAAEAA8AAAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAwAAAAAAAAAAAAFAA0AAAAAAAAAAAAFAA4AAAAAAAAAAAAFAA8AAAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAAAAAAGAAgAAAAAAAAAAAAGAAkAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAGAAwAAAAAAAAAAAAGAA0AAAAAAAAAAAAGAA4AAAAAAAAAAAAGAA8AAAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAAHAAgAAAAAAAAAAAAHAAkAAAAAAAAAAAAHAAoAAAAAAAAAAAAHAAsAAAAAAAAAAAAHAAwAAAAAAAAAAAAHAA0AAAAAAAAAAAAHAA4AAAAAAAAAAAAHAA8AAAAAAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAcAAAAAAAAAAAAIAAgAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAoAAAAAAAAAAAAIAAsAAAAAAAAAAAAIAAwAAAAAAAAAAAAIAA0AAAAAAAAAAAAIAA4AAAAAAAAAAAAIAA8AAAAAAAAAAAABABAAAAAAAAAAAAACABAAAAAAAAAAAAADABAAAAAAAAAAAAAEABAAAAAAAAAAAAAFABAAAAAAAAAAAAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAJAAAAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAYAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAgAAAAAAAAAAAAJAAkAAAAAAAAAAAAJAAoAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAwAAAAAAAAAAAAJAA0AAAAAAAAAAAAJAA4AAAAAAAAAAAAJAA8AAAAAAAAAAAAJABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAAAABEAAAAAAAAAAAABABEAAAAAAAAAAAACABEAAAAAAAAAAAADABEAAAAAAAAAAAAEABEAAAAAAAAAAAAFABEAAAAAAAAAAAAGABEAAAAAAAAAAAAHABEAAAAAAAAAAAAIABEAAAAAAAAAAAAJABEAAAAAAAAAAAAAABIAAAAAAAAAAAAAABMAAAAAAAAAAAABABIAAAAAAAAAAAABABMAAAAAAAAAAAACABIAAAAAAAAAAAACABMAAAAAAAAAAAADABIAAAAAAAAAAAADABMAAAAAAAAAAAAEABIAAAAAAAAAAAAEABMAAAAAAAAAAAAFABIAAAAAAAAAAAAFABMAAAAAAAAAAAAGABIAAAAAAAAAAAAGABMAAAAAAAAAAAAHABIAAAAAAAAAAAAHABMAAAAAAAAAAAAIABIAAAAAAAAAAAAIABMAAAAAAAAAAAAJABIAAAAAAAAAAAAJABMAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_sbb0m")
