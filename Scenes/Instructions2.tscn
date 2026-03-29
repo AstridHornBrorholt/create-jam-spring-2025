@@ -1,29 +1,55 @@
-[gd_scene format=3 uid="uid://ccggcah8x2y63"]
+[gd_scene format=3 uid="uid://edckqsbsb3oq"]
 
 [ext_resource type="Script" uid="uid://cb8yt3moiakpn" path="res://Scripts/Credits.gd" id="1_4uyco"]
 [ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="2_1cyd4"]
 [ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="3_m48fc"]
-[ext_resource type="PackedScene" uid="uid://bbnjt3yj141lc" path="res://Prefabs/block_instructions.tscn" id="4_1cyd4"]
+[ext_resource type="Texture2D" uid="uid://bhrrusbqkmocd" path="res://Sprites/Controller Layout.png" id="4_1cyd4"]
 
-[node name="Menu" type="Node2D" unique_id=1805274739]
+[node name="Menu3" type="Node2D" unique_id=1046178724]
 script = ExtResource("1_4uyco")
 
-[node name="Backdrop" type="Sprite2D" parent="." unique_id=2145205842]
+[node name="Backdrop" type="Sprite2D" parent="." unique_id=1956522066]
 texture = ExtResource("2_1cyd4")
 centered = false
 
-[node name="Interactive" type="Node2D" parent="." unique_id=568735179]
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=778597558]
+offset_left = 95.0
+offset_top = 44.0
+offset_right = 1092.0
+offset_bottom = 185.0
+theme = ExtResource("3_m48fc")
+theme_override_font_sizes/normal_font_size = 140
+text = "How play"
 
-[node name="BackButton" type="Button" parent="Interactive" unique_id=946257408]
-offset_left = -151.0
-offset_top = 49.0
-offset_right = 557.0
-offset_bottom = 163.0
+[node name="Interactive" type="Node2D" parent="." unique_id=1541108675]
+position = Vector2(0, -63)
+
+[node name="BackButton" type="Button" parent="Interactive" unique_id=2023079857]
+offset_left = 92.0
+offset_top = 1006.0
+offset_right = 800.0
+offset_bottom = 1120.0
+focus_neighbor_left = NodePath("../NextButton")
+focus_neighbor_right = NodePath("../NextButton")
 theme = ExtResource("3_m48fc")
 theme_override_font_sizes/font_size = 90
 text = "[Back]"
 
-[node name="BlockInstructions" parent="." unique_id=1238618631 instance=ExtResource("4_1cyd4")]
-position = Vector2(436, 69)
+[node name="NextButton" type="Button" parent="Interactive" unique_id=367660424]
+offset_left = 1007.0
+offset_top = 1006.0
+offset_right = 1715.0
+offset_bottom = 1120.0
+focus_neighbor_left = NodePath("../BackButton")
+focus_neighbor_right = NodePath(".")
+theme = ExtResource("3_m48fc")
+theme_override_font_sizes/font_size = 90
+text = "[Next]"
+
+[node name="ControllerLayout" type="Sprite2D" parent="." unique_id=445680220]
+position = Vector2(976.63446, 597.75)
+scale = Vector2(1.6040462, 1.6040462)
+texture = ExtResource("4_1cyd4")
 
 [connection signal="pressed" from="Interactive/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Interactive/NextButton" to="." method="_on_next2_button_pressed"]

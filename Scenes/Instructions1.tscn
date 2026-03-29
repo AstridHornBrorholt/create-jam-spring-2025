@@ -28,11 +28,11 @@ offset_bottom = 957.0
 theme = ExtResource("3_mq808")
 theme_override_font_sizes/normal_font_size = 81
 bbcode_enabled = true
-text = "ARROWS	= Move piece
-SPACE		= Slam piece down
-SHIFT		= Hold piece
+text = "UP, Z, X							= Rotate
+LEFT, RIGHT, DOWN	= MOVE
+SPACE, ENTER			= Slam piece down
+SHIFT, C							= Hold piece
 
-Controller is supported.
 
 Reach score target before time runs out.
 Tip: Keep your [color=red] score multiplier[/color] high"

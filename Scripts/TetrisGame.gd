@@ -275,9 +275,17 @@ func _process(delta):
 		tetriminos_just_landed = false
 		if try_move_falling_tetriminos_down():
 			ticks_since_last_down_move = 0
-	elif Input.is_action_just_pressed("ui_up"):
+	elif Input.is_action_just_pressed("rotate_clockwise"):
 		tetriminos_just_landed = false 
-		if try_rotate_falling_tetriminos():
+		if try_rotate_falling_tetriminos(false):
+			spin_sound.pitch_scale = 1
+			spin_sound.play()
+		else:
+			spin_sound.pitch_scale = 0.6
+			spin_sound.play()
+	elif Input.is_action_just_pressed("rotate_counter_clockwise"):
+		tetriminos_just_landed = false 
+		if try_rotate_falling_tetriminos(true):
 			spin_sound.pitch_scale = 1
 			spin_sound.play()
 		else:
@@ -429,10 +437,10 @@ func try_move_falling_tetriminos_up(steps: int=1) -> bool:
 	return true
 
 
-func try_rotate_falling_tetriminos() -> bool:
+func try_rotate_falling_tetriminos(counter_clockwise:bool) -> bool:
 	if falling_tetriminos == null:
 		return false
-	rotate_falling_tetriminos(true)
+	rotate_falling_tetriminos(counter_clockwise)
 	if not does_falling_tetriminos_collide():
 		return true
 	
