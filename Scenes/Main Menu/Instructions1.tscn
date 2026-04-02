@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://d1hqtmp8wnpd"]
 
-[ext_resource type="Script" uid="uid://cb8yt3moiakpn" path="res://Scripts/Credits.gd" id="1_vs51u"]
 [ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="2_67s64"]
 [ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="3_mq808"]
+[ext_resource type="PackedScene" uid="uid://driyn4ve6jeng" path="res://Prefabs/ButtonToChangeScene.tscn" id="4_tcd3n"]
 
 [node name="Menu3" type="Node2D" unique_id=1046178724]
-script = ExtResource("1_vs51u")
+metadata/_edit_horizontal_guides_ = [941.0]
 
 [node name="Backdrop" type="Sprite2D" parent="." unique_id=1956522066]
+z_index = -10
 texture = ExtResource("2_67s64")
 centered = false
 
@@ -37,30 +38,19 @@ SHIFT, C							= Hold piece
 Reach score target before time runs out.
 Tip: Keep your [color=red] score multiplier[/color] high"
 
-[node name="Interactive" type="Node2D" parent="." unique_id=1541108675]
-position = Vector2(0, -63)
+[node name="Back" parent="." unique_id=1380750691 instance=ExtResource("4_tcd3n")]
+offset_left = 53.0
+offset_top = 927.0
+offset_right = 315.0
+offset_bottom = 1039.0
+new_scene = "res://Scenes/Main Menu/Main Menu.tscn"
 
-[node name="BackButton" type="Button" parent="Interactive" unique_id=2023079857]
-offset_left = 92.0
-offset_top = 1006.0
-offset_right = 800.0
-offset_bottom = 1120.0
-focus_neighbor_left = NodePath("../NextButton")
-focus_neighbor_right = NodePath("../NextButton")
-theme = ExtResource("3_mq808")
-theme_override_font_sizes/font_size = 90
-text = "[Back]"
-
-[node name="NextButton" type="Button" parent="Interactive" unique_id=367660424]
-offset_left = 1007.0
-offset_top = 1006.0
-offset_right = 1715.0
-offset_bottom = 1120.0
-focus_neighbor_left = NodePath("../BackButton")
-focus_neighbor_right = NodePath(".")
-theme = ExtResource("3_mq808")
-theme_override_font_sizes/font_size = 90
-text = "[Next]"
-
-[connection signal="pressed" from="Interactive/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="Interactive/NextButton" to="." method="_on_next_button_pressed"]
+[node name="Next" parent="." unique_id=619296771 instance=ExtResource("4_tcd3n")]
+offset_left = 1594.0
+offset_top = 925.0
+offset_right = 1856.0
+offset_bottom = 1037.0
+text = "Next
+"
+new_scene = "res://Scenes/Main Menu/Instructions2.tscn"
+start_focused = true

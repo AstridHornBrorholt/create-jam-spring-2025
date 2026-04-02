@@ -8,7 +8,7 @@ const CELL_SIZE: int = 32
 # TODO: Both of these are basically empty, maybe unnecessary
 const cell_prefab: PackedScene = preload("res://Prefabs/Cell.tscn")
 const tetriminos_prefab: PackedScene = preload("res://Prefabs/Tetriminos.tscn")
-const selector_prefab: PackedScene = preload("res://Scenes/Selector.tscn")
+const selector_prefab: PackedScene = preload("res://Scenes/Run Menus/Selector.tscn")
 
 @onready var run_state:RunState = CurrentRun
 @onready var remaining_time_label:RichTextLabel = $"Remaining Time"
@@ -559,7 +559,11 @@ func win():
 	run_state.register_score(score_counter.current_score)
 	run_state.increment_level()
 	run_state.previously_held = held_tetriminos.template
+	run_state.previously_held_position = held_tetriminos.global_position
 	run_state.previously_next = next_tetriminos.template
+	run_state.previously_next_position = next_tetriminos.global_position
+	run_state.previously_falling = falling_tetriminos.template
+	run_state.previously_falling_position = falling_tetriminos.global_position
 	status_label.text = "[color=green]Winner! :-)[/color]"
 	pause = true
 	win_sound.play()
@@ -579,13 +583,13 @@ func dead():
 
 func _on_continue_button_pressed() -> void:
 	if died:
-		get_tree().change_scene_to_file("res://Scenes/EndScreen.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Run Menus/EndScreen.tscn")
 	else:
 		match run_state.next_reward:
 			LevelOption.RewardType.Create:
-				get_tree().change_scene_to_file("res://Scenes/Selector.tscn")
+				get_tree().change_scene_to_file("res://Scenes/Run Menus/Selector.tscn")
 			LevelOption.RewardType.Destroy:
-				get_tree().change_scene_to_file("res://Scenes/Destroy.tscn")
+				get_tree().change_scene_to_file("res://Scenes/Run Menus/Destroy.tscn")
 			#LevelOption.RewardType.Modify:
 			_:
 				assert(false, "Not supported")

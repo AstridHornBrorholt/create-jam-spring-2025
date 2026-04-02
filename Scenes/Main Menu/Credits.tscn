@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cgm7kv1ut1wu8"]
+
+[ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="1_4qhrn"]
+[ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="2_0jcfq"]
+[ext_resource type="PackedScene" uid="uid://driyn4ve6jeng" path="res://Prefabs/ButtonToChangeScene.tscn" id="3_8rqy3"]
+
+[node name="Credits" type="Node2D" unique_id=98222518]
+
+[node name="Backdrop" type="Sprite2D" parent="." unique_id=1441604390]
+texture = ExtResource("1_4qhrn")
+centered = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=854402592]
+offset_left = 95.0
+offset_top = 44.0
+offset_right = 1092.0
+offset_bottom = 185.0
+theme = ExtResource("2_0jcfq")
+theme_override_font_sizes/normal_font_size = 140
+text = "Credits"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="." unique_id=1491196770]
+offset_left = 85.0
+offset_top = 170.0
+offset_right = 1826.0
+offset_bottom = 870.0
+theme = ExtResource("2_0jcfq")
+theme_override_font_sizes/normal_font_size = 73
+text = "Game made by 
+Nicolaj, Mathias, Rasmus, Christian and Astrid
+
+Additional art: Luna
+
+Additional credits:
+Minecraft ten font by nubefonts,
+Tetris A Type by Hirokazu Tanaka
+padcrafter.com by  Edd Coates"
+
+[node name="Back" parent="." unique_id=1380750691 instance=ExtResource("3_8rqy3")]
+offset_left = 860.0
+offset_top = 909.0
+offset_right = 1122.0
+offset_bottom = 1021.0
+new_scene = "res://Scenes/Main Menu/Main Menu.tscn"
+start_focused = true

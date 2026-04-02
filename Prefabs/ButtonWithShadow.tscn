@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dsiqwuyrntaub"]
+
+[ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="1_i8ilr"]
+[ext_resource type="Script" uid="uid://b8lh7on8j7j7u" path="res://Scripts/ButtonWithShadow.gd" id="2_qt6sr"]
+
+[node name="ButtonWithShadow" type="Button" unique_id=1380750691]
+offset_right = 262.0
+offset_bottom = 112.0
+theme = ExtResource("1_i8ilr")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 90
+text = "Button"
+script = ExtResource("2_qt6sr")

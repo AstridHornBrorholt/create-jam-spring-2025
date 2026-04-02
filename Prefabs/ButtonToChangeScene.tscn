@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://driyn4ve6jeng"]
+
+[ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="1_gc6w3"]
+[ext_resource type="Script" uid="uid://nkgbwvlvq1eo" path="res://Scripts/ButtonToChangeScene.gd" id="2_qkrv7"]
+
+[node name="ButtonToChangeScene" type="Button" unique_id=1380750691]
+offset_right = 262.0
+offset_bottom = 112.0
+theme = ExtResource("1_gc6w3")
+theme_override_font_sizes/font_size = 90
+text = "Back"
+script = ExtResource("2_qkrv7")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

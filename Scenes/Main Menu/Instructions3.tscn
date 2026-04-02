@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://ccggcah8x2y63"]
+
+[ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="2_ixt1r"]
+[ext_resource type="PackedScene" uid="uid://driyn4ve6jeng" path="res://Prefabs/ButtonToChangeScene.tscn" id="3_6d7rr"]
+[ext_resource type="PackedScene" uid="uid://bbnjt3yj141lc" path="res://Prefabs/block_instructions.tscn" id="4_yn1nk"]
+
+[node name="Menu" type="Node2D" unique_id=1805274739]
+
+[node name="Backdrop" type="Sprite2D" parent="." unique_id=2145205842]
+z_index = -10
+texture = ExtResource("2_ixt1r")
+centered = false
+
+[node name="BlockInstructions" parent="." unique_id=1238618631 instance=ExtResource("4_yn1nk")]
+position = Vector2(79, 78)
+
+[node name="Back" parent="." unique_id=1380750691 instance=ExtResource("3_6d7rr")]
+offset_left = 1591.0
+offset_top = 927.0
+offset_right = 1853.0
+offset_bottom = 1039.0
+new_scene = "res://Scenes/Main Menu/Main Menu.tscn"
+start_focused = true

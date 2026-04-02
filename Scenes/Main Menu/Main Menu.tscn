@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cx20x3knm431p"]
+[gd_scene format=3 uid="uid://cx20x3knm431p"]
 
 [ext_resource type="Script" uid="uid://vt4epfuxfljr" path="res://Scripts/MainMenu.gd" id="1_eotax"]
 [ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="1_totuj"]
@@ -24,20 +24,20 @@
 [ext_resource type="Texture2D" uid="uid://dvxbu51ao307x" path="res://Sprites/buttons/Option hover.png" id="17_5nn3m"]
 [ext_resource type="Texture2D" uid="uid://dn2p3hsoe73fh" path="res://Sprites/buttons/Exit hover.png" id="17_vqcsk"]
 
-[node name="Main Menu" type="Node2D"]
+[node name="Main Menu" type="Node2D" unique_id=854888259]
 script = ExtResource("1_eotax")
 
-[node name="Backdrop" type="Sprite2D" parent="."]
+[node name="Backdrop" type="Sprite2D" parent="." unique_id=977989109]
 texture = ExtResource("2_vuees")
 centered = false
 
-[node name="Logo" type="Sprite2D" parent="."]
+[node name="Logo" type="Sprite2D" parent="." unique_id=14779486]
 position = Vector2(960, 243)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("3_0126h")
 script = ExtResource("4_4lp62")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1506221028]
 visible = false
 offset_left = 95.0
 offset_top = 44.0
@@ -47,10 +47,10 @@ theme = ExtResource("1_totuj")
 theme_override_font_sizes/normal_font_size = 140
 text = "TETROGUE"
 
-[node name="Interactive" type="Node2D" parent="."]
+[node name="Interactive" type="Node2D" parent="." unique_id=1486020517]
 position = Vector2(960, 540)
 
-[node name="PlayButton" type="TextureButton" parent="Interactive"]
+[node name="PlayButton" type="TextureButton" parent="Interactive" unique_id=485275288]
 offset_left = -554.0
 offset_top = -154.0
 offset_right = 560.4
@@ -67,7 +67,7 @@ texture_focused = ExtResource("7_jgydl")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="InstructionsButton" type="TextureButton" parent="Interactive"]
+[node name="InstructionsButton" type="TextureButton" parent="Interactive" unique_id=680401149]
 offset_left = -210.0
 offset_top = 89.0
 offset_right = 210.0
@@ -85,7 +85,7 @@ texture_focused = ExtResource("10_apm58")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="OptionsButton" type="TextureButton" parent="Interactive"]
+[node name="OptionsButton" type="TextureButton" parent="Interactive" unique_id=1422638847]
 offset_left = -210.0
 offset_top = 144.0
 offset_right = 210.0
@@ -103,7 +103,7 @@ texture_focused = ExtResource("16_ryust")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="CreditsButton" type="TextureButton" parent="Interactive"]
+[node name="CreditsButton" type="TextureButton" parent="Interactive" unique_id=164538526]
 offset_left = -210.0
 offset_top = 245.0
 offset_right = 210.0
@@ -121,7 +121,7 @@ texture_focused = ExtResource("13_ryust")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="ExitButton" type="TextureButton" parent="Interactive"]
+[node name="ExitButton" type="TextureButton" parent="Interactive" unique_id=1416316818]
 offset_left = -210.0
 offset_top = 335.0
 offset_right = 210.0
@@ -139,10 +139,10 @@ texture_focused = ExtResource("17_vqcsk")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="ListenerExample" type="Node" parent="."]
+[node name="ListenerExample" type="Node" parent="." unique_id=12922792]
 script = ExtResource("4_eotax")
 
-[node name="Tetrogue-Menu" type="AudioStreamPlayer" parent="."]
+[node name="Tetrogue-Menu" type="AudioStreamPlayer" parent="." unique_id=595679339]
 stream = ExtResource("5_mjet1")
 volume_db = -5.0
 autoplay = true

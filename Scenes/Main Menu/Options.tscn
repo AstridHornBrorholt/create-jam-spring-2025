@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bx82estqdp3a7" path="res://Scripts/LoopMusic.gd" id="5_6f4k2"]
 [ext_resource type="AudioStream" uid="uid://bgkjb0evdblx6" path="res://SFX/pick.wav" id="6_bdxpv"]
 [ext_resource type="AudioStream" uid="uid://cb6j4bnup52id" path="res://SFX/rotate.wav" id="7_bdxpv"]
+[ext_resource type="PackedScene" uid="uid://driyn4ve6jeng" path="res://Prefabs/ButtonToChangeScene.tscn" id="9_hurg8"]
 
 [node name="OptionsMenu" type="Node2D" unique_id=649521194]
 script = ExtResource("1_5hy3q")
@@ -15,6 +16,7 @@ script = ExtResource("1_5hy3q")
 [node name="OBS! Root name OptionsMenu is hard-coded in the Options_gd script" type="Node" parent="." unique_id=1766621774]
 
 [node name="Backdrop" type="Sprite2D" parent="." unique_id=1995345581]
+z_index = -10
 texture = ExtResource("2_cbhj7")
 centered = false
 
@@ -54,10 +56,10 @@ offset_top = 410.0
 offset_right = 1409.46
 offset_bottom = 442.0
 tooltip_text = "music volume"
-focus_neighbor_top = NodePath("../Interactive/BackButton")
+focus_neighbor_top = NodePath("../Back")
 focus_neighbor_bottom = NodePath("../SFX Slider")
 focus_next = NodePath("../SFX Slider")
-focus_previous = NodePath("../Interactive/BackButton")
+focus_previous = NodePath("../Back")
 theme = ExtResource("3_q4at1")
 max_value = 1.0
 step = 0.05
@@ -117,8 +119,8 @@ offset_right = 1409.46
 offset_bottom = 728.0
 tooltip_text = "Animation speed"
 focus_neighbor_top = NodePath("../SFX Slider")
-focus_neighbor_bottom = NodePath("../Interactive/BackButton")
-focus_next = NodePath("../Interactive/BackButton")
+focus_neighbor_bottom = NodePath("../Back")
+focus_next = NodePath("../Back")
 focus_previous = NodePath("../SFX Slider")
 theme = ExtResource("3_q4at1")
 min_value = 0.3
@@ -144,19 +146,6 @@ scroll_active = false
 
 [node name="Interactive" type="Node2D" parent="." unique_id=692754781]
 
-[node name="BackButton" type="Button" parent="Interactive" unique_id=1487235718]
-offset_left = 583.0
-offset_top = 889.0
-offset_right = 1291.0
-offset_bottom = 1003.0
-focus_neighbor_top = NodePath("../../Animation Speed Slider")
-focus_neighbor_bottom = NodePath("../../Music Volume Slider")
-focus_next = NodePath("../../Music Volume Slider")
-focus_previous = NodePath("../../Animation Speed Slider")
-theme = ExtResource("3_q4at1")
-theme_override_font_sizes/font_size = 90
-text = "[Back]"
-
 [node name="Tetrogue-Menu" type="AudioStreamPlayer" parent="." unique_id=1780645430]
 stream = ExtResource("4_q4at1")
 volume_db = -5.0
@@ -169,6 +158,18 @@ stream = ExtResource("6_bdxpv")
 [node name="Release" type="AudioStreamPlayer" parent="." unique_id=501339358]
 stream = ExtResource("7_bdxpv")
 
+[node name="Back" parent="." unique_id=1380750691 instance=ExtResource("9_hurg8")]
+offset_left = 708.0
+offset_top = 870.0
+offset_right = 1357.0
+offset_bottom = 982.0
+focus_neighbor_top = NodePath("../Animation Speed Slider")
+focus_neighbor_bottom = NodePath("../Music Volume")
+focus_next = NodePath("../Animation Speed Slider")
+focus_previous = NodePath("../Music Volume Slider")
+new_scene = "res://Scenes/Main Menu/Main Menu.tscn"
+start_focused = true
+
 [connection signal="drag_ended" from="Music Volume Slider" to="." method="_on_music_volume_slider_drag_ended"]
 [connection signal="drag_started" from="Music Volume Slider" to="." method="_on_music_volume_slider_drag_started"]
 [connection signal="value_changed" from="Music Volume Slider" to="." method="_on_music_volume_slider_value_changed"]
@@ -178,5 +179,4 @@ stream = ExtResource("7_bdxpv")
 [connection signal="drag_ended" from="Animation Speed Slider" to="." method="_on_animation_speed_slider_drag_ended"]
 [connection signal="drag_started" from="Animation Speed Slider" to="." method="_on_animation_speed_slider_drag_started"]
 [connection signal="value_changed" from="Animation Speed Slider" to="." method="_on_animation_speed_slider_value_changed"]
-[connection signal="pressed" from="Interactive/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="finished" from="Tetrogue-Menu" to="Tetrogue-Menu" method="_on_finished"]

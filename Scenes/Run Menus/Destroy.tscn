@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://c053ay2segwlv"]
+
+[ext_resource type="Script" uid="uid://4e7gdc8ctiho" path="res://Scripts/destroy.gd" id="1_2sqnx"]
+[ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="1_88i36"]
+[ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="1_nh5yv"]
+[ext_resource type="Script" uid="uid://c1u6qwtwgcpxy" path="res://Scripts/Wiggler.gd" id="2_2sqnx"]
+[ext_resource type="Script" uid="uid://0mya0f5x0amh" path="res://Scripts/Tetriminos.gd" id="3_tuyx0"]
+[ext_resource type="Script" uid="uid://b8lh7on8j7j7u" path="res://Scripts/ButtonWithShadow.gd" id="4_qa860"]
+[ext_resource type="AudioStream" uid="uid://dfdw01nor3p0w" path="res://SFX/explosion.wav" id="6_2sqnx"]
+[ext_resource type="PackedScene" uid="uid://b7njvl3j3a8jx" path="res://Prefabs/RewardIndicator.tscn" id="7_tuyx0"]
+
+[node name="Destroy" type="Node2D" unique_id=1229755862]
+script = ExtResource("1_2sqnx")
+metadata/_edit_horizontal_guides_ = [995.0]
+
+[node name="Backdrop" type="Sprite2D" parent="." unique_id=61951976]
+z_index = -10
+texture = ExtResource("1_88i36")
+centered = false
+
+[node name="Next" type="Node2D" parent="." unique_id=1520532743]
+
+[node name="Wiggler" type="Node2D" parent="Next" unique_id=101202835]
+position = Vector2(6, -3)
+script = ExtResource("2_2sqnx")
+rotation_multiplier = 0.05
+
+[node name="NextTetriminos" type="Node2D" parent="Next/Wiggler" unique_id=851071080]
+position = Vector2(-32, -32)
+script = ExtResource("3_tuyx0")
+metadata/_custom_type_script = "uid://0mya0f5x0amh"
+
+[node name="SelectNext" type="Button" parent="." unique_id=1978023239]
+offset_left = 41.0
+offset_top = 287.0
+offset_right = 553.0
+offset_bottom = 1015.0
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../SelectFalling")
+focus_neighbor_right = NodePath("../SelectHeld")
+focus_next = NodePath("../SelectHeld")
+focus_previous = NodePath("../SelectFalling")
+theme = ExtResource("1_nh5yv")
+theme_override_font_sizes/font_size = 90
+text = "
+
+
+
+
+
+
+Destroy"
+autowrap_trim_flags = 0
+script = ExtResource("4_qa860")
+metadata/_custom_type_script = "uid://b8lh7on8j7j7u"
+
+[node name="NextTarget" type="Node2D" parent="." unique_id=1540663747]
+position = Vector2(297, 512)
+
+[node name="Held" type="Node2D" parent="." unique_id=158497700]
+position = Vector2(-704, 0)
+
+[node name="Wiggler" type="Node2D" parent="Held" unique_id=836004486]
+position = Vector2(3, -7)
+script = ExtResource("2_2sqnx")
+rotation_multiplier = 0.05
+
+[node name="HeldTetriminos" type="Node2D" parent="Held/Wiggler" unique_id=579647145]
+position = Vector2(2, 1)
+script = ExtResource("3_tuyx0")
+metadata/_custom_type_script = "uid://0mya0f5x0amh"
+
+[node name="HeldTarget" type="Node2D" parent="." unique_id=805133517]
+position = Vector2(897, 512)
+
+[node name="SelectHeld" type="Button" parent="." unique_id=928576244]
+offset_left = 641.0
+offset_top = 287.0
+offset_right = 1153.0
+offset_bottom = 1015.0
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../SelectNext")
+focus_neighbor_right = NodePath("../SelectFalling")
+focus_next = NodePath(".")
+focus_previous = NodePath("../SelectFalling")
+theme = ExtResource("1_nh5yv")
+theme_override_font_sizes/font_size = 90
+text = "
+
+
+
+
+
+
+Destroy"
+autowrap_trim_flags = 0
+script = ExtResource("4_qa860")
+metadata/_custom_type_script = "uid://b8lh7on8j7j7u"
+
+[node name="HeldMissingText" type="RichTextLabel" parent="." unique_id=436051481]
+offset_left = 740.0
+offset_top = 437.0
+offset_right = 1060.0
+offset_bottom = 597.0
+theme = ExtResource("1_nh5yv")
+theme_override_font_sizes/normal_font_size = 45
+text = "Tip: 
+Held pieces show up here"
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="Falling" type="Node2D" parent="." unique_id=825637039]
+position = Vector2(672, 0)
+
+[node name="Wiggler" type="Node2D" parent="Falling" unique_id=1360235532]
+position = Vector2(3, -7)
+script = ExtResource("2_2sqnx")
+rotation_multiplier = 0.05
+
+[node name="FallingTetriminos" type="Node2D" parent="Falling/Wiggler" unique_id=407707134]
+position = Vector2(-29, -33)
+script = ExtResource("3_tuyx0")
+metadata/_custom_type_script = "uid://0mya0f5x0amh"
+
+[node name="SelectFalling" type="Button" parent="." unique_id=1875445205]
+offset_left = 1357.0
+offset_top = 284.0
+offset_right = 1869.0
+offset_bottom = 1012.0
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../SelectHeld")
+focus_neighbor_right = NodePath("../SelectNext")
+focus_next = NodePath("../SelectHeld")
+focus_previous = NodePath("../SelectNext")
+theme = ExtResource("1_nh5yv")
+theme_override_font_sizes/font_size = 90
+text = "
+
+
+
+
+
+
+Destroy"
+autowrap_trim_flags = 0
+script = ExtResource("4_qa860")
+metadata/_custom_type_script = "uid://b8lh7on8j7j7u"
+
+[node name="FallingTarget" type="Node2D" parent="." unique_id=370172535]
+position = Vector2(1613, 509)
+
+[node name="DestroySound" type="AudioStreamPlayer" parent="." unique_id=878509981]
+stream = ExtResource("6_2sqnx")
+
+[node name="RewardIndicator" parent="." unique_id=1502803859 instance=ExtResource("7_tuyx0")]
+position = Vector2(968, 32)
+scale = Vector2(2, 2)
+type = 2
+wiggle = false
+
+[connection signal="mouse_entered" from="SelectNext" to="." method="_on_select_next_mouse_entered"]
+[connection signal="pressed" from="SelectNext" to="." method="_on_select_next_pressed"]
+[connection signal="mouse_entered" from="SelectHeld" to="." method="_on_select_held_mouse_entered"]
+[connection signal="pressed" from="SelectHeld" to="." method="_on_select_held_pressed"]
+[connection signal="mouse_entered" from="SelectFalling" to="." method="_on_select_falling_mouse_entered"]
+[connection signal="pressed" from="SelectFalling" to="." method="_on_select_falling_pressed"]

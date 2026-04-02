@@ -8,27 +8,25 @@
 [node name="SelectionOption" type="Node2D" unique_id=347983007]
 script = ExtResource("1_2b6dh")
 
-[node name="SelectorButton" type="Button" parent="." unique_id=640909673]
-offset_left = -90.0
-offset_top = -145.0
-offset_right = 90.0
-offset_bottom = 145.0
+[node name="SelectorButton" type="Button" parent="." unique_id=902418804]
+offset_left = -112.0
+offset_top = -138.0
+offset_right = 114.0
+offset_bottom = 146.0
 theme = ExtResource("2_exotd")
-button_mask = 7
+theme_override_font_sizes/font_size = 40
 text = "
 
 
 
 
-
-
-
-
-[Add to pool]"
+Add to pool"
+autowrap_trim_flags = 0
 script = ExtResource("3_rw2f2")
+shadow_offset = Vector2(0, 3)
+metadata/_custom_type_script = "uid://b8lh7on8j7j7u"
 
 [node name="Tetriminos" parent="." unique_id=1639393625 instance=ExtResource("4_a6fcw")]
 position = Vector2(0, -68)
 
-[connection signal="button_down" from="SelectorButton" to="SelectorButton" method="_on_button_down"]
 [connection signal="pressed" from="SelectorButton" to="SelectorButton" method="_on_pressed"]

@@ -27,7 +27,7 @@ func start_level(levelOption:LevelOption) -> void:
 	CurrentRun.next_score_goal = levelOption.score_goal
 	CurrentRun.next_time_limit = levelOption.time_limit
 	CurrentRun.next_reward = levelOption.reward_type
-	get_tree().change_scene_to_file("res://Scenes/GetReadyScreen.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Run Menus/GetReadyScreen.tscn")
 
 func _process(delta: float) -> void:
 	levelOption1.modulate = color_no_focus

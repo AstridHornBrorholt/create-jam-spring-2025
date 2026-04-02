@@ -1,5 +1,4 @@
 extends Node2D
-@onready var back_button:Button = $"Interactive/BackButton"
 @onready var music_volume_slider:Slider = $"Music Volume Slider"
 @onready var sfx_volume_slider:Slider = $"SFX Slider"
 @onready var animation_speed_slider:Slider = $"Animation Speed Slider"
@@ -12,7 +11,7 @@ extends Node2D
 @onready var grabber_release_sound:AudioStreamPlayer = $"Release"
 @onready var grabber_release_volume = grabber_release_sound.volume_linear
 
-const spin_animation = "⣾⣽⣻⢿⡿⣟⣯⣷"
+const spin_animation = ")x(x"
 const spin_rate = 0.4
 var spin_progress = 0.0
 var spin_index:int = 0
@@ -22,7 +21,6 @@ var grabbing_slider:bool = false
 var config:ConfigFile
 
 func _ready() -> void:
-	back_button.grab_focus()
 	music_volume_slider.value = Options.get_music_volume()
 	sfx_volume_slider.value = Options.get_sfx_volume()
 	animation_speed_slider.value = Options.get_animation_speed()
@@ -38,10 +36,6 @@ func _process(delta: float) -> void:
 		spinner.text = str(speed) + " " + spin_animation[spin_index]
 	else:
 		spinner.text = ""
-
-func _on_back_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Main Menu.tscn")
-
 
 func _on_music_volume_slider_drag_started() -> void:
 	grabber_grab_sound.play()

@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://edckqsbsb3oq"]
+
+[ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="2_1cyd4"]
+[ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="3_m48fc"]
+[ext_resource type="Texture2D" uid="uid://bhrrusbqkmocd" path="res://Sprites/Controller Layout.png" id="4_1cyd4"]
+[ext_resource type="PackedScene" uid="uid://driyn4ve6jeng" path="res://Prefabs/ButtonToChangeScene.tscn" id="4_qpc7f"]
+
+[node name="Menu3" type="Node2D" unique_id=1046178724]
+
+[node name="Backdrop" type="Sprite2D" parent="." unique_id=1956522066]
+z_index = -10
+texture = ExtResource("2_1cyd4")
+centered = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=778597558]
+offset_left = 95.0
+offset_top = 44.0
+offset_right = 1092.0
+offset_bottom = 185.0
+theme = ExtResource("3_m48fc")
+theme_override_font_sizes/normal_font_size = 140
+text = "How play"
+
+[node name="ControllerLayout" type="Sprite2D" parent="." unique_id=445680220]
+position = Vector2(976.63446, 597.75)
+scale = Vector2(1.6040462, 1.6040462)
+texture = ExtResource("4_1cyd4")
+
+[node name="Back" parent="." unique_id=1380750691 instance=ExtResource("4_qpc7f")]
+offset_left = 53.0
+offset_top = 927.0
+offset_right = 315.0
+offset_bottom = 1039.0
+new_scene = "res://Scenes/Main Menu/Main Menu.tscn"
+
+[node name="Next" parent="." unique_id=1640381308 instance=ExtResource("4_qpc7f")]
+offset_left = 1594.0
+offset_top = 925.0
+offset_right = 1856.0
+offset_bottom = 1037.0
+text = "Next
+"
+new_scene = "res://Scenes/Main Menu/Instructions3.tscn"
+start_focused = true

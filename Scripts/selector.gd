@@ -99,8 +99,6 @@ func spawn_minos():
 		option.button.focus_neighbor_bottom = spawnedminos[bottom].button.get_path()
 
 func _process(delta):
-	if animation_state != State.ReadyToBreak and Input.is_key_pressed(KEY_R): # Debug: NO-COMMIT
-		get_tree().change_scene_to_file("res://Scenes/Selector.tscn")
 	match animation_state:
 		State.ReadyToBreak:
 			point_light.visible = false
@@ -141,7 +139,7 @@ func register_picked(index):
 				child.start_fading_out()
 		animation_state = State.FadeOut
 		await get_tree().create_timer(0.5).timeout
-		get_tree().change_scene_to_file("res://Scenes/next_level_select.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Run Menus/NextLevelSelect.tscn")
 
 func reassign_focus() -> void:
 	for option in spawnedminos:

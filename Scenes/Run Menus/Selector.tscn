@@ -18,11 +18,13 @@
 script = ExtResource("1_k2e2o")
 
 [node name="Black" type="Sprite2D" parent="." unique_id=19990072]
+z_index = -10
 position = Vector2(960, 540)
 texture = ExtResource("2_ypq5c")
 
 [node name="Gray" type="Sprite2D" parent="." unique_id=1332346166]
 modulate = Color(1, 1, 1, 0.14902)
+z_index = -10
 position = Vector2(619, 462.5)
 scale = Vector2(5.68159, 3.42324)
 texture = ExtResource("3_h32ys")

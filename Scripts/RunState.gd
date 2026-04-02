@@ -18,9 +18,13 @@ var level: int = 0
 var accumulated_score = 0
 var highest_score = 0
 
-# Keep track of the pieces that were previously in the "held" and "next
+# Keep track of the pieces that were previously in the "held" and "next" positions, and the falling one.
 var previously_held:TetriminosTemplate = TetriminosTemplate.new([])
+var previously_held_position:Vector2
 var previously_next:TetriminosTemplate = TetriminosTemplate.new([])
+var previously_next_position:Vector2
+var previously_falling:TetriminosTemplate = TetriminosTemplate.new([])
+var previously_falling_position:Vector2
 
 var L = TetriminosTemplate.new([
 		CellTemplate.new(-1, 0, Cell.Type.Standard),
@@ -86,7 +90,11 @@ func reset():
 	accumulated_score = 0
 	highest_score = 0
 	previously_held = TetriminosTemplate.new([])
+	previously_held_position = Vector2.ZERO
 	previously_next = TetriminosTemplate.new([])
+	previously_next_position = Vector2.ZERO
+	previously_falling = TetriminosTemplate.new([])
+	previously_falling_position = Vector2.ZERO
 
 func new_game():
 	current_stash = stash.duplicate()
