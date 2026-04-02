@@ -11,7 +11,6 @@
 
 [node name="Destroy" type="Node2D" unique_id=1229755862]
 script = ExtResource("1_2sqnx")
-metadata/_edit_horizontal_guides_ = [995.0]
 
 [node name="Backdrop" type="Sprite2D" parent="." unique_id=61951976]
 z_index = -10
@@ -34,7 +33,7 @@ metadata/_custom_type_script = "uid://0mya0f5x0amh"
 offset_left = 41.0
 offset_top = 287.0
 offset_right = 553.0
-offset_bottom = 1015.0
+offset_bottom = 963.83
 size_flags_horizontal = 4
 focus_neighbor_left = NodePath("../SelectFalling")
 focus_neighbor_right = NodePath("../SelectHeld")
@@ -43,12 +42,6 @@ focus_previous = NodePath("../SelectFalling")
 theme = ExtResource("1_nh5yv")
 theme_override_font_sizes/font_size = 90
 text = "
-
-
-
-
-
-
 Destroy"
 autowrap_trim_flags = 0
 script = ExtResource("4_qa860")
@@ -77,7 +70,7 @@ position = Vector2(897, 512)
 offset_left = 641.0
 offset_top = 287.0
 offset_right = 1153.0
-offset_bottom = 1015.0
+offset_bottom = 963.83
 size_flags_horizontal = 4
 focus_neighbor_left = NodePath("../SelectNext")
 focus_neighbor_right = NodePath("../SelectFalling")
@@ -86,12 +79,6 @@ focus_previous = NodePath("../SelectFalling")
 theme = ExtResource("1_nh5yv")
 theme_override_font_sizes/font_size = 90
 text = "
-
-
-
-
-
-
 Destroy"
 autowrap_trim_flags = 0
 script = ExtResource("4_qa860")
@@ -126,7 +113,7 @@ metadata/_custom_type_script = "uid://0mya0f5x0amh"
 offset_left = 1357.0
 offset_top = 284.0
 offset_right = 1869.0
-offset_bottom = 1012.0
+offset_bottom = 960.83
 size_flags_horizontal = 4
 focus_neighbor_left = NodePath("../SelectHeld")
 focus_neighbor_right = NodePath("../SelectNext")
@@ -135,12 +122,6 @@ focus_previous = NodePath("../SelectNext")
 theme = ExtResource("1_nh5yv")
 theme_override_font_sizes/font_size = 90
 text = "
-
-
-
-
-
-
 Destroy"
 autowrap_trim_flags = 0
 script = ExtResource("4_qa860")

@@ -39,7 +39,7 @@ text = "
 
 
 
-[Select]"
+Select"
 autowrap_trim_flags = 0
 script = ExtResource("5_nhjkk")
 metadata/_custom_type_script = "uid://b8lh7on8j7j7u"
@@ -68,7 +68,7 @@ text = "
 
 
 
-[Select]"
+Select"
 autowrap_trim_flags = 0
 script = ExtResource("5_nhjkk")
 metadata/_custom_type_script = "uid://b8lh7on8j7j7u"
@@ -97,7 +97,7 @@ text = "
 
 
 
-[Select]"
+Select"
 autowrap_trim_flags = 0
 script = ExtResource("5_nhjkk")
 metadata/_custom_type_script = "uid://b8lh7on8j7j7u"

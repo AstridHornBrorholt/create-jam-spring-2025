@@ -34,7 +34,7 @@ enum State { Waiting, FlyingIn, Selecting, DestroyingSelected }
 var state:State = State.Waiting
 
 var wait_progress = 0.0
-var wait_time = 0.4
+var wait_time = 0.2
 
 var fly_in_progress = 0.0
 var fly_in_rate = 0.5

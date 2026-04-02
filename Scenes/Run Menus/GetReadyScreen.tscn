@@ -5,16 +5,19 @@
 [ext_resource type="Texture2D" uid="uid://dj7j4put16rls" path="res://Sprites/Gray.png" id="3_4rw7v"]
 [ext_resource type="PackedScene" uid="uid://d0e4h7e60xinr" path="res://Prefabs/ScrollingMinos.tscn" id="3_peiy7"]
 [ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="4_uecyn"]
+[ext_resource type="Script" uid="uid://b8lh7on8j7j7u" path="res://Scripts/ButtonWithShadow.gd" id="6_lsf2g"]
 
 [node name="GetReadyScreen" type="Node2D" unique_id=1039866389]
 script = ExtResource("1_4rw7v")
 
 [node name="Black" type="Sprite2D" parent="." unique_id=1053784586]
+z_index = -10
 position = Vector2(960, 540)
 texture = ExtResource("2_peiy7")
 
 [node name="Gray" type="Sprite2D" parent="." unique_id=227666254]
 modulate = Color(1, 1, 1, 0.14902)
+z_index = -10
 position = Vector2(961, 769)
 scale = Vector2(9.55846, 0.838174)
 texture = ExtResource("3_4rw7v")
@@ -36,14 +39,16 @@ scroll_active = false
 
 [node name="Interactive" type="Node2D" parent="." unique_id=1065887600]
 
-[node name="BeginButton" type="Button" parent="Interactive" unique_id=646526710]
+[node name="BeginButton" type="Button" parent="Interactive" unique_id=962677014]
 offset_left = 607.0
 offset_top = 883.0
 offset_right = 1315.0
 offset_bottom = 1007.0
 theme = ExtResource("4_uecyn")
 theme_override_font_sizes/font_size = 90
-text = "[Start]"
+text = "Start"
+script = ExtResource("6_lsf2g")
+metadata/_custom_type_script = "uid://b8lh7on8j7j7u"
 
 [connection signal="button_down" from="Interactive/BeginButton" to="." method="_on_begin_button_button_down"]
 [connection signal="pressed" from="Interactive/BeginButton" to="Interactive" method="_on_back_button_pressed"]
