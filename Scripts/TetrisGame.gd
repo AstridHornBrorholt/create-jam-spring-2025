@@ -460,11 +460,11 @@ func try_rotate_falling_tetriminos(counter_clockwise:bool) -> bool:
 func rotate_falling_tetriminos(counter_clockwise: bool) -> void:
 	if counter_clockwise:
 		for cell in falling_tetriminos.cells:
-			cell.grid_pos = Vector2i(-cell.grid_pos.y, cell.grid_pos.x)
+			cell.grid_pos = Vector2i(cell.grid_pos.y, -cell.grid_pos.x)
 			cell.position = cell.grid_pos * CELL_SIZE
 	else:
 		for cell in falling_tetriminos.cells:
-			cell.grid_pos = Vector2i(cell.grid_pos.y, -cell.grid_pos.x)
+			cell.grid_pos = Vector2i(-cell.grid_pos.y, cell.grid_pos.x)
 			cell.position = cell.grid_pos * CELL_SIZE
 
 
