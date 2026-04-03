@@ -39,9 +39,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 564.0
-offset_top = 398.0
+offset_top = 238.0
 offset_right = 1069.55
-offset_bottom = 473.0
+offset_bottom = 313.0
 grow_horizontal = 2
 theme = ExtResource("3_q4at1")
 theme_override_font_sizes/normal_font_size = 70
@@ -52,9 +52,9 @@ horizontal_alignment = 2
 
 [node name="Music Volume Slider" type="HSlider" parent="." unique_id=40553211]
 offset_left = 1090.46
-offset_top = 410.0
+offset_top = 250.0
 offset_right = 1409.46
-offset_bottom = 442.0
+offset_bottom = 282.0
 tooltip_text = "music volume"
 focus_neighbor_top = NodePath("../Back")
 focus_neighbor_bottom = NodePath("../SFX Slider")
@@ -70,9 +70,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 564.0
-offset_top = 495.0
+offset_top = 335.0
 offset_right = 1069.55
-offset_bottom = 570.0
+offset_bottom = 410.0
 grow_horizontal = 2
 theme = ExtResource("3_q4at1")
 theme_override_font_sizes/normal_font_size = 70
@@ -83,9 +83,9 @@ horizontal_alignment = 2
 
 [node name="SFX Slider" type="HSlider" parent="." unique_id=1099781341]
 offset_left = 1090.46
-offset_top = 504.0
+offset_top = 344.0
 offset_right = 1409.46
-offset_bottom = 536.0
+offset_bottom = 376.0
 tooltip_text = "sfx volume"
 focus_neighbor_top = NodePath("../Music Volume Slider")
 focus_neighbor_bottom = NodePath("../Animation Speed Slider")
@@ -101,9 +101,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 301.0
-offset_top = 687.0
+offset_top = 527.0
 offset_right = 1069.55
-offset_bottom = 762.0
+offset_bottom = 602.0
 grow_horizontal = 2
 theme = ExtResource("3_q4at1")
 theme_override_font_sizes/normal_font_size = 70
@@ -114,35 +114,97 @@ horizontal_alignment = 2
 
 [node name="Animation Speed Slider" type="HSlider" parent="." unique_id=680664481]
 offset_left = 1090.46
-offset_top = 696.0
+offset_top = 536.0
 offset_right = 1409.46
-offset_bottom = 728.0
+offset_bottom = 568.0
 tooltip_text = "Animation speed"
 focus_neighbor_top = NodePath("../SFX Slider")
-focus_neighbor_bottom = NodePath("../Back")
-focus_next = NodePath("../Back")
+focus_neighbor_bottom = NodePath("../Game Speed Slider")
+focus_next = NodePath("../Game Speed Slider")
 focus_previous = NodePath("../SFX Slider")
 theme = ExtResource("3_q4at1")
-min_value = 0.3
-max_value = 6.0
+min_value = 0.1
+max_value = 10.0
 step = 0.1
 value = 1.0
+exp_edit = true
 
-[node name="Spinner" type="RichTextLabel" parent="." unique_id=998112095]
+[node name="Animation Speed Spinner" type="RichTextLabel" parent="." unique_id=998112095]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 1433.0
-offset_top = 664.0
+offset_top = 504.0
 offset_right = 1731.0
-offset_bottom = 746.0
+offset_bottom = 586.0
 grow_horizontal = 2
 theme = ExtResource("3_q4at1")
 theme_override_fonts/normal_font = ExtResource("4_cja8r")
 theme_override_font_sizes/normal_font_size = 70
-text = "⣾"
+text = "?"
 fit_content = true
 scroll_active = false
+
+[node name="Game Speed" type="RichTextLabel" parent="." unique_id=834186397]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 301.0
+offset_top = 623.0
+offset_right = 1069.55
+offset_bottom = 698.0
+grow_horizontal = 2
+theme = ExtResource("3_q4at1")
+theme_override_font_sizes/normal_font_size = 70
+text = "Game speed"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+
+[node name="Game Speed Slider" type="HSlider" parent="." unique_id=1672158212]
+offset_left = 1090.46
+offset_top = 632.0
+offset_right = 1409.46
+offset_bottom = 664.0
+tooltip_text = "Animation speed"
+focus_neighbor_top = NodePath("../Animation Speed Slider")
+focus_neighbor_bottom = NodePath("../Back")
+focus_next = NodePath("../Back")
+focus_previous = NodePath("../SFX Slider")
+theme = ExtResource("3_q4at1")
+min_value = 0.1
+max_value = 10.0
+step = 0.1
+value = 1.0
+exp_edit = true
+
+[node name="Game Speed Spinner" type="RichTextLabel" parent="." unique_id=1426056405]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 1433.0
+offset_top = 600.0
+offset_right = 1731.0
+offset_bottom = 682.0
+grow_horizontal = 2
+theme = ExtResource("3_q4at1")
+theme_override_fonts/normal_font = ExtResource("4_cja8r")
+theme_override_font_sizes/normal_font_size = 70
+text = "?"
+fit_content = true
+scroll_active = false
+
+[node name="Back" parent="." unique_id=1380750691 instance=ExtResource("9_hurg8")]
+offset_left = 708.0
+offset_top = 870.0
+offset_right = 1357.0
+offset_bottom = 982.0
+focus_neighbor_top = NodePath("../Game Speed Slider")
+focus_neighbor_bottom = NodePath("../Music Volume Slider")
+focus_next = NodePath("../Music Volume Slider")
+focus_previous = NodePath("../Game Speed Slider")
+new_scene = "res://Scenes/Main Menu/Main Menu.tscn"
+start_focused = true
 
 [node name="Interactive" type="Node2D" parent="." unique_id=692754781]
 
@@ -158,18 +220,6 @@ stream = ExtResource("6_bdxpv")
 [node name="Release" type="AudioStreamPlayer" parent="." unique_id=501339358]
 stream = ExtResource("7_bdxpv")
 
-[node name="Back" parent="." unique_id=1380750691 instance=ExtResource("9_hurg8")]
-offset_left = 708.0
-offset_top = 870.0
-offset_right = 1357.0
-offset_bottom = 982.0
-focus_neighbor_top = NodePath("../Animation Speed Slider")
-focus_neighbor_bottom = NodePath("../Music Volume")
-focus_next = NodePath("../Animation Speed Slider")
-focus_previous = NodePath("../Music Volume Slider")
-new_scene = "res://Scenes/Main Menu/Main Menu.tscn"
-start_focused = true
-
 [connection signal="drag_ended" from="Music Volume Slider" to="." method="_on_music_volume_slider_drag_ended"]
 [connection signal="drag_started" from="Music Volume Slider" to="." method="_on_music_volume_slider_drag_started"]
 [connection signal="value_changed" from="Music Volume Slider" to="." method="_on_music_volume_slider_value_changed"]
@@ -179,4 +229,7 @@ start_focused = true
 [connection signal="drag_ended" from="Animation Speed Slider" to="." method="_on_animation_speed_slider_drag_ended"]
 [connection signal="drag_started" from="Animation Speed Slider" to="." method="_on_animation_speed_slider_drag_started"]
 [connection signal="value_changed" from="Animation Speed Slider" to="." method="_on_animation_speed_slider_value_changed"]
+[connection signal="drag_ended" from="Game Speed Slider" to="." method="_on_game_speed_slider_drag_ended"]
+[connection signal="drag_started" from="Game Speed Slider" to="." method="_on_game_speed_slider_drag_started"]
+[connection signal="value_changed" from="Game Speed Slider" to="." method="_on_game_speed_slider_value_changed"]
 [connection signal="finished" from="Tetrogue-Menu" to="Tetrogue-Menu" method="_on_finished"]

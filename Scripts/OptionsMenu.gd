@@ -2,7 +2,9 @@ extends Node2D
 @onready var music_volume_slider:Slider = $"Music Volume Slider"
 @onready var sfx_volume_slider:Slider = $"SFX Slider"
 @onready var animation_speed_slider:Slider = $"Animation Speed Slider"
-@onready var spinner:RichTextLabel = $"Spinner"
+@onready var animation_speed_spinner:RichTextLabel = $"Animation Speed Spinner"
+@onready var game_speed_slider:Slider = $"Game Speed Slider"
+@onready var game_speed_spinner:RichTextLabel = $"Game Speed Spinner"
 
 @onready var music_player:AudioStreamPlayer = $"Tetrogue-Menu"
 @onready var music_player_volume = music_player.volume_linear
@@ -17,25 +19,42 @@ var spin_progress = 0.0
 var spin_index:int = 0
 
 var grabbing:bool = false
-var grabbing_slider:bool = false
 var config:ConfigFile
 
 func _ready() -> void:
 	music_volume_slider.value = Options.get_music_volume()
 	sfx_volume_slider.value = Options.get_sfx_volume()
 	animation_speed_slider.value = Options.get_animation_speed()
-	spinner.text = ""
+	game_speed_slider.value = Options.get_game_speed()
+	animation_speed_spinner.text = ""
+	game_speed_spinner.text = ""
 
 func _process(delta: float) -> void:
-	if animation_speed_slider.has_focus() or grabbing_slider:
-		var speed = Options.get_animation_speed()
-		spin_progress += delta*speed
+	var spin = false
+	var spinner = null
+	var value = null
+	
+	if animation_speed_slider.has_focus():
+		spin = true
+		spinner = animation_speed_spinner
+		value = Options.get_animation_speed()
+	else:
+		animation_speed_spinner.text = ""
+		
+	if game_speed_slider.has_focus():
+		spin = true
+		spinner = game_speed_spinner
+		value = Options.get_game_speed()
+	else:
+		game_speed_spinner.text = ""
+	
+	if spin:
+		spin_progress += delta*value
 		if spin_progress > spin_rate:
 			spin_progress = 0
 			spin_index = (spin_index + 1)%len(spin_animation)
-		spinner.text = str(speed) + " " + spin_animation[spin_index]
-	else:
-		spinner.text = ""
+		spinner.text = str(value) + " " + spin_animation[spin_index]
+	
 
 func _on_music_volume_slider_drag_started() -> void:
 	grabber_grab_sound.play()
@@ -47,7 +66,7 @@ func _on_music_volume_slider_value_changed(value: float) -> void:
 	if not grabbing:
 		grabber_release_sound.play()
 
-func _on_music_volume_slider_drag_ended(value_changed: bool) -> void:
+func _on_music_volume_slider_drag_ended(_value_changed: bool) -> void:
 	grabber_release_sound.play()
 	grabbing = false
 
@@ -63,7 +82,7 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 	if not grabbing:
 		grabber_release_sound.play()
 
-func _on_sfx_slider_drag_ended(value_changed: bool) -> void:
+func _on_sfx_slider_drag_ended(_value_changed: bool) -> void:
 	grabber_release_sound.play()
 	grabbing = false
 
@@ -75,10 +94,23 @@ func _on_animation_speed_slider_value_changed(value: float) -> void:
 func _on_animation_speed_slider_drag_started() -> void:
 	grabber_grab_sound.play()
 	grabbing = true
-	grabbing_slider = true
 
 
-func _on_animation_speed_slider_drag_ended(value_changed: bool) -> void:
+func _on_animation_speed_slider_drag_ended(_value_changed: bool) -> void:
 	grabber_release_sound.play()
 	grabbing = false
-	grabbing_slider = false
+
+
+func _on_game_speed_slider_drag_started() -> void:
+	grabber_grab_sound.play()
+	grabbing = true
+
+
+func _on_game_speed_slider_drag_ended(_value_changed: bool) -> void:
+	grabber_release_sound.play()
+	grabbing = false
+
+func _on_game_speed_slider_value_changed(value: float) -> void:
+	Options.set_game_speed(value)
+	if not grabbing:
+		grabber_release_sound.play()

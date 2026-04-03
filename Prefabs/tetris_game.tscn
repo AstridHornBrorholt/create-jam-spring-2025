@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://23q2k2ipj02t" path="res://Theming/Minecraft Ten/MinecraftTen-mono.ttf" id="3_6lloh"]
 [ext_resource type="Script" uid="uid://elavi4xosona" path="res://Scripts/RemainingTime.gd" id="3_arn4l"]
 [ext_resource type="PackedScene" uid="uid://cam00wyvm1d7v" path="res://Prefabs/ScoreCounter.tscn" id="3_cdei4"]
+[ext_resource type="Script" uid="uid://b8lh7on8j7j7u" path="res://Scripts/ButtonWithShadow.gd" id="3_omla6"]
 [ext_resource type="AudioStream" uid="uid://byb2xhlhq16fj" path="res://Sound/Tetrogue - Main.wav" id="5_2fiad"]
 [ext_resource type="Script" uid="uid://c1u6qwtwgcpxy" path="res://Scripts/Wiggler.gd" id="5_hkvcf"]
 [ext_resource type="Script" uid="uid://bx82estqdp3a7" path="res://Scripts/LoopMusic.gd" id="6_aowk6"]
@@ -60,11 +61,7 @@ script = ExtResource("1_43n6e")
 metadata/_edit_vertical_guides_ = [-32.0, 349.0, -640.0, 955.0]
 metadata/_edit_horizontal_guides_ = [748.0]
 
-[node name="TickTimer" type="Timer" parent="." unique_id=1386156874]
-wait_time = 0.05
-autostart = true
-
-[node name="ContinueButton" type="Button" parent="." unique_id=1432293586]
+[node name="ContinueButton" type="Button" parent="." unique_id=2027231602]
 visible = false
 offset_left = -644.0
 offset_top = 489.0
@@ -72,7 +69,9 @@ offset_right = -33.0
 offset_bottom = 749.0
 theme = ExtResource("2_blw18")
 theme_override_font_sizes/font_size = 90
-text = "[Continue]"
+text = "Continue"
+script = ExtResource("3_omla6")
+metadata/_custom_type_script = "uid://b8lh7on8j7j7u"
 
 [node name="Remaining Time" type="RichTextLabel" parent="." unique_id=1763020174]
 clip_contents = false
@@ -259,6 +258,5 @@ tile_map_data = PackedByteArray("AAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAA
 tile_set = SubResource("TileSet_sbb0m")
 script = ExtResource("12_vlfn3")
 
-[connection signal="timeout" from="TickTimer" to="." method="_on_tick"]
 [connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="finished" from="Tetrogue-Main" to="Tetrogue-Main" method="_on_finished"]

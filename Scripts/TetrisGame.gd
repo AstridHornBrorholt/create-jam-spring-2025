@@ -5,7 +5,11 @@ const WIDTH: int = 10
 const HEIGHT: int = 20
 const CELL_SIZE: int = 32
 
-# TODO: Both of these are basically empty, maybe unnecessary
+var animation_speed = Options.get_animation_speed()
+var game_speed = Options.get_game_speed()
+var tick_length = 0.05/game_speed
+var tick_progress = 0.0
+
 const cell_prefab: PackedScene = preload("res://Prefabs/Cell.tscn")
 const tetriminos_prefab: PackedScene = preload("res://Prefabs/Tetriminos.tscn")
 const selector_prefab: PackedScene = preload("res://Scenes/Run Menus/Selector.tscn")
@@ -31,7 +35,6 @@ const selector_prefab: PackedScene = preload("res://Scenes/Run Menus/Selector.ts
 @onready var win_sound:AudioStreamPlayer = $"Sounds/NextLevel"
 @onready var background_music:AudioStreamPlayer = $"Tetrogue-Main"
 
-@onready var animation_speed = Options.get_animation_speed()
 
 @export var remaining_time: float = 50
 @export var max_time: float = 50
@@ -39,7 +42,7 @@ const selector_prefab: PackedScene = preload("res://Scenes/Run Menus/Selector.ts
 var tick_number: int = 0 # The current tick count
 @export var move_interval_ticks: int = 14
 @export var move_fast_interval_ticks: int = 2
-@export var move_sideways_interval_ticks: int = 2
+@export var move_sideways_interval_ticks: int = 0.1/tick_length
 @export var row_clear_modulation: Color = Color(1.2, 1.2, 1.2)
 
 var pause: bool = false
@@ -258,7 +261,7 @@ func _process(delta):
 		if try_move_falling_tetriminos_x(1):
 			move_sound.pitch_scale = 1
 			move_sound.play()
-			ticks_since_last_sideways_move = -6
+			ticks_since_last_sideways_move = 0
 		else:
 			move_sound.pitch_scale = 0.7
 			move_sound.play()
@@ -267,7 +270,7 @@ func _process(delta):
 		if try_move_falling_tetriminos_x(-1):
 			move_sound.pitch_scale = 1
 			move_sound.play()
-			ticks_since_last_sideways_move = -6
+			ticks_since_last_sideways_move = 0
 		else:
 			move_sound.pitch_scale = 0.7
 			move_sound.play()
@@ -303,6 +306,11 @@ func _process(delta):
 	
 	if remaining_time < 0:
 		dead()
+	
+	tick_progress += delta
+	if tick_progress > tick_length:
+		tick_progress = 0.0
+		_on_tick()
 
 
 func _on_tick() -> void:

@@ -3,7 +3,7 @@ extends Node
 
 var config:ConfigFile
 const OPTIONS_FILE = "user://options.cfg"
-const OPTIONS_VERSION = "🦂"
+const OPTIONS_VERSION = "🐬"
 
 func _ready() -> void:
 	config = load_or_create_config()
@@ -45,6 +45,7 @@ func load_or_create_config() -> ConfigFile:
 		config.set_value("Volume", "Music", 1.)
 		config.set_value("Volume", "SFX", 1.)
 		config.set_value("Gameplay", "AnimationSpeed", 1.)
+		config.set_value("Gameplay", "GameSpeed", 1.)
 		config.save(OPTIONS_FILE)
 	
 	return config
@@ -65,6 +66,15 @@ func get_sfx_volume() -> float:
 
 func set_animation_speed(value:float):
 	config.set_value("Gameplay", "AnimationSpeed", value)
+	return config.save(OPTIONS_FILE)
 
 func get_animation_speed() -> float:
 	return config.get_value("Gameplay", "AnimationSpeed")
+	
+func set_game_speed(value:float):
+	config.set_value("Gameplay", "GameSpeed", value)
+	return config.save(OPTIONS_FILE)
+
+func get_game_speed() -> float:
+	var v =  config.get_value("Gameplay", "GameSpeed")
+	return v
