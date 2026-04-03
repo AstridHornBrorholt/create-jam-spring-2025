@@ -261,7 +261,7 @@ func _process(delta):
 		if try_move_falling_tetriminos_x(1):
 			move_sound.pitch_scale = 1
 			move_sound.play()
-			ticks_since_last_sideways_move = 0
+			ticks_since_last_sideways_move = -move_sideways_interval_ticks*4
 		else:
 			move_sound.pitch_scale = 0.7
 			move_sound.play()
@@ -270,7 +270,7 @@ func _process(delta):
 		if try_move_falling_tetriminos_x(-1):
 			move_sound.pitch_scale = 1
 			move_sound.play()
-			ticks_since_last_sideways_move = 0
+			ticks_since_last_sideways_move = -move_sideways_interval_ticks*4
 		else:
 			move_sound.pitch_scale = 0.7
 			move_sound.play()
@@ -522,7 +522,9 @@ func clear_full_rows():
 				if cell != null:
 					cell.modulate = row_clear_modulation
 		
-		var mult = len(queued_line_clears) - 1
+		var l = len(queued_line_clears)
+		var mult =  0 if l == 1 else l - 1 if l < 4 else l
+		
 		if mult > 0:
 			var pos = get_at(WIDTH - 1, queued_line_clears.min()).position
 			pos.x += 50
