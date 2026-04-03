@@ -1,34 +1,40 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwb4ki65x1qgx"]
+[gd_scene format=3 uid="uid://dwb4ki65x1qgx"]
 
 [ext_resource type="Script" uid="uid://bt6kflsk6tjp5" path="res://Scripts/LevelOption.gd" id="1_1m5am"]
 [ext_resource type="Texture2D" uid="uid://dj7j4put16rls" path="res://Sprites/Gray.png" id="1_x5qd5"]
 [ext_resource type="PackedScene" uid="uid://cb5c51hui5nyi" path="res://Prefabs/Maps/sand.tscn" id="2_viymq"]
 [ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="3_xspn1"]
 [ext_resource type="TileSet" uid="uid://dtyl4e6qqp033" path="res://Sprites/tiles.tres" id="4_jd67p"]
+[ext_resource type="PackedScene" uid="uid://bbk7cc4j1iwo6" path="res://Prefabs/Border.tscn" id="5_mj6rh"]
 [ext_resource type="PackedScene" uid="uid://b7njvl3j3a8jx" path="res://Prefabs/RewardIndicator.tscn" id="6_jd67p"]
 
-[node name="LevelOption" type="Node2D"]
+[node name="LevelOption" type="Node2D" unique_id=335722981]
 script = ExtResource("1_1m5am")
 metadata/_edit_vertical_guides_ = [576.0]
 
-[node name="Gray" type="Sprite2D" parent="."]
+[node name="Gray" type="Sprite2D" parent="." unique_id=1542520773]
 modulate = Color(1, 1, 1, 0.14902)
 position = Vector2(4.49999, -43.5)
 scale = Vector2(2.33333, 3.47303)
 texture = ExtResource("1_x5qd5")
 
-[node name="Map Transform" type="Sprite2D" parent="."]
+[node name="Map Transform" type="Sprite2D" parent="." unique_id=1898322061]
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(0, -32)
 scale = Vector2(2.49751, 3.60946)
 texture = ExtResource("1_x5qd5")
 
-[node name="Map" parent="Map Transform" instance=ExtResource("2_viymq")]
+[node name="Map" parent="Map Transform" unique_id=971638093 instance=ExtResource("2_viymq")]
 position = Vector2(-81.5763, -119.438)
 scale = Vector2(0.51145, 0.353891)
 tile_set = ExtResource("4_jd67p")
 
-[node name="Level info" type="RichTextLabel" parent="."]
+[node name="Border" parent="Map Transform" unique_id=1949955717 instance=ExtResource("5_mj6rh")]
+z_index = 1
+position = Vector2(-81.5763, -119.43801)
+scale = Vector2(0.51145, 0.35389107)
+
+[node name="Level info" type="RichTextLabel" parent="." unique_id=522126650]
 offset_left = -198.0
 offset_top = -455.0
 offset_right = 204.0
@@ -46,6 +52,5 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="RewardIndicator" parent="." instance=ExtResource("6_jd67p")]
-visible = true
+[node name="RewardIndicator" parent="." unique_id=1173157405 instance=ExtResource("6_jd67p")]
 position = Vector2(-5, -101)

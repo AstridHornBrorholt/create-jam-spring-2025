@@ -42,27 +42,9 @@ func spawn_minos():
 	#Make some minos
 	generator = TetriminoGenerator.new()
 	
-	# Size: We want a good chance of generating the nice size-4 pieces
-	# And then we want more awkward sizes to become more common in the higher levels.
-	var prob_regular_size = 0.4
-	var size_min = 4
-	var size_max = 5
-	if level >= 15:
-		size_max = 7
-		size_min = 5
-	elif level >= 10:
-		size_max = 6
-	elif level >= 5:
-		size_max = 5
-
-	var complexity_min = floor(4 + level / 5.0)
-	var complexity_max = floor(complexity_min + 3 + level / 3.0)
 	
 	for i in minos_to_spawn:
-		# Size
-		var size = 4
-		if randf() < prob_regular_size:
-			size = randi_range(size_min, size_max)
+		var size = CurrentRun.game_mode.random_piece_size(level)
 		
 		# Type
 		tetriminos.append(generator.generate_tetrimino(size, breakable_chunk.types))

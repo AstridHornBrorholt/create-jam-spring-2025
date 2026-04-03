@@ -3,9 +3,10 @@ class_name RunState
 
 # Script to contain player status such as level, lives, and tetrimino stash
 
+var game_mode:GameMode = GameMode.new()
 
 # The player's stash, minus all the ones that have already been put in play.
-var current_stash: Array[TetriminosTemplate] = stash.duplicate();
+var current_stash: Array[TetriminosTemplate] = [];
 
 var next_map:Array[Array] = MapSelector.get_random_map(1).to_array()
 var next_score_goal = 100
@@ -26,57 +27,6 @@ var previously_next_position:Vector2
 var previously_falling:TetriminosTemplate = TetriminosTemplate.new([])
 var previously_falling_position:Vector2
 
-var L = TetriminosTemplate.new([
-		CellTemplate.new(-1, 0, Cell.Type.Standard),
-		CellTemplate.new(0, 0, Cell.Type.Standard),
-		CellTemplate.new(1, 0, Cell.Type.Standard),
-		CellTemplate.new(-1, 1, Cell.Type.Standard),
-	])
-	
-var J = TetriminosTemplate.new([
-		CellTemplate.new(-1, 0, Cell.Type.Standard),
-		CellTemplate.new(0, 0, Cell.Type.Standard),
-		CellTemplate.new(1, 0, Cell.Type.Standard),
-		CellTemplate.new(-1, -1, Cell.Type.Standard),
-	])
-	
-var T = TetriminosTemplate.new([
-		CellTemplate.new(1, 0, Cell.Type.Standard),
-		CellTemplate.new(0, 0, Cell.Type.Standard),
-		CellTemplate.new(-1, 0, Cell.Type.Standard),
-		CellTemplate.new(0, 1, Cell.Type.Standard),
-	])
-
-var I = TetriminosTemplate.new([
-		CellTemplate.new(1, 0, Cell.Type.Standard),
-		CellTemplate.new(0, 0, Cell.Type.Standard),
-		CellTemplate.new(-1, 0, Cell.Type.Standard),
-		CellTemplate.new(-2, 0, Cell.Type.Standard),
-	])
-
-var S = TetriminosTemplate.new([
-		CellTemplate.new(-1, -1, Cell.Type.Standard),
-		CellTemplate.new(-1, 0, Cell.Type.Standard),
-		CellTemplate.new(0, 0, Cell.Type.Standard),
-		CellTemplate.new(0, 1, Cell.Type.Standard),
-	])
-
-var Z = TetriminosTemplate.new([
-		CellTemplate.new(1, -1, Cell.Type.Standard),
-		CellTemplate.new(1, 0, Cell.Type.Standard),
-		CellTemplate.new(0, 0, Cell.Type.Standard),
-		CellTemplate.new(0, 1, Cell.Type.Standard),
-	])
-
-var O = TetriminosTemplate.new([
-		CellTemplate.new(0, 0, Cell.Type.Standard),
-		CellTemplate.new(0, 1, Cell.Type.Standard),
-		CellTemplate.new(1, 0, Cell.Type.Standard),
-		CellTemplate.new(1, 1, Cell.Type.Standard),
-	])
-
-
-
 func _init() -> void:
 	reset()
 
@@ -86,7 +36,7 @@ func reset():
 	next_score_goal = get_level()[0]
 	next_time_limit = get_level()[1]
 	# var tetrimino_generator = TetriminoGenerator.new()
-	stash = [ L, J, T, I, S, Z, O ]
+	stash = game_mode.get_starting_stash()
 	accumulated_score = 0
 	highest_score = 0
 	previously_held = TetriminosTemplate.new([])
@@ -95,6 +45,10 @@ func reset():
 	previously_next_position = Vector2.ZERO
 	previously_falling = TetriminosTemplate.new([])
 	previously_falling_position = Vector2.ZERO
+
+func set_game_mode(g:GameMode) -> void:
+	game_mode = g
+	reset()
 
 func new_game():
 	current_stash = stash.duplicate()
@@ -131,19 +85,7 @@ func remove_from_permanent_stash(tetriminos:TetriminosTemplate):
 
 
 func get_level(): # returns [score_goal, time_limit]
-	const levels = [
-		[500, 90],
-		[750, 90],
-		[1500, 90],
-		[2000, 90],
-	]
-	if level < levels.size():
-		return levels[level]
-	elif level < 8:
-		return [(level)*500, 90]
-	else:
-		# Increase goal quadratically from now
-		return [5*(level - 8)**2 + 500*(level - 1), 90]
+	return [game_mode.get_score(level), game_mode.get_time(level)]
 
 func get_map() -> Array[Array]:
 	return next_map

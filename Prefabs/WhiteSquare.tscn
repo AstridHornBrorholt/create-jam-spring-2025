@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dkgijstkks8tv"]
+
+[ext_resource type="Texture2D" uid="uid://ufj5ulowrf58" path="res://Sprites/White.png" id="1_5n3js"]
+
+[node name="WhiteSquare" type="Sprite2D" unique_id=370715420]
+scale = Vector2(2, 2)
+texture = ExtResource("1_5n3js")

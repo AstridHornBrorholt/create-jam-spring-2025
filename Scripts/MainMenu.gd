@@ -7,7 +7,7 @@ func _ready() -> void:
 
 func _on_play_button_pressed() -> void:
 	CurrentRun.reset()
-	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Main Menu/GameMode.tscn")
 
 
 func _on_options_button_pressed() -> void:

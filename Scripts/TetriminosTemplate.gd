@@ -8,6 +8,14 @@ func _init(cells: Array[CellTemplate]) -> void:
 func is_empty() -> bool:
 	return cells.size() == 0
 
+func duplicate() -> TetriminosTemplate:
+	return TetriminosTemplate.new(cells.duplicate(true))
+
+func turn_into_type(type:Cell.Type) -> TetriminosTemplate:
+	for i in len(cells):
+		cells[i].type = type
+	return self
+
 func equals(other:TetriminosTemplate) -> bool:
 	if self.cells.size() != other.cells.size():
 		return false

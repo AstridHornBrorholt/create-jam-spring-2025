@@ -4,6 +4,7 @@ class_name EndScreenTetriminos
 @export var show_offset:int = 0
 @export var scroll_speed = 1 # Rate at which to scroll tetriminos
 @export var reset_at = 1920 # Position after which to reset to
+@export var initial_progress = 0
 @onready var initial_position = transform.x
 var rotation_counter = 0 # For wiggling the tetriminos
 @export var rotation_rate = 4 # How quickly they rotate
@@ -17,6 +18,13 @@ const CELL_SIZE: int = 32
 const tetriminos_prefab: PackedScene = preload("res://Prefabs/Tetriminos.tscn")
 
 func _ready() -> void:
+	reset()
+
+func reset() -> void:
+	# Clear previous children, if any
+	for t in get_children():
+		t.queue_free()
+	
 	# Spawn the thangs
 	var next = Vector2(0, 0)
 	var i = 0
@@ -38,7 +46,7 @@ func _ready() -> void:
 			furthest_child_x = child.position.x
 	
 	initial_position = -furthest_child_x
-	position.x = initial_position
+	position.x = initial_position  + initial_progress
 	
 func _process(delta: float) -> void:
 	# Scroll accross screen

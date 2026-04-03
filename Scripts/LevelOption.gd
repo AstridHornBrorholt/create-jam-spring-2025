@@ -30,21 +30,23 @@ func initialize(reward_type:RewardType, new_map:Map, score_goal, time_limit):
 	level_info.text = original_level_info
 	level_info.text = level_info.text.replace("###", str(score_goal))
 	
-	
-	var _time = time_limit
-	_time = max(_time, 0)
-	var minutes: int = floor(_time/60)
-	_time -= minutes*60
-	var seconds: int = floor(_time)
-	_time -= seconds
-	var milliseconds: int = round(_time*1e3)
-	_time -= milliseconds
+	if time_limit != INF:
+		var _time = time_limit
+		_time = max(_time, 0)
+		var minutes: int = floor(_time/60)
+		_time -= minutes*60
+		var seconds: int = floor(_time)
+		_time -= seconds
+		var milliseconds: int = round(_time*1e3)
+		_time -= milliseconds
 
-	var ftime = ("%02.0f" % minutes + ":" + 
-				 "%02.0f" % seconds + "." + 
-				 "%03.0f" % milliseconds)
+		var ftime = ("%02.0f" % minutes + ":" + 
+					 "%02.0f" % seconds + "." + 
+					 "%03.0f" % milliseconds)
 	
-	level_info.text = level_info.text.replace("??:??:???", ftime)
+		level_info.text = level_info.text.replace("??:??:???", ftime)
+	else:
+		level_info.text = level_info.text.replace("??:??:???", "plenty")
 
 func _ready() -> void:
 	
@@ -55,8 +57,8 @@ func _ready() -> void:
 	var base_time = CurrentRun.get_level()[1]
 	var score:int = round(base_score*randf_range(0.7, 1.3))
 	score = snapped(score, 10)
-	var time:int = round(base_time*randf_range(0.9, 1.1))
-	time = snapped(time, 5)
+	var time:float = roundf(base_time*randf_range(0.9, 1.1))
+	time = snappedf(time, 5)
 	initialize(reward, map, score, time)
 
 func pick_random_reward() -> RewardType:

@@ -8,6 +8,10 @@ func set_max_time(time: float):
 	max_time = time
 
 func set_time(time: float):
+	if max_time == INF:
+		visible = false
+		return
+	
 	var _time = time
 	time = max(time, 0)
 	var minutes: int = floor(time/60)

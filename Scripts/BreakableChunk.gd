@@ -58,8 +58,8 @@ func roll_chunk():
 	for cell in cells_container.get_children():
 		cell.queue_free()
 		
-	var chunk_generator = ChunkGenerator.new()
-	types = chunk_generator.generate_chunk()
+	
+	types = CurrentRun.game_mode.random_piece_types(CurrentRun.level)
 	var x_start = -(width/2)*Cell.CELL_SIZE
 	var y_start = -(height/2)*Cell.CELL_SIZE
 	var x = x_start

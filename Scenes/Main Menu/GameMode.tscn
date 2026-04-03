@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://dkooj2yvpqqjf"]
+
+[ext_resource type="Script" uid="uid://dy0aphwlectwv" path="res://Scripts/GameModeSelect.gd" id="1_1ud3r"]
+[ext_resource type="Texture2D" uid="uid://dj7j4put16rls" path="res://Sprites/Gray.png" id="2_ndrcs"]
+[ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="2_whr2p"]
+[ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="3_0ts2j"]
+[ext_resource type="Texture2D" uid="uid://tlpgps5yd22j" path="res://Sprites/ArrowLeft.png" id="3_l1cmv"]
+[ext_resource type="Texture2D" uid="uid://cdw1s136kba0v" path="res://Sprites/ArrowRight.png" id="4_0byyq"]
+[ext_resource type="Texture2D" uid="uid://dktelyysl8f2f" path="res://Sprites/ArrowLeftPressed.png" id="4_rf6ok"]
+[ext_resource type="PackedScene" uid="uid://driyn4ve6jeng" path="res://Prefabs/ButtonToChangeScene.tscn" id="5_4dqh3"]
+[ext_resource type="Texture2D" uid="uid://kymq2dmay17s" path="res://Sprites/ArrowLeftHover.png" id="5_ndrcs"]
+[ext_resource type="Texture2D" uid="uid://ciutvspnktps2" path="res://Sprites/ArrowRightPressed.png" id="7_a7ags"]
+[ext_resource type="AudioStream" uid="uid://bgkjb0evdblx6" path="res://SFX/pick.wav" id="8_a7ags"]
+[ext_resource type="Texture2D" uid="uid://c6ps84pr08udk" path="res://Sprites/ArrowRightHover.png" id="8_flsgv"]
+[ext_resource type="PackedScene" uid="uid://d0e4h7e60xinr" path="res://Prefabs/ScrollingMinos.tscn" id="13_4dqh3"]
+[ext_resource type="PackedScene" uid="uid://dkgijstkks8tv" path="res://Prefabs/WhiteSquare.tscn" id="14_1ud3r"]
+[ext_resource type="Script" uid="uid://y5o2a8odcw6" path="res://Scripts/CarouselIndicator.gd" id="15_1ud3r"]
+
+[node name="Game Mode" type="Node2D" unique_id=649521194]
+script = ExtResource("1_1ud3r")
+metadata/_edit_horizontal_guides_ = [838.0, 977.0]
+
+[node name="__2231" type="Sprite2D" parent="." unique_id=1995345581]
+z_index = -10
+texture = ExtResource("2_whr2p")
+centered = false
+
+[node name="Gray" type="Sprite2D" parent="." unique_id=1464666413]
+modulate = Color(1, 1, 1, 0.14902)
+z_index = -10
+position = Vector2(960, 699)
+scale = Vector2(9.55846, 0.838174)
+texture = ExtResource("2_ndrcs")
+
+[node name="ScrollingTetriminos" parent="." unique_id=344184529 instance=ExtResource("13_4dqh3")]
+position = Vector2(960, 699)
+initial_progress = 800
+
+[node name="Mode" type="RichTextLabel" parent="." unique_id=635511719]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 476.0
+offset_top = 96.0
+offset_right = 1444.0
+offset_bottom = 216.0
+grow_horizontal = 2
+theme = ExtResource("3_0ts2j")
+theme_override_font_sizes/normal_font_size = 120
+text = "Mode:"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="Name" type="RichTextLabel" parent="." unique_id=878343953]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1.0
+offset_top = 224.0
+offset_right = 1921.0
+offset_bottom = 344.0
+grow_horizontal = 2
+theme = ExtResource("3_0ts2j")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[color=red]???[/color]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="." unique_id=209110936]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1.0
+offset_top = 352.0
+offset_right = 1921.0
+offset_bottom = 472.0
+grow_horizontal = 2
+theme = ExtResource("3_0ts2j")
+theme_override_font_sizes/normal_font_size = 120
+text = "???"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="Left" type="TextureButton" parent="." unique_id=32847762]
+offset_left = 392.0
+offset_top = 838.765
+offset_right = 538.0
+offset_bottom = 997.1749
+texture_normal = ExtResource("3_l1cmv")
+texture_pressed = ExtResource("4_rf6ok")
+texture_hover = ExtResource("5_ndrcs")
+stretch_mode = 0
+
+[node name="Right" type="TextureButton" parent="." unique_id=1531811755]
+offset_left = 1366.0
+offset_top = 838.765
+offset_right = 1511.0
+offset_bottom = 996.08997
+texture_normal = ExtResource("4_0byyq")
+texture_pressed = ExtResource("7_a7ags")
+texture_hover = ExtResource("8_flsgv")
+stretch_mode = 0
+
+[node name="Start" parent="." unique_id=1380750691 instance=ExtResource("5_4dqh3")]
+offset_left = 660.0
+offset_top = 802.0
+offset_right = 1260.0
+offset_bottom = 1053.0
+theme_override_font_sizes/font_size = 200
+text = "Start
+"
+new_scene = "res://Scenes/Game.tscn"
+start_focused = true
+shadow_offset = Vector2(0, 20)
+
+[node name="Cycle" type="AudioStreamPlayer" parent="." unique_id=1152378066]
+stream = ExtResource("8_a7ags")
+
+[node name="CarouselIndicator" type="Node2D" parent="." unique_id=265786265]
+position = Vector2(960, 553)
+script = ExtResource("15_1ud3r")
+indicator = ExtResource("14_1ud3r")
+scale_when_not_highlighted = 1
+
+[node name="Placeholder" parent="CarouselIndicator" unique_id=370715420 instance=ExtResource("14_1ud3r")]
+
+[node name="Placeholder2" parent="CarouselIndicator" unique_id=1757983904 instance=ExtResource("14_1ud3r")]
+position = Vector2(-64, 0)
+
+[node name="Placeholder3" parent="CarouselIndicator" unique_id=1605187735 instance=ExtResource("14_1ud3r")]
+position = Vector2(-128, 0)
+scale = Vector2(3, 3)
+
+[node name="Placeholder4" parent="CarouselIndicator" unique_id=1871604872 instance=ExtResource("14_1ud3r")]
+position = Vector2(64, 0)
+
+[node name="Placeholder5" parent="CarouselIndicator" unique_id=1029089098 instance=ExtResource("14_1ud3r")]
+position = Vector2(128, 0)
+
+[connection signal="pressed" from="Left" to="." method="previous_game_mode"]
+[connection signal="pressed" from="Right" to="." method="next_game_mode"]
