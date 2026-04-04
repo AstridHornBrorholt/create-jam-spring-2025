@@ -572,6 +572,7 @@ func clear_full_rows():
 func clear_queued_columns():
 	for pos in queued_shift_above_cells_down:
 		shift_above_cells_down(pos.x, pos.y)
+	queued_shift_above_cells_down = []
 
 func win():
 	run_state.register_score(score_counter.current_score)
