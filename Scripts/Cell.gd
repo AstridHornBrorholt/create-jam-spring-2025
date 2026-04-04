@@ -93,6 +93,7 @@ func destroy(game: TetrisGame):
 					var y = grid_pos.y - 1 + j
 					var c = game.get_at(x, y)
 					game.destroy_at(x, y)
+					game.queue_shift_above_cells_down(x, y)
 			# Play sound
 			if not explosion_sound.playing:
 				explosion_sound.play()

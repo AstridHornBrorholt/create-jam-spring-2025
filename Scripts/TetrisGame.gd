@@ -60,6 +60,7 @@ var ticks_since_last_sideways_move: int = 0
 var tetriminos_just_landed = false     # The flag is used to prevent feel-bad of accidentally slamming a newly spawned tetriminos when you were trying to slam the one that just landed
 
 var queued_line_clears = []
+var queued_shift_above_cells_down:Array[Vector2i] = []
 
 var move_int 
 
@@ -196,6 +197,8 @@ func queue_line_clear(y: int):
 		return
 	queued_line_clears.append(y)
 
+func queue_shift_above_cells_down(x:int, y:int):
+	queued_shift_above_cells_down.append(Vector2i(x, y))
 
 func _draw() -> void:
 	# Background
@@ -321,6 +324,7 @@ func _on_tick() -> void:
 	background.set_filled(remaining_time / max_time)
 	
 	clear_full_rows()
+	clear_queued_columns()
 
 	# Call on_tick for all cells in order of their type
 	var cell_type_to_cells: Dictionary[Cell.Type, Array] = {}
@@ -564,6 +568,10 @@ func clear_full_rows():
 	clearing = false
 	queued_line_clears.clear()
 	return len(cleared_lines) > 0
+
+func clear_queued_columns():
+	for pos in queued_shift_above_cells_down:
+		shift_above_cells_down(pos.x, pos.y)
 
 func win():
 	run_state.register_score(score_counter.current_score)
