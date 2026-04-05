@@ -21,7 +21,8 @@ func set_time(time: float):
 	var milliseconds: int = round(time*1e3)
 	time -= milliseconds
 
-	var lerp_factor = ((max_time - _time) / max_time) ** 2
+	var lerp_factor = (max(0, max_time - _time) / max_time) ** 2
+	lerp_factor = max(0, lerp_factor)
 	var color = Color.BLUE.lerp(Color.RED, lerp_factor)
 	add_theme_font_size_override("normal_font_size", lerpf(initial_size, max_size, lerp_factor))
 	text = ("[color=" + color.to_html() + "]" + 
