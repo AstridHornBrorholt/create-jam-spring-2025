@@ -200,6 +200,11 @@ func queue_line_clear(y: int):
 func queue_shift_above_cells_down(x:int, y:int):
 	queued_shift_above_cells_down.append(Vector2i(x, y))
 
+func set_remaining_time(new_time):
+	remaining_time = new_time
+	remaining_time_label.set_time(remaining_time)
+
+
 func _draw() -> void:
 	# Background
 	if falling_tetriminos != null:

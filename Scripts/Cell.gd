@@ -114,7 +114,7 @@ func destroy(game: TetrisGame):
 			get_parent().add_child(time_effect_instance)
 			time_effect_instance.position = position
 			game.remove_at(grid_pos.x, grid_pos.y)
-			game.remaining_time += 5
+			game.set_remaining_time(game.remaining_time + 5)
 		_:
 			game.remove_at(grid_pos.x, grid_pos.y)
 	
