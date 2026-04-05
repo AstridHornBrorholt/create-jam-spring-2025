@@ -5,6 +5,7 @@ func _init():
 	name = "Unhurried"
 	description = "No time limit"
 	border_color = Color("ff9d39")
+	block_color = Color("ffd4a8")
 	name_color = Color("fe9d00ff")
 
 func get_time(_level:int) -> float:

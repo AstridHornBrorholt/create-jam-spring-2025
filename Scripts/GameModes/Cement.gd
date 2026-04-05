@@ -8,6 +8,7 @@ func _init():
 	description = "Das conk creet babyee"
 	border_color = Color("#646b84")
 	name_color = Color("#a0a0a0")
+	block_color = Color("#d7d7d7")
 
 func get_starting_stash():
 	var creet:Array[TetriminosTemplate] = super.get_starting_stash()

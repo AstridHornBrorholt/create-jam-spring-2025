@@ -70,9 +70,20 @@ var grid_pos: Vector2i
 func _draw() -> void:
 	const rec = Rect2(0, 0, CELL_SIZE, CELL_SIZE)
 	match type:
+		# Modulated types
+		Type.Standard, Type.Compressed, Type.Bomb, Type.Mole:
+			var sprite_coords = SpriteCoords[type]
+			draw_texture_rect_region(sprite_sheet, 
+				rec, 
+				Rect2(sprite_coords.x, sprite_coords.y, SPRITE_SIZE,SPRITE_SIZE), 
+				CurrentRun.game_mode.block_color
+			)
 		_:
 			var sprite_coords = SpriteCoords[type]
-			draw_texture_rect_region(sprite_sheet, rec, Rect2(sprite_coords.x, sprite_coords.y, SPRITE_SIZE,SPRITE_SIZE))
+			draw_texture_rect_region(sprite_sheet, 
+				rec, 
+				Rect2(sprite_coords.x, sprite_coords.y, SPRITE_SIZE,SPRITE_SIZE), 
+			)
 
 func destroy(game: TetrisGame):
 	# Do effects

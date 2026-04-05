@@ -7,6 +7,7 @@ func _init():
 	name = "Gardener"
 	description = "All about plants"
 	border_color = Color("#4da980")
+	block_color = Color("#bbf7d8")
 	name_color = Color("00ff00ff")
 
 func get_starting_stash() -> Array[TetriminosTemplate]:

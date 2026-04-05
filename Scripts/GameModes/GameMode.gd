@@ -4,7 +4,8 @@ class_name GameMode
 var name = "Standard"
 var description = "Default"
 var border_color = Color("#b4cae1")
-var name_color = Color("d9e6ffff")
+var block_color = Color(1.018, 1.018, 1.137)
+var name_color = Color.WHITE
 
 var common_oops_chance = 0.2 # Chance of getting a pure chunk of sand/concrete/compressed
 var legendary_oops_chance = 0.1 # Chance of getting a pure chunk of good stuff 

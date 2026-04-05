@@ -5,6 +5,7 @@ func _init() -> void:
 	name = "Challenge"
 	description = "Challenging"
 	border_color = Color("ff3225")
+	block_color = Color("ffb4ae")
 	name_color = Color("ff0000ff")
 	common_oops_chance = 0.1
 	legendary_oops_chance = 0.05

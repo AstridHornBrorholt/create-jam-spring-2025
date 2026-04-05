@@ -350,8 +350,9 @@ func _on_tick() -> void:
 		elif Input.is_action_pressed("ui_left"):
 			if try_move_falling_tetriminos_x(-1):
 				ticks_since_last_sideways_move = 0
-		elif Input.is_key_pressed(KEY_W):
-			win()
+	
+	if Input.is_physical_key_pressed(KEY_PAGEUP):
+		win()
 	
 	if smash_next:
 		smash_next = false
@@ -524,7 +525,7 @@ func clear_full_rows():
 			for x in WIDTH:
 				var cell = get_at(x, y)
 				if cell != null:
-					cell.modulate = row_clear_modulation
+					cell.modulate += Color(0.2, 0.2, 0.2)
 		
 		var l = len(queued_line_clears)
 		var mult =  0 if l == 1 else l - 1 if l < 4 else l
