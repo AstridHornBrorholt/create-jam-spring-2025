@@ -46,6 +46,7 @@ func load_or_create_config() -> ConfigFile:
 		config.set_value("Volume", "SFX", 1.)
 		config.set_value("Gameplay", "AnimationSpeed", 1.)
 		config.set_value("Gameplay", "GameSpeed", 1.)
+		config.set_value("Menus", "LastGameMode", 4)
 		config.save(OPTIONS_FILE)
 	
 	return config
@@ -78,3 +79,10 @@ func set_game_speed(value:float):
 func get_game_speed() -> float:
 	var v =  config.get_value("Gameplay", "GameSpeed")
 	return v
+	
+func set_last_game_mode(value:int) -> void:
+	config.set_value("Menus", "LastGameMode", value)
+	return config.save(OPTIONS_FILE)
+
+func get_last_game_mode() -> int:
+	return config.get_value("Menus", "LastGameMode", 4)

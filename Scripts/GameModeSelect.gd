@@ -12,7 +12,7 @@ var game_modes:Array[GameMode] = [
 	Urgent.new(),
 ]
 
-var game_mode_index = 4
+var game_mode_index = Options.get_last_game_mode()
 
 @onready var ScrollingTetriminos:EndScreenTetriminos = $"ScrollingTetriminos"
 @onready var Name:RichTextLabel = $"Name"
@@ -59,3 +59,4 @@ func set_game_mode(game_mode_index) -> void:
 	Name.text = "[color=" + c.to_html(false) + "]" + m + "[/color]"
 	Description.text = CurrentRun.game_mode.description
 	CarouselIndicator.set_current(game_mode_index)
+	Options.set_last_game_mode(game_mode_index)
