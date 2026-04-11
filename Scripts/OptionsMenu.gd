@@ -35,6 +35,7 @@ func _ready() -> void:
 	_prepare_fullscreen_button()
 
 func _prepare_fullscreen_button () -> void:
+	set_fullscreen_icon()
 	fullscreen_button.connect("mouse_entered", _on_active)
 	fullscreen_button.connect("mouse_exited", _on_inactive)
 	fullscreen_button.connect("focus_entered", _on_active)
@@ -129,12 +130,17 @@ func _on_game_speed_slider_value_changed(value: float) -> void:
 
 func _on_fullscreen_button_pressed() -> void:
 	if is_fullscreen_mode_active():
-		$"Full Screen Button".texture_normal = image_windowed
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	else:
-		$"Full Screen Button".texture_normal = image_fullscreen
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		
+	set_fullscreen_icon()
+	
+func set_fullscreen_icon() -> void:
+	if is_fullscreen_mode_active():
+		$"Full Screen Button".texture_normal = image_fullscreen
+	else:
+		$"Full Screen Button".texture_normal = image_windowed
+	
 func is_fullscreen_mode_active():
 	var mode = DisplayServer.window_get_mode()
 	if mode == DisplayServer.WINDOW_MODE_FULLSCREEN:
