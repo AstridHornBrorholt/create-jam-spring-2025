@@ -13,6 +13,10 @@ extends Node2D
 @onready var grabber_release_sound:AudioStreamPlayer = $"Release"
 @onready var grabber_release_volume = grabber_release_sound.volume_linear
 
+@onready var image_fullscreen = preload("res://Sprites/buttons/x box.png")
+@onready var image_windowed = preload("res://Sprites/buttons/empty box.png")
+@onready var fullscreen_button = $"Full Screen Button"
+
 const spin_animation = ")x(x"
 const spin_rate = 0.4
 var spin_progress = 0.0
@@ -28,7 +32,15 @@ func _ready() -> void:
 	game_speed_slider.value = Options.get_game_speed()
 	animation_speed_spinner.text = ""
 	game_speed_spinner.text = ""
+	_prepare_fullscreen_button()
 
+func _prepare_fullscreen_button () -> void:
+	set_fullscreen_icon()
+	fullscreen_button.connect("mouse_entered", _on_active)
+	fullscreen_button.connect("mouse_exited", _on_inactive)
+	fullscreen_button.connect("focus_entered", _on_active)
+	fullscreen_button.connect("focus_exited", _on_inactive)
+	
 func _process(delta: float) -> void:
 	var spin = false
 	var spinner = null
@@ -114,3 +126,31 @@ func _on_game_speed_slider_value_changed(value: float) -> void:
 	Options.set_game_speed(value)
 	if not grabbing:
 		grabber_release_sound.play()
+
+
+func _on_fullscreen_button_pressed() -> void:
+	if is_fullscreen_mode_active():
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	set_fullscreen_icon()
+	
+func set_fullscreen_icon() -> void:
+	if is_fullscreen_mode_active():
+		$"Full Screen Button".texture_normal = image_fullscreen
+	else:
+		$"Full Screen Button".texture_normal = image_windowed
+	
+func is_fullscreen_mode_active():
+	var mode = DisplayServer.window_get_mode()
+	if mode == DisplayServer.WINDOW_MODE_FULLSCREEN:
+		return true
+	if mode == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN:
+		return true
+	return false
+
+func _on_active():
+	fullscreen_button.modulate = Color(Color.TURQUOISE)
+
+func _on_inactive():
+	fullscreen_button.modulate = Color(Color.WHITE)

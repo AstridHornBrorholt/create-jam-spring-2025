@@ -20,7 +20,7 @@
 script = ExtResource("1_1ud3r")
 metadata/_edit_horizontal_guides_ = [838.0, 977.0]
 
-[node name="__2231" type="Sprite2D" parent="." unique_id=1995345581]
+[node name="Backdrop" type="Sprite2D" parent="." unique_id=1995345581]
 z_index = -10
 texture = ExtResource("2_whr2p")
 centered = false
@@ -31,6 +31,15 @@ z_index = -10
 position = Vector2(960, 699)
 scale = Vector2(9.55846, 0.838174)
 texture = ExtResource("2_ndrcs")
+
+[node name="Back" parent="." unique_id=1380750691 instance=ExtResource("5_4dqh3")]
+offset_left = 14.0
+offset_top = 23.0
+offset_right = 276.0
+offset_bottom = 135.0
+focus_neighbor_right = NodePath("../Start")
+focus_neighbor_bottom = NodePath("../Start")
+new_scene = "res://Scenes/Main Menu/Main Menu.tscn"
 
 [node name="ScrollingTetriminos" parent="." unique_id=344184529 instance=ExtResource("13_4dqh3")]
 position = Vector2(960, 699)
@@ -90,6 +99,7 @@ offset_left = 392.0
 offset_top = 838.765
 offset_right = 538.0
 offset_bottom = 997.1749
+focus_neighbor_left = NodePath("../Back")
 texture_normal = ExtResource("3_l1cmv")
 texture_pressed = ExtResource("4_rf6ok")
 texture_hover = ExtResource("5_ndrcs")
@@ -105,11 +115,12 @@ texture_pressed = ExtResource("7_a7ags")
 texture_hover = ExtResource("8_flsgv")
 stretch_mode = 0
 
-[node name="Start" parent="." unique_id=1380750691 instance=ExtResource("5_4dqh3")]
+[node name="Start" parent="." unique_id=832521795 instance=ExtResource("5_4dqh3")]
 offset_left = 660.0
 offset_top = 802.0
 offset_right = 1260.0
 offset_bottom = 1053.0
+focus_neighbor_top = NodePath("../Back")
 theme_override_font_sizes/font_size = 200
 text = "Start
 "

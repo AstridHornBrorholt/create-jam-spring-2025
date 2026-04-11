@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://bgkjb0evdblx6" path="res://SFX/pick.wav" id="6_bdxpv"]
 [ext_resource type="AudioStream" uid="uid://cb6j4bnup52id" path="res://SFX/rotate.wav" id="7_bdxpv"]
 [ext_resource type="PackedScene" uid="uid://driyn4ve6jeng" path="res://Prefabs/ButtonToChangeScene.tscn" id="9_hurg8"]
+[ext_resource type="Texture2D" uid="uid://b6jgwm0a21oit" path="res://Sprites/buttons/x box.png" id="10_ban5f"]
 
 [node name="OptionsMenu" type="Node2D" unique_id=649521194]
 script = ExtResource("1_5hy3q")
@@ -112,6 +113,22 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 2
 
+[node name="Full Screen" type="RichTextLabel" parent="." unique_id=1525667639]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 291.0
+offset_top = 719.0
+offset_right = 1059.55
+offset_bottom = 794.0
+grow_horizontal = 2
+theme = ExtResource("3_q4at1")
+theme_override_font_sizes/normal_font_size = 70
+text = "Full screen"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+
 [node name="Animation Speed Slider" type="HSlider" parent="." unique_id=680664481]
 offset_left = 1090.46
 offset_top = 536.0
@@ -168,7 +185,7 @@ offset_right = 1409.46
 offset_bottom = 664.0
 tooltip_text = "Animation speed"
 focus_neighbor_top = NodePath("../Animation Speed Slider")
-focus_neighbor_bottom = NodePath("../Back")
+focus_neighbor_bottom = NodePath("../Full Screen Button")
 focus_next = NodePath("../Back")
 focus_previous = NodePath("../SFX Slider")
 theme = ExtResource("3_q4at1")
@@ -199,7 +216,7 @@ offset_left = 708.0
 offset_top = 870.0
 offset_right = 1357.0
 offset_bottom = 982.0
-focus_neighbor_top = NodePath("../Game Speed Slider")
+focus_neighbor_top = NodePath("../Full Screen Button")
 focus_neighbor_bottom = NodePath("../Music Volume Slider")
 focus_next = NodePath("../Music Volume Slider")
 focus_previous = NodePath("../Game Speed Slider")
@@ -220,6 +237,15 @@ stream = ExtResource("6_bdxpv")
 [node name="Release" type="AudioStreamPlayer" parent="." unique_id=501339358]
 stream = ExtResource("7_bdxpv")
 
+[node name="Full Screen Button" type="TextureButton" parent="." unique_id=62452871]
+offset_left = 1093.0
+offset_top = 717.0
+offset_right = 1157.0
+offset_bottom = 782.0
+focus_neighbor_top = NodePath("../Game Speed Slider")
+focus_neighbor_bottom = NodePath("../Back")
+texture_normal = ExtResource("10_ban5f")
+
 [connection signal="drag_ended" from="Music Volume Slider" to="." method="_on_music_volume_slider_drag_ended"]
 [connection signal="drag_started" from="Music Volume Slider" to="." method="_on_music_volume_slider_drag_started"]
 [connection signal="value_changed" from="Music Volume Slider" to="." method="_on_music_volume_slider_value_changed"]
@@ -233,3 +259,4 @@ stream = ExtResource("7_bdxpv")
 [connection signal="drag_started" from="Game Speed Slider" to="." method="_on_game_speed_slider_drag_started"]
 [connection signal="value_changed" from="Game Speed Slider" to="." method="_on_game_speed_slider_value_changed"]
 [connection signal="finished" from="Tetrogue-Menu" to="Tetrogue-Menu" method="_on_finished"]
+[connection signal="pressed" from="Full Screen Button" to="." method="_on_fullscreen_button_pressed"]
