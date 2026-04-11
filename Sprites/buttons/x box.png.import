@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cardn212468sx"
-path="res://.godot/imported/Screenshot from 2025-11-23 12-57-51.png-abfd130a977c81fa38aa8c950afb2d2f.ctex"
+uid="uid://b6jgwm0a21oit"
+path="res://.godot/imported/x box.png-aaa8cf7639653fcefa7f92ef96b6103d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Screenshots/Screenshot from 2025-11-23 12-57-51.png"
-dest_files=["res://.godot/imported/Screenshot from 2025-11-23 12-57-51.png-abfd130a977c81fa38aa8c950afb2d2f.ctex"]
+source_file="res://Sprites/buttons/x box.png"
+dest_files=["res://.godot/imported/x box.png-aaa8cf7639653fcefa7f92ef96b6103d.ctex"]
 
 [params]
 
