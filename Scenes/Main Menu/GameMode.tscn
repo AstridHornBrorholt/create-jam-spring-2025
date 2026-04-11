@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dy0aphwlectwv" path="res://Scripts/GameModeSelect.gd" id="1_1ud3r"]
 [ext_resource type="Texture2D" uid="uid://dj7j4put16rls" path="res://Sprites/Gray.png" id="2_ndrcs"]
-[ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="2_whr2p"]
 [ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="3_0ts2j"]
 [ext_resource type="Texture2D" uid="uid://tlpgps5yd22j" path="res://Sprites/ArrowLeft.png" id="3_l1cmv"]
 [ext_resource type="Texture2D" uid="uid://cdw1s136kba0v" path="res://Sprites/ArrowRight.png" id="4_0byyq"]
@@ -20,26 +19,21 @@
 script = ExtResource("1_1ud3r")
 metadata/_edit_horizontal_guides_ = [838.0, 977.0]
 
-[node name="__2231" type="Sprite2D" parent="." unique_id=1995345581]
-z_index = -10
-texture = ExtResource("2_whr2p")
-centered = false
-
-[node name="Back" parent="__2231" unique_id=1380750691 instance=ExtResource("5_4dqh3")]
-offset_left = 14.0
-offset_top = 23.0
-offset_right = 276.0
-offset_bottom = 135.0
-focus_neighbor_right = NodePath("../../Start")
-focus_neighbor_bottom = NodePath("../../Start")
-new_scene = "res://Scenes/Main Menu/Main Menu.tscn"
-
 [node name="Gray" type="Sprite2D" parent="." unique_id=1464666413]
 modulate = Color(1, 1, 1, 0.14902)
 z_index = -10
 position = Vector2(960, 699)
 scale = Vector2(9.55846, 0.838174)
 texture = ExtResource("2_ndrcs")
+
+[node name="Back" parent="." unique_id=1380750691 instance=ExtResource("5_4dqh3")]
+offset_left = 14.0
+offset_top = 23.0
+offset_right = 276.0
+offset_bottom = 135.0
+focus_neighbor_right = NodePath("../Start")
+focus_neighbor_bottom = NodePath("../Start")
+new_scene = "res://Scenes/Main Menu/Main Menu.tscn"
 
 [node name="ScrollingTetriminos" parent="." unique_id=344184529 instance=ExtResource("13_4dqh3")]
 position = Vector2(960, 699)
@@ -99,7 +93,7 @@ offset_left = 392.0
 offset_top = 838.765
 offset_right = 538.0
 offset_bottom = 997.1749
-focus_neighbor_left = NodePath("../__2231/Back")
+focus_neighbor_left = NodePath("../Back")
 texture_normal = ExtResource("3_l1cmv")
 texture_pressed = ExtResource("4_rf6ok")
 texture_hover = ExtResource("5_ndrcs")
@@ -120,7 +114,7 @@ offset_left = 660.0
 offset_top = 802.0
 offset_right = 1260.0
 offset_bottom = 1053.0
-focus_neighbor_top = NodePath("../__2231/Back")
+focus_neighbor_top = NodePath("../Back")
 theme_override_font_sizes/font_size = 200
 text = "Start
 "
