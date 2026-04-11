@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dy0aphwlectwv" path="res://Scripts/GameModeSelect.gd" id="1_1ud3r"]
 [ext_resource type="Texture2D" uid="uid://dj7j4put16rls" path="res://Sprites/Gray.png" id="2_ndrcs"]
+[ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="2_whr2p"]
 [ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="3_0ts2j"]
 [ext_resource type="Texture2D" uid="uid://tlpgps5yd22j" path="res://Sprites/ArrowLeft.png" id="3_l1cmv"]
 [ext_resource type="Texture2D" uid="uid://cdw1s136kba0v" path="res://Sprites/ArrowRight.png" id="4_0byyq"]
@@ -18,6 +19,11 @@
 [node name="Game Mode" type="Node2D" unique_id=649521194]
 script = ExtResource("1_1ud3r")
 metadata/_edit_horizontal_guides_ = [838.0, 977.0]
+
+[node name="Backdrop" type="Sprite2D" parent="." unique_id=1995345581]
+z_index = -10
+texture = ExtResource("2_whr2p")
+centered = false
 
 [node name="Gray" type="Sprite2D" parent="." unique_id=1464666413]
 modulate = Color(1, 1, 1, 0.14902)
