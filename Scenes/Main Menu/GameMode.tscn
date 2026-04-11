@@ -30,6 +30,8 @@ offset_left = 14.0
 offset_top = 23.0
 offset_right = 276.0
 offset_bottom = 135.0
+focus_neighbor_right = NodePath("../../Start")
+focus_neighbor_bottom = NodePath("../../Start")
 new_scene = "res://Scenes/Main Menu/Main Menu.tscn"
 
 [node name="Gray" type="Sprite2D" parent="." unique_id=1464666413]
@@ -97,6 +99,7 @@ offset_left = 392.0
 offset_top = 838.765
 offset_right = 538.0
 offset_bottom = 997.1749
+focus_neighbor_left = NodePath("../__2231/Back")
 texture_normal = ExtResource("3_l1cmv")
 texture_pressed = ExtResource("4_rf6ok")
 texture_hover = ExtResource("5_ndrcs")
@@ -117,6 +120,7 @@ offset_left = 660.0
 offset_top = 802.0
 offset_right = 1260.0
 offset_bottom = 1053.0
+focus_neighbor_top = NodePath("../__2231/Back")
 theme_override_font_sizes/font_size = 200
 text = "Start
 "

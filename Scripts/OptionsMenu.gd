@@ -15,6 +15,7 @@ extends Node2D
 
 @onready var image_fullscreen = preload("res://Sprites/buttons/x box.png")
 @onready var image_windowed = preload("res://Sprites/buttons/empty box.png")
+@onready var fullscreen_button = $"Full Screen Button"
 
 const spin_animation = ")x(x"
 const spin_rate = 0.4
@@ -31,7 +32,14 @@ func _ready() -> void:
 	game_speed_slider.value = Options.get_game_speed()
 	animation_speed_spinner.text = ""
 	game_speed_spinner.text = ""
+	_prepare_fullscreen_button()
 
+func _prepare_fullscreen_button () -> void:
+	fullscreen_button.connect("mouse_entered", _on_active)
+	fullscreen_button.connect("mouse_exited", _on_inactive)
+	fullscreen_button.connect("focus_entered", _on_active)
+	fullscreen_button.connect("focus_exited", _on_inactive)
+	
 func _process(delta: float) -> void:
 	var spin = false
 	var spinner = null
@@ -134,3 +142,9 @@ func is_fullscreen_mode_active():
 	if mode == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN:
 		return true
 	return false
+
+func _on_active():
+	fullscreen_button.modulate = Color(Color.TURQUOISE)
+
+func _on_inactive():
+	fullscreen_button.modulate = Color(Color.WHITE)
