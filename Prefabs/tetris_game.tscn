@@ -25,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://cf4l84fp6psfs" path="res://SFX/dead.wav" id="22_ke8gq"]
 [ext_resource type="TileSet" uid="uid://dyylm5f8ucsk2" path="res://background.tres" id="22_omla6"]
 [ext_resource type="AudioStream" uid="uid://dhx71vli85gea" path="res://SFX/timer_beep.wav" id="23_qvdiw"]
+[ext_resource type="AudioStream" uid="uid://eeh6ks38r5x6" path="res://SFX/flatline.wav" id="24_qs4so"]
 
 [node name="TetrisGame" type="Node2D" unique_id=1994422528 groups=["TetrisGame"]]
 script = ExtResource("1_43n6e")
@@ -227,6 +228,10 @@ stream = ExtResource("22_ke8gq")
 
 [node name="TimerBeep" type="AudioStreamPlayer" parent="Sounds" unique_id=1761455584]
 stream = ExtResource("23_qvdiw")
+
+[node name="Flatline" type="AudioStreamPlayer" parent="Sounds" unique_id=245237893]
+stream = ExtResource("24_qs4so")
+volume_db = -2.701
 
 [node name="background" type="TileMapLayer" parent="." unique_id=1964334333]
 z_index = -1

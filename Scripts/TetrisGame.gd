@@ -36,6 +36,7 @@ const cell_collider:PackedScene = preload("res://Prefabs/CellCollider.tscn")
 @onready var win_sound:AudioStreamPlayer = $"Sounds/NextLevel"
 @onready var dead_sound:AudioStreamPlayer = $"Sounds/Dead"
 @onready var timer_beep:AudioStreamPlayer = $"Sounds/TimerBeep"
+@onready var flatline_sound:AudioStreamPlayer = $"Sounds/Flatline"
 @onready var background_music:AudioStreamPlayer = $"Tetrogue-Main"
 
 
