@@ -79,8 +79,29 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_j5yw3")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppj2d"]
+size = Vector2(32, 672)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_px6h7"]
+size = Vector2(320, 32)
+
 [node name="Border" type="TileMapLayer" unique_id=1949955717]
 self_modulate = Color(0.704573, 0.79076, 0.881203, 1)
 tile_map_data = PackedByteArray("AAABABQAAAAAAAAAAAACABQAAAAAAAAAAAADABQAAAAAAAAAAAAEABQAAAAAAAAAAAAFABQAAAAAAAAAAAAGABQAAAAAAAAAAAAHABQAAAAAAAAAAAAIABQAAAAAAAAAAAAJABQAAAAAAAAAAAAKABQAAAAAAAAAAAAKABMAAAAAAAAAAAAKABIAAAAAAAAAAAAKABEAAAAAAAAAAAAKABAAAAAAAAAAAAAKAA8AAAAAAAAAAAAKAA4AAAAAAAAAAAAKAA0AAAAAAAAAAAAKAAwAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAoAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAgAAAAAAAAAAAAKAAcAAAAAAAAAAAAKAAYAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAEAAAAAAAAAAAAAABQAAAAAAAAAAAD//xQAAAAAAAAAAAD//xMAAAAAAAAAAAD//xIAAAAAAAAAAAD//xEAAAAAAAAAAAD//xAAAAAAAAAAAAD//w8AAAAAAAAAAAD//w4AAAAAAAAAAAD//w0AAAAAAAAAAAD//wwAAAAAAAAAAAD//wsAAAAAAAAAAAD//woAAAAAAAAAAAD//wkAAAAAAAAAAAD//wgAAAAAAAAAAAD//wcAAAAAAAAAAAD//wYAAAAAAAAAAAD//wUAAAAAAAAAAAD//wQAAAAAAAAAAAD//wMAAAAAAAAAAAD//wIAAAAAAAAAAAD//wEAAAAAAAAAAAD//wAAAAAAAAAAAAAKAAAAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_kldst")
 script = ExtResource("2_ppj2d")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1593356174]
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=1811624579]
+position = Vector2(-16, 336)
+shape = SubResource("RectangleShape2D_ppj2d")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D" unique_id=582950824]
+position = Vector2(336, 336)
+shape = SubResource("RectangleShape2D_ppj2d")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="RigidBody2D" unique_id=776510585]
+position = Vector2(160, 656)
+shape = SubResource("RectangleShape2D_px6h7")

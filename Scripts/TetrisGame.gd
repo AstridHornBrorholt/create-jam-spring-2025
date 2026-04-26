@@ -13,6 +13,7 @@ var tick_progress = 0.0
 const cell_prefab: PackedScene = preload("res://Prefabs/Cell.tscn")
 const tetriminos_prefab: PackedScene = preload("res://Prefabs/Tetriminos.tscn")
 const selector_prefab: PackedScene = preload("res://Scenes/Run Menus/Selector.tscn")
+const cell_collider:PackedScene = preload("res://Prefabs/CellCollider.tscn")
 
 @onready var run_state:RunState = CurrentRun
 @onready var remaining_time_label:RichTextLabel = $"Remaining Time"
@@ -33,6 +34,8 @@ const selector_prefab: PackedScene = preload("res://Scenes/Run Menus/Selector.ts
 @onready var clear_sound:AudioStreamPlayer = $"Sounds/Clear"
 @onready var hold_sound:AudioStreamPlayer = $"Sounds/Hold"
 @onready var win_sound:AudioStreamPlayer = $"Sounds/NextLevel"
+@onready var dead_sound:AudioStreamPlayer = $"Sounds/Dead"
+@onready var timer_beep:AudioStreamPlayer = $"Sounds/TimerBeep"
 @onready var background_music:AudioStreamPlayer = $"Tetrogue-Main"
 
 
@@ -314,6 +317,13 @@ func _process(delta):
 		elif Input.is_action_pressed("ui_left"):
 			if try_move_falling_tetriminos_x(-1):
 				time_since_last_sideways_move = 0
+	
+	
+	if remaining_time - floor(remaining_time) < delta and remaining_time < 7 and remaining_time > 1:
+		timer_beep.play()
+		if remaining_time < 2:
+			timer_beep.pitch_scale += 0.2
+		
 	
 	if remaining_time > 1:
 		remaining_time -= delta
@@ -603,10 +613,37 @@ func win():
 func dead():
 	run_state.register_score(score_counter.current_score)
 	status_label.text = "[color=red]DIED :'([/color]"
+	dead_sound.play()
 	pause = true
 	died = true
 	continue_button.visible = true
 	continue_button.grab_focus()
+	
+	for row in grid:
+		for cell:Cell in row:
+			make_floppy(cell)
+	
+	for cell:Cell in held_tetriminos.cells:
+		make_floppy(cell)
+		
+	for cell:Cell in next_tetriminos.cells:
+		make_floppy(cell)
+	
+	for cell:Cell in falling_tetriminos.cells:
+		make_floppy(cell)
+
+func make_floppy(cell:Cell) -> void:
+	if cell == null:
+		return
+	cell.reparent(self)
+	var collider:RigidBody2D = cell_collider.instantiate()
+	collider.position = cell.position
+	collider.scale = cell.scale
+	var angle = randf_range(-3*PI/4, -PI/4) # I only want it to be on upwards trajectories
+	var magnitude = randf_range(100., 200.)
+	collider.linear_velocity = (Vector2(cos(angle)*magnitude, sin(angle)*magnitude))
+	cell.get_parent().add_child(collider)
+	cell.reparent(collider)
 
 func _on_continue_button_pressed() -> void:
 	if died:

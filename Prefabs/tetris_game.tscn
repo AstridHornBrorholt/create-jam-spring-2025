@@ -22,7 +22,9 @@
 [ext_resource type="Script" uid="uid://0mya0f5x0amh" path="res://Scripts/Tetriminos.gd" id="14_sbb0m"]
 [ext_resource type="AudioStream" uid="uid://kvd5yyeinmip" path="res://SFX/hold.wav" id="16_plmhb"]
 [ext_resource type="Texture2D" uid="uid://de5fw5hcg7hjp" path="res://Sprites/lock.png" id="20_unx4p"]
+[ext_resource type="AudioStream" uid="uid://cf4l84fp6psfs" path="res://SFX/dead.wav" id="22_ke8gq"]
 [ext_resource type="TileSet" uid="uid://dyylm5f8ucsk2" path="res://background.tres" id="22_omla6"]
+[ext_resource type="AudioStream" uid="uid://dhx71vli85gea" path="res://SFX/timer_beep.wav" id="23_qvdiw"]
 
 [node name="TetrisGame" type="Node2D" unique_id=1994422528 groups=["TetrisGame"]]
 script = ExtResource("1_43n6e")
@@ -219,6 +221,12 @@ stream = ExtResource("16_plmhb")
 
 [node name="NextLevel" type="AudioStreamPlayer" parent="Sounds" unique_id=758073684]
 stream = ExtResource("11_xqelj")
+
+[node name="Dead" type="AudioStreamPlayer" parent="Sounds" unique_id=1746525787]
+stream = ExtResource("22_ke8gq")
+
+[node name="TimerBeep" type="AudioStreamPlayer" parent="Sounds" unique_id=1761455584]
+stream = ExtResource("23_qvdiw")
 
 [node name="background" type="TileMapLayer" parent="." unique_id=1964334333]
 z_index = -1

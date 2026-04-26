@@ -1,9 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkhfk1np6ugff"]
+[gd_scene format=3 uid="uid://bkhfk1np6ugff"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hfpn"]
-size = Vector2(31, 31)
+size = Vector2(30, 30)
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="RigidBody2D" type="RigidBody2D" unique_id=724495249]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=587966290]
+position = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_7hfpn")
