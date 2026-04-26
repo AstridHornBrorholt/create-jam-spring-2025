@@ -42,7 +42,7 @@ const selector_prefab: PackedScene = preload("res://Scenes/Run Menus/Selector.ts
 var tick_number: int = 0 # The current tick count
 @export var move_interval_ticks: int = 14
 @export var move_fast_interval_ticks: int = 2
-@export var move_sideways_interval_ticks: int = 0.1/tick_length
+@export var move_sideways_interval: float = 0.1 # Time between moves in seconds
 @export var row_clear_modulation: Color = Color(1.2, 1.2, 1.2)
 
 var pause: bool = false
@@ -56,7 +56,7 @@ var clearing: bool = false
 var grid: Array = []
 var falling_tetriminos: Tetriminos = null
 var ticks_since_last_down_move: int = 0
-var ticks_since_last_sideways_move: int = 0
+var time_since_last_sideways_move: float = 0
 var tetriminos_just_landed = false     # The flag is used to prevent feel-bad of accidentally slamming a newly spawned tetriminos when you were trying to slam the one that just landed
 
 var queued_line_clears = []
@@ -257,6 +257,7 @@ func _process(delta):
 		else:
 			move_sound.pitch_scale = 0.7
 			move_sound.play()
+	
 	if Input.is_action_just_pressed("hold") and !hold_next and !hold_locked:
 		hold_sound.pitch_scale = 1
 		hold_sound.play()
@@ -264,12 +265,13 @@ func _process(delta):
 	elif Input.is_action_just_pressed("hold") and hold_locked:
 		hold_sound.pitch_scale = 0.7
 		hold_sound.play()
+	
 	if Input.is_action_just_pressed("ui_right"):
 		tetriminos_just_landed = false
 		if try_move_falling_tetriminos_x(1):
 			move_sound.pitch_scale = 1
 			move_sound.play()
-			ticks_since_last_sideways_move = -move_sideways_interval_ticks*4
+			time_since_last_sideways_move = -move_sideways_interval # Wait an extra beat before it keeps moving
 		else:
 			move_sound.pitch_scale = 0.7
 			move_sound.play()
@@ -278,7 +280,7 @@ func _process(delta):
 		if try_move_falling_tetriminos_x(-1):
 			move_sound.pitch_scale = 1
 			move_sound.play()
-			ticks_since_last_sideways_move = -move_sideways_interval_ticks*4
+			time_since_last_sideways_move = -move_sideways_interval # Wait an extra beat before it keeps moving
 		else:
 			move_sound.pitch_scale = 0.7
 			move_sound.play()
@@ -302,6 +304,16 @@ func _process(delta):
 		else:
 			spin_sound.pitch_scale = 0.6
 			spin_sound.play()
+	
+	# Move sideways if key is held.
+	time_since_last_sideways_move += delta
+	if falling_tetriminos != null && time_since_last_sideways_move >= move_sideways_interval:
+		if Input.is_action_pressed("ui_right"):
+			if try_move_falling_tetriminos_x(1):
+				time_since_last_sideways_move = 0
+		elif Input.is_action_pressed("ui_left"):
+			if try_move_falling_tetriminos_x(-1):
+				time_since_last_sideways_move = 0
 	
 	if remaining_time > 1:
 		remaining_time -= delta
@@ -345,16 +357,6 @@ func _on_tick() -> void:
 		if cell_type in cell_type_to_cells:
 			for cell in cell_type_to_cells[cell_type]:
 				cell.on_tick(self, tick_number)
-	
-	# Move sideways if key is held
-	ticks_since_last_sideways_move += 1
-	if falling_tetriminos != null && ticks_since_last_sideways_move >= move_sideways_interval_ticks:
-		if Input.is_action_pressed("ui_right"):
-			if try_move_falling_tetriminos_x(1):
-				ticks_since_last_sideways_move = 0
-		elif Input.is_action_pressed("ui_left"):
-			if try_move_falling_tetriminos_x(-1):
-				ticks_since_last_sideways_move = 0
 	
 	if Input.is_physical_key_pressed(KEY_PAGEUP):
 		win()
