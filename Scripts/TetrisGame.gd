@@ -321,9 +321,10 @@ func _process(delta):
 	
 	
 	if remaining_time - floor(remaining_time) < delta and remaining_time < 7 and remaining_time > 1:
-		timer_beep.play()
-		if remaining_time < 2:
-			timer_beep.pitch_scale += 0.2
+		if remaining_time > 2:
+			timer_beep.play()
+		else:
+			flatline_sound.play()
 		
 	
 	if remaining_time > 1:
