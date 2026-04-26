@@ -669,3 +669,27 @@ func load_map():
 			if cell == null:
 				continue
 			set_at(row, col, cell)
+
+func go_to_win_screen():
+	for row in range(HEIGHT):
+		var r = []
+		for col in range(WIDTH):
+			var c = get_at(col, row)
+			if c != null:
+				r.append(c.type)
+			else:
+				r.append(c)
+		run_state.game_grid.append(r)
+	
+	run_state.game_background_filledness = background.get_filled()
+	run_state.game_animated_background = $"../AnimatedBackground"
+	run_state.game_animated_background.get_parent().remove_child(run_state.game_animated_background)
+	
+	run_state.previously_held = held_tetriminos.template
+	run_state.previously_held_position = held_tetriminos.global_position
+	run_state.previously_next = next_tetriminos.template
+	run_state.previously_next_position = next_tetriminos.global_position
+	run_state.previously_falling = falling_tetriminos.template
+	run_state.previously_falling_position = falling_tetriminos.global_position
+	
+	get_tree().change_scene_to_file("res://Scenes/Run Menus/WinScreen.tscn")

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bu0w1fms4w7gw"]
+
+[ext_resource type="Script" uid="uid://707myutg6m1r" path="res://Scripts/SolitaireEffect.gd" id="1_iahyr"]
+
+[node name="SolitaireEffect" type="Node2D" unique_id=517438347]
+script = ExtResource("1_iahyr")

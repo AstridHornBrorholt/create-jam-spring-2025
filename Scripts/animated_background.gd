@@ -8,7 +8,6 @@ extends Node2D
 @export var rotation_speed_min = -0.3
 @export var rotation_speed_max =  0.3
 
-@onready var this = $"."
 @onready var tetriminos_animated = preload("res://Prefabs/TetriminosAnimated.tscn")
 @onready var generator:TetriminoGenerator = TetriminoGenerator.new()
 
@@ -36,7 +35,7 @@ func spawn_new():
 	for cell:CellTemplate in template.cells:
 		cell.type = Cell.Type.Standard
 	minos.setup(template)
-	this.add_child(minos)
+	self.add_child(minos)
 	
 	# speed
 	minos.falling_speed = randf_range(fall_speed_min, fall_speed_max)

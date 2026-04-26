@@ -27,6 +27,11 @@ var previously_next_position:Vector2
 var previously_falling:TetriminosTemplate = TetriminosTemplate.new([])
 var previously_falling_position:Vector2
 
+# Used by the win screen. 
+var game_grid:Array #Houses game.grid, the [x][y] array with all the cells in them. 
+var game_background_filledness:float # The decaying background
+var game_animated_background:Node2D # The "AnimatedBackground" with falling blocks
+
 func _init() -> void:
 	reset()
 

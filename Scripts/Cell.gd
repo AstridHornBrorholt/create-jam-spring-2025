@@ -1,9 +1,6 @@
 extends Node2D
 class_name Cell
 
-@onready var lightning_sound:AudioStreamPlayer = $"../Sounds/Lightning"
-@onready var explosion_sound:AudioStreamPlayer = $"../Sounds/Explosion"
-
 var being_destroyed = false # Useful for e.g. bombs that might get destroy called on them twice
 
 const SPRITE_SIZE = 32
@@ -106,6 +103,7 @@ func destroy(game: TetrisGame):
 					game.destroy_at(x, y)
 					game.queue_shift_above_cells_down(x, y)
 			# Play sound
+			var explosion_sound:AudioStreamPlayer = $"../Sounds/Explosion"
 			if not explosion_sound.playing:
 				explosion_sound.play()
 			game.remove_at(grid_pos.x, grid_pos.y)
@@ -219,6 +217,7 @@ func on_tick(game: TetrisGame, tick: int):
 			eff.position = position + Vector2(0, (game.HEIGHT - grid_pos.y - 1) * CELL_SIZE)
 			
 			# Play sound
+			var lightning_sound:AudioStreamPlayer = $"../Sounds/Lightning"
 			if not lightning_sound.playing:
 				lightning_sound.play()
 			
