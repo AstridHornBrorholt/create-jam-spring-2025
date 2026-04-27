@@ -7,6 +7,7 @@
 [ext_resource type="TileSet" uid="uid://dtyl4e6qqp033" path="res://Sprites/tiles.tres" id="4_jd67p"]
 [ext_resource type="PackedScene" uid="uid://bbk7cc4j1iwo6" path="res://Prefabs/Border.tscn" id="5_mj6rh"]
 [ext_resource type="PackedScene" uid="uid://b7njvl3j3a8jx" path="res://Prefabs/RewardIndicator.tscn" id="6_jd67p"]
+[ext_resource type="Script" uid="uid://b8lh7on8j7j7u" path="res://Scripts/ButtonWithShadow.gd" id="8_slw5b"]
 
 [node name="LevelOption" type="Node2D" unique_id=335722981]
 script = ExtResource("1_1m5am")
@@ -18,23 +19,27 @@ position = Vector2(4.49999, -43.5)
 scale = Vector2(2.33333, 3.47303)
 texture = ExtResource("1_x5qd5")
 
-[node name="Map Transform" type="Sprite2D" parent="." unique_id=1898322061]
+[node name="Level" type="Node2D" parent="." unique_id=667078825]
+modulate = Color(0.7162962, 0.7162962, 0.7162962, 1)
+scale = Vector2(0.9, 0.9)
+
+[node name="Map Transform" type="Sprite2D" parent="Level" unique_id=1898322061]
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(0, -32)
 scale = Vector2(2.49751, 3.60946)
 texture = ExtResource("1_x5qd5")
 
-[node name="Map" parent="Map Transform" unique_id=971638093 instance=ExtResource("2_viymq")]
+[node name="Map" parent="Level/Map Transform" unique_id=971638093 instance=ExtResource("2_viymq")]
 position = Vector2(-81.5763, -119.438)
 scale = Vector2(0.51145, 0.353891)
 tile_set = ExtResource("4_jd67p")
 
-[node name="Border" parent="Map Transform" unique_id=1949955717 instance=ExtResource("5_mj6rh")]
+[node name="Border" parent="Level/Map Transform" unique_id=1949955717 instance=ExtResource("5_mj6rh")]
 z_index = 1
 position = Vector2(-81.5763, -119.43801)
 scale = Vector2(0.51145, 0.35389107)
 
-[node name="Level info" type="RichTextLabel" parent="." unique_id=522126650]
+[node name="Level info" type="RichTextLabel" parent="Level" unique_id=522126650]
 offset_left = -198.0
 offset_top = -455.0
 offset_right = 204.0
@@ -52,5 +57,35 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="RewardIndicator" parent="." unique_id=1173157405 instance=ExtResource("6_jd67p")]
+[node name="RewardIndicator" parent="Level" unique_id=1173157405 instance=ExtResource("6_jd67p")]
 position = Vector2(-5, -101)
+
+[node name="SelectButton" type="Button" parent="." unique_id=1822852612]
+offset_left = -246.0
+offset_top = -329.0
+offset_right = 254.0
+offset_bottom = 571.005
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../SelectButton3")
+focus_neighbor_right = NodePath("../SelectButton2")
+focus_next = NodePath("../SelectButton2")
+focus_previous = NodePath("../SelectButton3")
+theme = ExtResource("3_xspn1")
+theme_override_font_sizes/font_size = 90
+text = "
+
+
+
+
+
+
+
+Select"
+autowrap_trim_flags = 0
+script = ExtResource("8_slw5b")
+metadata/_custom_type_script = "uid://b8lh7on8j7j7u"
+
+[connection signal="button_down" from="SelectButton" to="." method="_on_select_button_button_down"]
+[connection signal="focus_entered" from="SelectButton" to="." method="_on_select_button_focus_entered"]
+[connection signal="focus_exited" from="SelectButton" to="." method="_on_select_button_focus_exited"]
+[connection signal="mouse_entered" from="SelectButton" to="." method="_on_select_button_mouse_entered"]

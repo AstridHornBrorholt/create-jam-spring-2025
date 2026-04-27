@@ -3,8 +3,6 @@
 [ext_resource type="Script" uid="uid://ch1goylophwdu" path="res://Scripts/next_level_select.gd" id="1_1wg55"]
 [ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="2_nhjkk"]
 [ext_resource type="PackedScene" uid="uid://dwb4ki65x1qgx" path="res://Prefabs/level_option.tscn" id="3_penfb"]
-[ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="4_kf4ex"]
-[ext_resource type="Script" uid="uid://b8lh7on8j7j7u" path="res://Scripts/ButtonWithShadow.gd" id="5_nhjkk"]
 
 [node name="NextLevelSelect" type="Node2D" unique_id=1298706304]
 script = ExtResource("1_1wg55")
@@ -15,99 +13,10 @@ position = Vector2(960, 540)
 texture = ExtResource("2_nhjkk")
 
 [node name="LevelOption1" parent="." unique_id=362132782 instance=ExtResource("3_penfb")]
-modulate = Color(0.650128, 0.650128, 0.650128, 1)
 position = Vector2(384, 512)
-scale = Vector2(0.911208, 0.911208)
-
-[node name="SelectButton1" type="Button" parent="." unique_id=37148490]
-offset_left = 131.0
-offset_top = 132.875
-offset_right = 631.0
-offset_bottom = 1032.88
-size_flags_horizontal = 4
-focus_neighbor_left = NodePath("../SelectButton3")
-focus_neighbor_right = NodePath("../SelectButton2")
-focus_next = NodePath("../SelectButton2")
-focus_previous = NodePath("../SelectButton3")
-theme = ExtResource("4_kf4ex")
-theme_override_font_sizes/font_size = 90
-text = "
-
-
-
-
-
-
-
-Select"
-autowrap_trim_flags = 0
-script = ExtResource("5_nhjkk")
-metadata/_custom_type_script = "uid://b8lh7on8j7j7u"
 
 [node name="LevelOption2" parent="." unique_id=1961918189 instance=ExtResource("3_penfb")]
-modulate = Color(0.650128, 0.650128, 0.650128, 1)
 position = Vector2(960, 512)
-scale = Vector2(0.911208, 0.911208)
-
-[node name="SelectButton2" type="Button" parent="." unique_id=227652855]
-offset_left = 709.0
-offset_top = 132.875
-offset_right = 1209.0
-offset_bottom = 1032.88
-focus_neighbor_left = NodePath("../SelectButton1")
-focus_neighbor_right = NodePath("../SelectButton3")
-focus_next = NodePath("../SelectButton3")
-focus_previous = NodePath("../SelectButton1")
-theme = ExtResource("4_kf4ex")
-theme_override_font_sizes/font_size = 90
-text = "
-
-
-
-
-
-
-
-Select"
-autowrap_trim_flags = 0
-script = ExtResource("5_nhjkk")
-metadata/_custom_type_script = "uid://b8lh7on8j7j7u"
 
 [node name="LevelOption3" parent="." unique_id=1574975411 instance=ExtResource("3_penfb")]
-modulate = Color(0.650128, 0.650128, 0.650128, 1)
 position = Vector2(1536, 512)
-scale = Vector2(0.911208, 0.911208)
-
-[node name="SelectButton3" type="Button" parent="." unique_id=223422360]
-offset_left = 1284.0
-offset_top = 132.875
-offset_right = 1784.0
-offset_bottom = 1032.88
-focus_neighbor_left = NodePath("../SelectButton2")
-focus_neighbor_right = NodePath("../SelectButton1")
-focus_next = NodePath("../SelectButton1")
-focus_previous = NodePath("../SelectButton2")
-theme = ExtResource("4_kf4ex")
-theme_override_font_sizes/font_size = 90
-text = "
-
-
-
-
-
-
-
-Select"
-autowrap_trim_flags = 0
-script = ExtResource("5_nhjkk")
-metadata/_custom_type_script = "uid://b8lh7on8j7j7u"
-
-[connection signal="button_down" from="SelectButton1" to="." method="_on_select_button_1_button_down"]
-[connection signal="focus_entered" from="SelectButton1" to="." method="_on_select_button_1_focus_entered"]
-[connection signal="mouse_entered" from="SelectButton1" to="." method="_on_select_button_1_mouse_entered"]
-[connection signal="button_down" from="SelectButton2" to="." method="_on_select_button_2_button_down"]
-[connection signal="focus_entered" from="SelectButton2" to="." method="_on_select_button_2_focus_entered"]
-[connection signal="mouse_entered" from="SelectButton2" to="." method="_on_select_button_2_mouse_entered"]
-[connection signal="button_down" from="SelectButton3" to="." method="_on_select_button_3_button_down"]
-[connection signal="focus_entered" from="SelectButton3" to="." method="_on_select_button_3_focus_entered"]
-[connection signal="mouse_entered" from="SelectButton3" to="." method="_on_select_button_3_mouse_entered"]

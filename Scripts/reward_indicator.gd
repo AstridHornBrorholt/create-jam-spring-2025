@@ -32,3 +32,6 @@ func set_reward_type(reward_type:LevelOption.RewardType):
 		LevelOption.RewardType.Destroy:
 			icon.texture = destroy_icon
 			label.text = "Destroy"
+		LevelOption.RewardType.Nothing:
+			icon.texture = null
+			label.text = ""
