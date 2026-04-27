@@ -26,6 +26,7 @@ const cell_collider:PackedScene = preload("res://Prefabs/CellCollider.tscn")
 @onready var next_tetriminos:Tetriminos = $"Next/Wiggler/NextTetriminos"
 @onready var held_tetriminos:Tetriminos = $"Held/Wiggler/HeldTetriminos"
 @onready var continue_button = $"ContinueButton"
+@onready var reward_label:RichTextLabel = $"Reward"
 @onready var reward_indicator:RewardIndicator = $"RewardIndicator"
 
 @onready var move_sound:AudioStreamPlayer = $"Sounds/Move"
@@ -86,6 +87,9 @@ func _ready() -> void:
 	run_state.new_game()
 	score_goal = run_state.next_score_goal
 	remaining_time = run_state.next_time_limit
+	if run_state.next_reward == LevelOption.RewardType.Nothing:
+		reward_label.visible = false
+		reward_indicator.visible = false
 	reward_indicator.set_reward_type(run_state.next_reward)
 	reward_indicator.set_wiggle(false)
 	max_time = remaining_time
@@ -596,13 +600,15 @@ func clear_queued_columns():
 
 func win():
 	run_state.register_score(score_counter.current_score)
-	run_state.increment_level()
 	run_state.previously_held = held_tetriminos.template
 	run_state.previously_held_position = held_tetriminos.global_position
 	run_state.previously_next = next_tetriminos.template
 	run_state.previously_next_position = next_tetriminos.global_position
 	run_state.previously_falling = falling_tetriminos.template
 	run_state.previously_falling_position = falling_tetriminos.global_position
+	if run_state.level == run_state.game_mode.win_level:
+		go_to_win_screen()
+	run_state.increment_level()
 	status_label.text = "[color=green]Winner! :-)[/color]"
 	pause = true
 	win_sound.play()
@@ -610,8 +616,6 @@ func win():
 	continue_button.visible = true
 	continue_button.grab_focus()
 
-
-	
 func dead():
 	run_state.register_score(score_counter.current_score)
 	status_label.text = "[color=red]DIED :'([/color]"
@@ -657,8 +661,11 @@ func _on_continue_button_pressed() -> void:
 			LevelOption.RewardType.Destroy:
 				get_tree().change_scene_to_file("res://Scenes/Run Menus/Destroy.tscn")
 			#LevelOption.RewardType.Modify:
+			LevelOption.RewardType.Nothing:
+				get_tree().change_scene_to_file("res://Scenes/Run Menus/NextLevelSelect.tscn")
 			_:
 				assert(false, "Not supported")
+				get_tree().change_scene_to_file("res://Scenes/Run Menus/NextLevelSelect.tscn")
 	
 func load_map():
 	var map = run_state.get_map()

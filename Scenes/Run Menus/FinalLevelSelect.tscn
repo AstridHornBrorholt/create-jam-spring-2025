@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cwuk8txiww7ws"]
+
+[ext_resource type="Script" uid="uid://pwsdl7mntky5" path="res://Scripts/FinalLevelSelect.gd" id="1_7feik"]
+[ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="2_r0nlh"]
+[ext_resource type="PackedScene" uid="uid://dwb4ki65x1qgx" path="res://Prefabs/level_option.tscn" id="3_xgxjt"]
+[ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="4_r0nlh"]
+
+[node name="NextLevelSelect" type="Node2D" unique_id=1298706304]
+script = ExtResource("1_7feik")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=417709331]
+z_index = -10
+position = Vector2(960, 540)
+texture = ExtResource("2_r0nlh")
+
+[node name="LevelOption" parent="." unique_id=1961918189 instance=ExtResource("3_xgxjt")]
+position = Vector2(960, 512)
+
+[node name="Game is Won" type="RichTextLabel" parent="LevelOption" unique_id=348149305]
+offset_left = -960.0
+offset_top = -130.0
+offset_right = -247.0
+offset_bottom = 214.0
+theme = ExtResource("4_r0nlh")
+theme_override_font_sizes/normal_font_size = 230
+text = "final"
+horizontal_alignment = 2
+
+[node name="Game is Won2" type="RichTextLabel" parent="LevelOption" unique_id=1614794763]
+offset_left = 255.0
+offset_top = -130.0
+offset_right = 970.0
+offset_bottom = 214.0
+theme = ExtResource("4_r0nlh")
+theme_override_font_sizes/normal_font_size = 230
+text = "level"
