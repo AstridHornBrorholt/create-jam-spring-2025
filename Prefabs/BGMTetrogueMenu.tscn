@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dexq3r44mpbm7"]
+
+[ext_resource type="AudioStream" uid="uid://bkslgyuj1ovc7" path="res://Sound/Tetrogue - Menu.wav" id="1_fhefs"]
+[ext_resource type="Script" uid="uid://bx82estqdp3a7" path="res://Scripts/LoopMusic.gd" id="2_vmn20"]
+
+[node name="Tetrogue-Menu" type="AudioStreamPlayer" unique_id=1152892222]
+stream = ExtResource("1_fhefs")
+volume_db = -5.0
+autoplay = true
+script = ExtResource("2_vmn20")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

@@ -9,6 +9,7 @@ class_name SelectionOption
 
 @onready var cell_occluder_prefab = preload("res://Prefabs/CellOccluder.tscn")
 @onready var selector:Selector = $"/root/Selector"
+@onready var here_take_this:HereTakeThis = $"/root/HereTakeThis" # Jury-rigging to work in a second menu also :3
 @onready var button:Button = $"SelectorButton"
 @onready var tetriminos:Tetriminos = $"Tetriminos"
 
@@ -81,3 +82,12 @@ func setup(templateʹ:TetriminosTemplate, idʹ:int) -> void: # U+2B9 Modifier Le
 
 func fly_in() -> void:
 	animation_status = Status.FlyingIn
+
+
+func register_picked(id):
+	if selector != null:
+		selector.register_picked(id)
+	elif here_take_this != null:
+		here_take_this.register_picked(id)
+	else:
+		assert(false, "No owner found! Expected to be part of a Selector or HereTakeThis scene")

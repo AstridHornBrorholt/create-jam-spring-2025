@@ -2,13 +2,23 @@
 
 [ext_resource type="Script" uid="uid://dp2trlfk8oddk" path="res://Scripts/WinScreen.gd" id="1_enoqs"]
 [ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="1_oo7ef"]
+[ext_resource type="PackedScene" uid="uid://dexq3r44mpbm7" path="res://Prefabs/BGMTetrogueMenu.tscn" id="2_08sec"]
+[ext_resource type="AudioStream" uid="uid://qiwhghip8laf" path="res://SFX/next_level.wav" id="2_idohl"]
 [ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="2_q7ddr"]
 [ext_resource type="TileSet" uid="uid://dyylm5f8ucsk2" path="res://background.tres" id="4_qxq8w"]
 [ext_resource type="PackedScene" uid="uid://bbk7cc4j1iwo6" path="res://Prefabs/Border.tscn" id="5_qxq8w"]
 [ext_resource type="Script" uid="uid://bk2bcbbga8r47" path="res://Scripts/background.gd" id="5_rn2s6"]
+[ext_resource type="PackedScene" uid="uid://driyn4ve6jeng" path="res://Prefabs/ButtonToChangeScene.tscn" id="7_rn2s6"]
 
 [node name="WinScreen" type="Node2D" unique_id=2099396784]
 script = ExtResource("1_enoqs")
+
+[node name="Sounds" type="Node2D" parent="." unique_id=970946627]
+
+[node name="NextLevel" type="AudioStreamPlayer" parent="Sounds" unique_id=1131777719]
+stream = ExtResource("2_idohl")
+
+[node name="Tetrogue-Menu" parent="." unique_id=1152892222 instance=ExtResource("2_08sec")]
 
 [node name="Backdrop" type="Sprite2D" parent="." unique_id=1803434362]
 modulate = Color(1.3, 1.3, 1.3, 1)
@@ -32,6 +42,31 @@ script = ExtResource("5_rn2s6")
 offset_right = 1920.0
 offset_bottom = 344.0
 theme = ExtResource("2_q7ddr")
-theme_override_font_sizes/normal_font_size = 323
-text = "game is won"
+theme_override_font_sizes/normal_font_size = 230
+text = "you are a winner"
 horizontal_alignment = 1
+
+[node name="Unbounded Mode" parent="." unique_id=1380750691 instance=ExtResource("7_rn2s6")]
+offset_left = 1162.0
+offset_top = 471.82996
+offset_right = 1901.0
+offset_bottom = 583.8297
+focus_neighbor_left = NodePath("../Return to Menu")
+focus_neighbor_right = NodePath("../Return to Menu")
+focus_next = NodePath("../Return to Menu")
+focus_previous = NodePath("../Return to Menu")
+text = "unbounded mode"
+new_scene = "res://Scenes/Run Menus/HereTakeThis.tscn"
+
+[node name="Return to Menu" parent="." unique_id=806112794 instance=ExtResource("7_rn2s6")]
+offset_left = 53.0
+offset_top = 471.82996
+offset_right = 758.0
+offset_bottom = 583.8297
+focus_neighbor_left = NodePath("../Unbounded Mode")
+focus_neighbor_right = NodePath("../Unbounded Mode")
+focus_next = NodePath("../Unbounded Mode")
+focus_previous = NodePath("../Unbounded Mode")
+text = "return to menu"
+new_scene = "res://Scenes/Main Menu/Main Menu.tscn"
+start_focused = true

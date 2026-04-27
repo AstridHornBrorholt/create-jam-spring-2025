@@ -6,9 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ddwhqq338x4d3" path="res://Sprites/Logo.png" id="3_0126h"]
 [ext_resource type="Script" uid="uid://2kgxgonphbi5" path="res://Scripts/MoveLogo.gd" id="4_4lp62"]
 [ext_resource type="Script" uid="uid://d3hhgq3jyhwgk" path="res://Scripts/ListenerExample.gd" id="4_eotax"]
-[ext_resource type="AudioStream" uid="uid://bkslgyuj1ovc7" path="res://Sound/Tetrogue - Menu.wav" id="5_mjet1"]
 [ext_resource type="Texture2D" uid="uid://byed2rlko15i1" path="res://Sprites/buttons/Start Game.png" id="6_0vewo"]
-[ext_resource type="Script" uid="uid://bx82estqdp3a7" path="res://Scripts/LoopMusic.gd" id="6_0126h"]
 [ext_resource type="Texture2D" uid="uid://bxj6uf6svr8qp" path="res://Sprites/buttons/Instructions.png" id="7_3hb06"]
 [ext_resource type="Texture2D" uid="uid://tv6pe0bu1ocx" path="res://Sprites/buttons/Start Game click.png" id="7_jgydl"]
 [ext_resource type="Texture2D" uid="uid://4mjgb8jkcl8d" path="res://Sprites/buttons/Credits.png" id="8_ns28u"]
@@ -23,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://pb7kjqk3b5tm" path="res://Sprites/buttons/Option click.png" id="16_ryust"]
 [ext_resource type="Texture2D" uid="uid://dvxbu51ao307x" path="res://Sprites/buttons/Option hover.png" id="17_5nn3m"]
 [ext_resource type="Texture2D" uid="uid://dn2p3hsoe73fh" path="res://Sprites/buttons/Exit hover.png" id="17_vqcsk"]
+[ext_resource type="PackedScene" uid="uid://dexq3r44mpbm7" path="res://Prefabs/BGMTetrogueMenu.tscn" id="22_16e34"]
 
 [node name="Main Menu" type="Node2D" unique_id=854888259]
 script = ExtResource("1_eotax")
@@ -142,15 +141,10 @@ stretch_mode = 5
 [node name="ListenerExample" type="Node" parent="." unique_id=12922792]
 script = ExtResource("4_eotax")
 
-[node name="Tetrogue-Menu" type="AudioStreamPlayer" parent="." unique_id=595679339]
-stream = ExtResource("5_mjet1")
-volume_db = -5.0
-autoplay = true
-script = ExtResource("6_0126h")
+[node name="Tetrogue-Menu" parent="." unique_id=1152892222 instance=ExtResource("22_16e34")]
 
 [connection signal="pressed" from="Interactive/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Interactive/InstructionsButton" to="." method="_on_instructions_button_pressed"]
 [connection signal="pressed" from="Interactive/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="Interactive/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="Interactive/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="finished" from="Tetrogue-Menu" to="Tetrogue-Menu" method="_on_finished"]

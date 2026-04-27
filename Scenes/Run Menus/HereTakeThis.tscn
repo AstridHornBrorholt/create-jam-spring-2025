@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://bobfa8rv38cks"]
+
+[ext_resource type="Script" uid="uid://c4uqgqe7hxqt4" path="res://Scripts/HereTakeThis.gd" id="1_pgqop"]
+[ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="2_c8t0y"]
+[ext_resource type="Texture2D" uid="uid://dj7j4put16rls" path="res://Sprites/Gray.png" id="3_ihhsa"]
+[ext_resource type="AudioStream" uid="uid://bkslgyuj1ovc7" path="res://Sound/Tetrogue - Menu.wav" id="4_keek8"]
+[ext_resource type="Script" uid="uid://bx82estqdp3a7" path="res://Scripts/LoopMusic.gd" id="5_4e35e"]
+[ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="8_wmivx"]
+[ext_resource type="AudioStream" uid="uid://bti3rquj6gvmu" path="res://SFX/powerUp.wav" id="9_hk225"]
+[ext_resource type="PackedScene" uid="uid://divvrw2rjvrc2" path="res://Prefabs/SelectionOption.tscn" id="10_epbyq"]
+[ext_resource type="Texture2D" uid="uid://bb72uply2u8hi" path="res://Sprites/Black.png" id="10_ylb3i"]
+[ext_resource type="Texture2D" uid="uid://clavpgclb5vwm" path="res://Sprites/Neutral Point Light.webp" id="11_ecda8"]
+
+[node name="HereTakeThis" type="Node2D" unique_id=2123133051]
+script = ExtResource("1_pgqop")
+
+[node name="Black" type="Sprite2D" parent="." unique_id=19990072]
+z_index = -10
+position = Vector2(960, 540)
+texture = ExtResource("2_c8t0y")
+
+[node name="Tetrogue-Menu" type="AudioStreamPlayer" parent="." unique_id=2082560957]
+stream = ExtResource("4_keek8")
+volume_db = -8.0
+autoplay = true
+script = ExtResource("5_4e35e")
+
+[node name="PowerUp" type="AudioStreamPlayer2D" parent="." unique_id=708337023]
+position = Vector2(0, 4)
+stream = ExtResource("9_hk225")
+pitch_scale = 0.8
+
+[node name="Black-fade" type="Sprite2D" parent="." unique_id=2115992164]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(982, 612)
+scale = Vector2(133.688, 79.8125)
+texture = ExtResource("10_ylb3i")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=696796481]
+position = Vector2(992, 980)
+scale = Vector2(7.9921865, 7.9921865)
+color = Color(1, 1, 1, 0.796078)
+shadow_enabled = true
+texture = ExtResource("11_ecda8")
+
+[node name="Game is Won" type="RichTextLabel" parent="." unique_id=817367921]
+offset_right = 1920.0
+offset_bottom = 218.0
+theme = ExtResource("8_wmivx")
+theme_override_font_sizes/normal_font_size = 113
+text = "it is dangerous to go beyond
+take this"
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="Gray" type="Sprite2D" parent="." unique_id=1332346166]
+modulate = Color(1, 1, 1, 0.14902)
+z_index = -10
+position = Vector2(960.24994, 640.24994)
+scale = Vector2(3.839, 3)
+texture = ExtResource("3_ihhsa")
+
+[node name="FlyInStart" type="Node2D" parent="." unique_id=721844918]
+position = Vector2(973, -180)
+
+[node name="SelectionOption" parent="." unique_id=347983007 instance=ExtResource("10_epbyq")]
+position = Vector2(960, 768)
+
+[connection signal="finished" from="Tetrogue-Menu" to="Tetrogue-Menu" method="_on_finished"]
