@@ -125,10 +125,10 @@ var L = TetriminosTemplate.new([
 	])
 	
 var J = TetriminosTemplate.new([
-		CellTemplate.new(-1, 0, Cell.Type.Mirror),
-		CellTemplate.new(0, 0, Cell.Type.Mirror),
-		CellTemplate.new(1, 0, Cell.Type.Mirror),
-		CellTemplate.new(-1, -1, Cell.Type.Mirror),
+		CellTemplate.new(-1, 0, Cell.Type.Standard),
+		CellTemplate.new(0, 0, Cell.Type.Standard),
+		CellTemplate.new(1, 0, Cell.Type.Standard),
+		CellTemplate.new(-1, -1, Cell.Type.Standard),
 	])
 	
 var T = TetriminosTemplate.new([
