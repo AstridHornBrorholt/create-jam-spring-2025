@@ -1,8 +1,6 @@
 extends Unreasonable
 class_name Urgent
 
-var plant_pot_chance = 0.3
-
 func _init():
 	name = "Urgent"
 	description = "Very little time"

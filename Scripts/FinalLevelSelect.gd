@@ -9,7 +9,7 @@ func _ready() -> void:
 	var map = MapSelector.empty.instantiate()
 	levelOption.initialize(LevelOption.RewardType.Nothing, 
 		map,
-		levelOption.score_goal, 
+		CurrentRun.game_mode.get_score(CurrentRun.level), 
 		levelOption.time_limit)
 
 func start_level(levelOption:LevelOption) -> void:

@@ -15,11 +15,18 @@ func get_time(_level:int) -> float:
 	return 70
 
 func get_score(level:int) -> int:
-	var levels = [500, 750, 1500, 2000]
-	if level < levels.size():
-		return levels[level]
-	elif level < 8:
-		return (level)*500
+	var a = 1000
+	var b = 500
+	var c = 353.335
+	var d = 2
+	var e = 10000
+	var f = 10000
+	var g = 1.55
+	if level < 5:
+		return a*level + b
+	elif level <= win_level:
+		# Increase goal quadratically from now on
+		return a*(level) + b + c*(level - 5)**d
 	else:
-		# Increase goal quadratically from now
-		return 5*(level - 8)**2 + 500*(level - 1)
+		# Add an exponential component. 
+		return a*(level) + b + c*(level - 5)**d + e + f*g**(level - win_level)

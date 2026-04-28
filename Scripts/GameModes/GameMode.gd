@@ -17,14 +17,21 @@ func get_time(_level:int) -> float:
 	return 90
 
 func get_score(level:int) -> int:
-	var levels = [200, 300, 500, 750]
-	if level < levels.size():
-		return levels[level]
-	elif level < 8:
-		return (level)*250
-	else:
+	var a = 250
+	var b = 200
+	var c = 33.335 # Works out so level 20 is 10k.
+	var d = 2
+	var e = 3432
+	var f = 300
+	var g = 1.5
+	if level < 8:
+		return a*level + b
+	elif level <= win_level:
 		# Increase goal quadratically from now on
-		return 5*(level - 8)**2 + 250*(level - 1)
+		return a*(level) + b + c*(level - 8)**d
+	else:
+		# Add an exponential component. 
+		return a*(level) + b + c*(level - 8)**d + e + f*g**(level - win_level)
 
 
 const common_oops_types: Array[Cell.Type] = [
