@@ -27,9 +27,11 @@ texture = ExtResource("1_oo7ef")
 centered = false
 
 [node name="Border" parent="." unique_id=1949955717 instance=ExtResource("5_qxq8w")]
+z_index = -3
 position = Vector2(800, 200)
 
 [node name="GameGrid" type="Node2D" parent="." unique_id=1544737572]
+z_index = -2
 position = Vector2(800, 200)
 
 [node name="background" type="TileMapLayer" parent="GameGrid" unique_id=1142744949]
