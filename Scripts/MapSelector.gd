@@ -31,7 +31,11 @@ static var maps:Array[PackedScene] = [
 		preload("res://Prefabs/Maps/sand_pillars.tscn"),
 		preload("res://Prefabs/Maps/squiggle.tscn"),
 		preload("res://Prefabs/Maps/wedge.tscn"),
+		preload("res://Prefabs/Maps/mirror.tscn"),
 	]
+
+static func get_empty() -> Map:
+	return empty.instantiate()
 
 static func get_random_map(probability_empty) -> Map:
 	if randf() < probability_empty:

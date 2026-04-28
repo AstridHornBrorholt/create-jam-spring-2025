@@ -33,12 +33,18 @@ func get_score(level:int) -> int:
 		# Add an exponential component. 
 		return a*(level) + b + c*(level - 8)**d + e + f*g**(level - win_level)
 
+# Cells that are useless/feelbad to get mixed in with other blocks
+const oops_only_types: Array[Cell.Type] = [
+	Cell.Type.Mirror,
+	Cell.Type.Sand,
+]
 
 const common_oops_types: Array[Cell.Type] = [
 	Cell.Type.Compressed,
 	Cell.Type.Sand,
 	Cell.Type.Concrete,
 	Cell.Type.PlantPot,
+	Cell.Type.Mirror,
 ]
 
 const legendary_oops_types: Array[Cell.Type] = [
@@ -52,7 +58,10 @@ const legendary_oops_types: Array[Cell.Type] = [
 const standard = Cell.Type.Standard
 
 func rand() -> Cell.Type:
-	return Cell.random_special_type()
+	var result = Cell.random_special_type()
+	while oops_only_types.has(result):
+		result = Cell.random_special_type()
+	return result
 
 func random_piece_size(level:int) -> int:
 	# Size: We want a good chance of generating the nice size-4 pieces
@@ -116,10 +125,10 @@ var L = TetriminosTemplate.new([
 	])
 	
 var J = TetriminosTemplate.new([
-		CellTemplate.new(-1, 0, Cell.Type.Standard),
-		CellTemplate.new(0, 0, Cell.Type.Standard),
-		CellTemplate.new(1, 0, Cell.Type.Standard),
-		CellTemplate.new(-1, -1, Cell.Type.Standard),
+		CellTemplate.new(-1, 0, Cell.Type.Mirror),
+		CellTemplate.new(0, 0, Cell.Type.Mirror),
+		CellTemplate.new(1, 0, Cell.Type.Mirror),
+		CellTemplate.new(-1, -1, Cell.Type.Mirror),
 	])
 	
 var T = TetriminosTemplate.new([

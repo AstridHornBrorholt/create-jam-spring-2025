@@ -8,7 +8,7 @@ var game_mode:GameMode = GameMode.new()
 # The player's stash, minus all the ones that have already been put in play.
 var current_stash: Array[TetriminosTemplate] = [];
 
-var next_map:Array[Array] = MapSelector.get_random_map(1).to_array()
+var next_map:Array[Array] = MapSelector.get_empty().to_array()
 var next_score_goal = 100
 var next_time_limit = 90
 var next_reward:LevelOption.RewardType
@@ -40,6 +40,7 @@ func reset():
 	next_reward = LevelOption.RewardType.Create
 	next_score_goal = get_level()[0]
 	next_time_limit = get_level()[1]
+	next_map = MapSelector.get_empty().to_array()
 	# var tetrimino_generator = TetriminoGenerator.new()
 	stash = game_mode.get_starting_stash()
 	accumulated_score = 0

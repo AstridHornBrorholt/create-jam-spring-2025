@@ -2,6 +2,7 @@ extends Node2D
 class_name Cell
 
 var being_destroyed = false # Useful for e.g. bombs that might get destroy called on them twice
+var age = 0 # Age of the cell in ticks
 
 const SPRITE_SIZE = 32
 const CELL_SIZE: int = 32
@@ -24,6 +25,7 @@ enum Type {
 	Lightning,
 	Mole,
 	Anvil,
+	Mirror,
 }
 
 # Types that do not "occur natturally" but only as a result of other cells.
@@ -49,6 +51,7 @@ const SpriteCoords: Dictionary[Type, Vector2i] = {
 	Type.Lightning: SPRITE_SIZE * Vector2i(4,0),
 	Type.Mole: SPRITE_SIZE * Vector2i(5,0),
 	Type.Anvil: SPRITE_SIZE * Vector2i(3,1),
+	Type.Mirror: SPRITE_SIZE * Vector2i(5,2),
 }
 
 @export var type: Type = Type.Standard;
@@ -157,6 +160,7 @@ func on_move(game: TetrisGame, to_x: int, to_y: int) -> bool:
 	return true
 
 func on_tick(game: TetrisGame, tick: int):
+	age += 1
 	# Updates the game state for this tick
 	match type:
 		Type.Sand:
@@ -243,6 +247,18 @@ func on_tick(game: TetrisGame, tick: int):
 				for y in range(grid_pos.y, game.HEIGHT):
 					if game.get_at(grid_pos.x, y) == null:
 						game.shift_cells_down_range(grid_pos.x, grid_pos.y, y)
+						break
+		Type.Mirror:
+			if tick%5 == 0 and age > 1:
+				for offset:Vector2i in [Vector2i(-1, 0), Vector2i(0, -1), Vector2i(1, 0), Vector2i(0, 1)]:
+					var p = offset + grid_pos
+					var cell = game.get_at(p.x, p.y)
+					if cell == null or cell.age < 1: 
+						continue
+					if cell.type != Type.Standard and cell.type != Type.Mirror:
+						age = 0
+						type = cell.type
+						queue_redraw()
 						break
 
 func on_place(game: TetrisGame):

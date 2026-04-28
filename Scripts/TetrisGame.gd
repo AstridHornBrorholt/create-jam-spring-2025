@@ -81,8 +81,7 @@ func _ready() -> void:
 			r.append(null)
 		grid.append(r)
 	
-	if run_state.level != 0:
-		load_map()
+	load_map()
 	
 	run_state.new_game()
 	score_goal = run_state.next_score_goal

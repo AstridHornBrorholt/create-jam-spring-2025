@@ -108,6 +108,12 @@ texture = ExtResource("2_4oh6a")
 region_enabled = true
 region_rect = Rect2(96, 32, 32, 32)
 
+[node name="BlockSprites16" type="Sprite2D" parent="." unique_id=429993752]
+position = Vector2(71, 885)
+texture = ExtResource("2_4oh6a")
+region_enabled = true
+region_rect = Rect2(160, 64, 32, 32)
+
 [node name="RichTextLabel2" type="RichTextLabel" parent="." unique_id=267238027]
 offset_left = 104.0
 offset_top = 33.0
@@ -132,4 +138,4 @@ Monster, moves around. +20 points.
 Mole, digs down.
 Concrete, sturdy. +10 points.
 Avil, pushes things down.
-There may be more that I forgot..."
+Mirror, becomes its neighbour"
