@@ -23,9 +23,9 @@ text = "How play"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="." unique_id=201333652]
 offset_left = 85.0
-offset_top = 250.0
+offset_top = 234.0
 offset_right = 1826.0
-offset_bottom = 957.0
+offset_bottom = 941.0
 theme = ExtResource("3_mq808")
 theme_override_font_sizes/normal_font_size = 81
 bbcode_enabled = true
@@ -34,8 +34,8 @@ LEFT, RIGHT, DOWN	= MOVE
 SPACE, ENTER			= Slam piece down
 SHIFT, C							= Hold piece
 
-
 Reach score target before time runs out.
+complete level 20 to win.
 Tip: Keep your [color=red] score multiplier[/color] high"
 
 [node name="Back" parent="." unique_id=1380750691 instance=ExtResource("4_tcd3n")]
@@ -43,6 +43,10 @@ offset_left = 53.0
 offset_top = 927.0
 offset_right = 315.0
 offset_bottom = 1039.0
+focus_neighbor_left = NodePath("../Next")
+focus_neighbor_right = NodePath("../Next")
+focus_next = NodePath("../Next")
+focus_previous = NodePath("../Next")
 new_scene = "res://Scenes/Main Menu/Main Menu.tscn"
 
 [node name="Next" parent="." unique_id=619296771 instance=ExtResource("4_tcd3n")]
@@ -50,6 +54,10 @@ offset_left = 1594.0
 offset_top = 925.0
 offset_right = 1856.0
 offset_bottom = 1037.0
+focus_neighbor_left = NodePath("../Back")
+focus_neighbor_right = NodePath("../Back")
+focus_next = NodePath("../Back")
+focus_previous = NodePath("../Back")
 text = "Next
 "
 new_scene = "res://Scenes/Main Menu/Instructions2.tscn"

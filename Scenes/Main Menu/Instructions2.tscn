@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://edckqsbsb3oq"]
+[gd_scene format=4 uid="uid://dkopufeql6eyb"]
 
 [ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="2_1cyd4"]
 [ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="3_m48fc"]
-[ext_resource type="Texture2D" uid="uid://bhrrusbqkmocd" path="res://Sprites/Controller Layout.png" id="4_1cyd4"]
 [ext_resource type="PackedScene" uid="uid://driyn4ve6jeng" path="res://Prefabs/ButtonToChangeScene.tscn" id="4_qpc7f"]
+[ext_resource type="PackedScene" uid="uid://43x5tcjmmwv6" path="res://Prefabs/Maps/mirror.tscn" id="4_tb3p6"]
 
 [node name="Menu3" type="Node2D" unique_id=1046178724]
 
@@ -15,22 +15,83 @@ centered = false
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=778597558]
 offset_left = 95.0
 offset_top = 44.0
-offset_right = 1092.0
+offset_right = 1312.0
 offset_bottom = 185.0
 theme = ExtResource("3_m48fc")
 theme_override_font_sizes/normal_font_size = 140
-text = "How play"
+text = "Score Multiplier "
 
-[node name="ControllerLayout" type="Sprite2D" parent="." unique_id=445680220]
-position = Vector2(976.63446, 597.75)
-scale = Vector2(1.6040462, 1.6040462)
-texture = ExtResource("4_1cyd4")
+[node name="Row clearing mult table" type="Node2D" parent="." unique_id=1202827436]
+position = Vector2(476, 191)
+
+[node name="Map" parent="Row clearing mult table" unique_id=1093484578 instance=ExtResource("4_tb3p6")]
+position = Vector2(6, 17)
+tile_map_data = PackedByteArray("AAAAAAAAAwAAAAAAAAAAAAMAAwAAAAAAAAAAAAQAAwAAAAAAAAAAAAcAAwAAAAAAAAAAAAgAAwAAAAAAAAAAAAkAAwAAAAAAAAAAAAwAAwAAAAAAAAAAAA0AAwAAAAAAAAAAAA4AAwAAAAAAAAAAAA8AAwAAAAAAAAAAABIAAwAAAAAAAAAAABMAAwAAAAAAAAAAABQAAwAAAAAAAAAAABUAAwAAAAAAAAAAABYAAwAAAAAAAAABAAAAAwAAAAAAAAABAAMAAwAAAAAAAAABAAQAAwAAAAAAAAABAAcAAwAAAAAAAAABAAgAAwAAAAAAAAABAAkAAwAAAAAAAAABAAwAAwAAAAAAAAABAA0AAwAAAAAAAAABAA4AAwAAAAAAAAABAA8AAwAAAAAAAAABABIAAwAAAAAAAAABABMAAwAAAAAAAAABABQAAwAAAAAAAAABABUAAwAAAAAAAAABABYAAwAAAAAAAAACAAAAAwAAAAAAAAACAAMAAwAAAAAAAAACAAQAAwAAAAAAAAACAAcAAwAAAAAAAAACAAgAAwAAAAAAAAACAAkAAwAAAAAAAAACAAwAAwAAAAAAAAACAA0AAwAAAAAAAAACAA4AAwAAAAAAAAACAA8AAwAAAAAAAAACABIAAwAAAAAAAAACABMAAwAAAAAAAAACABQAAwAAAAAAAAACABUAAwAAAAAAAAACABYAAwAAAAAAAAADAAAAAwAAAAAAAAADAAMAAwAAAAAAAAADAAQAAwAAAAAAAAADAAcAAwAAAAAAAAADAAgAAwAAAAAAAAADAAkAAwAAAAAAAAADAAwAAwAAAAAAAAADAA0AAwAAAAAAAAADAA4AAwAAAAAAAAADAA8AAwAAAAAAAAADABIAAwAAAAAAAAADABMAAwAAAAAAAAADABQAAwAAAAAAAAADABUAAwAAAAAAAAADABYAAwAAAAAAAAAEAAAAAwAAAAAAAAAEAAMAAwAAAAAAAAAEAAQAAwAAAAAAAAAEAAcAAwAAAAAAAAAEAAgAAwAAAAAAAAAEAAkAAwAAAAAAAAAEAAwAAwAAAAAAAAAEAA0AAwAAAAAAAAAEAA4AAwAAAAAAAAAEAA8AAwAAAAAAAAAEABIAAwAAAAAAAAAEABMAAwAAAAAAAAAEABQAAwAAAAAAAAAEABUAAwAAAAAAAAAEABYAAwAAAAAAAAAFAAAAAwAAAAAAAAAFAAMAAwAAAAAAAAAFAAQAAwAAAAAAAAAFAAcAAwAAAAAAAAAFAAgAAwAAAAAAAAAFAAkAAwAAAAAAAAAFAAwAAwAAAAAAAAAFAA0AAwAAAAAAAAAFAA4AAwAAAAAAAAAFAA8AAwAAAAAAAAAFABIAAwAAAAAAAAAFABMAAwAAAAAAAAAFABQAAwAAAAAAAAAFABUAAwAAAAAAAAAFABYAAwAAAAAAAAAGAAAAAwAAAAAAAAAGAAMAAwAAAAAAAAAGAAQAAwAAAAAAAAAGAAcAAwAAAAAAAAAGAAgAAwAAAAAAAAAGAAkAAwAAAAAAAAAGAAwAAwAAAAAAAAAGAA0AAwAAAAAAAAAGAA4AAwAAAAAAAAAGAA8AAwAAAAAAAAAGABIAAwAAAAAAAAAGABMAAwAAAAAAAAAGABQAAwAAAAAAAAAGABUAAwAAAAAAAAAGABYAAwAAAAAAAAAHAAAAAwAAAAAAAAAHAAMAAwAAAAAAAAAHAAQAAwAAAAAAAAAHAAcAAwAAAAAAAAAHAAgAAwAAAAAAAAAHAAkAAwAAAAAAAAAHAAwAAwAAAAAAAAAHAA0AAwAAAAAAAAAHAA4AAwAAAAAAAAAHAA8AAwAAAAAAAAAHABIAAwAAAAAAAAAHABMAAwAAAAAAAAAHABQAAwAAAAAAAAAHABUAAwAAAAAAAAAHABYAAwAAAAAAAAAIAAAAAwAAAAAAAAAIAAMAAwAAAAAAAAAIAAQAAwAAAAAAAAAIAAcAAwAAAAAAAAAIAAgAAwAAAAAAAAAIAAkAAwAAAAAAAAAIAAwAAwAAAAAAAAAIAA0AAwAAAAAAAAAIAA4AAwAAAAAAAAAIAA8AAwAAAAAAAAAIABIAAwAAAAAAAAAIABMAAwAAAAAAAAAIABQAAwAAAAAAAAAIABUAAwAAAAAAAAAIABYAAwAAAAAAAAAJAAAAAwAAAAAAAAAJAAMAAwAAAAAAAAAJAAQAAwAAAAAAAAAJAAcAAwAAAAAAAAAJAAgAAwAAAAAAAAAJAAkAAwAAAAAAAAAJAAwAAwAAAAAAAAAJAA0AAwAAAAAAAAAJAA4AAwAAAAAAAAAJAA8AAwAAAAAAAAAJABIAAwAAAAAAAAAJABMAAwAAAAAAAAAJABQAAwAAAAAAAAAJABUAAwAAAAAAAAAJABYAAwAAAAAAAAAKAAAAAwAAAAAAAAAKAAMAAwAAAAAAAAAKAAQAAwAAAAAAAAAKAAcAAwAAAAAAAAAKAAgAAwAAAAAAAAAKAAkAAwAAAAAAAAAKAAwAAwAAAAAAAAAKAA0AAwAAAAAAAAAKAA4AAwAAAAAAAAAKAA8AAwAAAAAAAAAKABIAAwAAAAAAAAAKABMAAwAAAAAAAAAKABQAAwAAAAAAAAAKABUAAwAAAAAAAAAKABYAAwAAAAAAAAA=")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Row clearing mult table" unique_id=1107171661]
+offset_left = 375.0
+offset_top = -5.0
+offset_right = 1336.0
+offset_bottom = 72.0
+theme = ExtResource("3_m48fc")
+theme_override_font_sizes/normal_font_size = 81
+bbcode_enabled = true
+text = "1 line:		 no mult"
+scroll_active = false
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Row clearing mult table" unique_id=2088573426]
+offset_left = 375.0
+offset_top = 113.0
+offset_right = 1336.0
+offset_bottom = 190.0
+theme = ExtResource("3_m48fc")
+theme_override_font_sizes/normal_font_size = 81
+bbcode_enabled = true
+text = "2 lines:	 [color=red]+1[/color] mult"
+scroll_active = false
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Row clearing mult table" unique_id=628242740]
+offset_left = 375.0
+offset_top = 257.0
+offset_right = 1336.0
+offset_bottom = 334.0
+theme = ExtResource("3_m48fc")
+theme_override_font_sizes/normal_font_size = 81
+bbcode_enabled = true
+text = "3 lines:	 [color=red]+2[/color] mult"
+scroll_active = false
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="Row clearing mult table" unique_id=1836319621]
+offset_left = 375.0
+offset_top = 430.0
+offset_right = 1336.0
+offset_bottom = 507.0
+theme = ExtResource("3_m48fc")
+theme_override_font_sizes/normal_font_size = 81
+bbcode_enabled = true
+text = "4 lines:	 [color=red]+4[/color] mult"
+scroll_active = false
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="Row clearing mult table" unique_id=1992843956]
+offset_left = 375.0
+offset_top = 636.0
+offset_right = 1336.0
+offset_bottom = 713.0
+theme = ExtResource("3_m48fc")
+theme_override_font_sizes/normal_font_size = 81
+bbcode_enabled = true
+text = "5 lines:	 [color=red]????"
+scroll_active = false
 
 [node name="Back" parent="." unique_id=1380750691 instance=ExtResource("4_qpc7f")]
 offset_left = 53.0
 offset_top = 927.0
 offset_right = 315.0
 offset_bottom = 1039.0
+focus_neighbor_left = NodePath("../Next")
+focus_neighbor_right = NodePath("../Next")
+focus_next = NodePath("../Next")
+focus_previous = NodePath("../Next")
 new_scene = "res://Scenes/Main Menu/Main Menu.tscn"
 
 [node name="Next" parent="." unique_id=1640381308 instance=ExtResource("4_qpc7f")]
@@ -38,7 +99,11 @@ offset_left = 1594.0
 offset_top = 925.0
 offset_right = 1856.0
 offset_bottom = 1037.0
+focus_neighbor_left = NodePath("../Back")
+focus_neighbor_right = NodePath("../Back")
+focus_next = NodePath("../Back")
+focus_previous = NodePath("../Back")
 text = "Next
 "
-new_scene = "res://Scenes/Main Menu/Instructions3.tscn"
+new_scene = "res://Scenes/Main Menu/Instructions4.tscn"
 start_focused = true
