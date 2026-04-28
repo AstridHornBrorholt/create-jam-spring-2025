@@ -550,7 +550,20 @@ func clear_full_rows():
 					cell.modulate += Color(0.2, 0.2, 0.2)
 		
 		var l = len(queued_line_clears)
-		var mult =  0 if l == 1 else l - 1 if l < 4 else l
+		var mult = 0
+		if l == 2:
+			mult = 1
+		elif l == 3:
+			mult = 2
+		elif l == 4:
+			mult = 4
+		elif l == 5:
+			mult = 10
+		elif l == 6:
+			mult = 20
+		else:
+			print("Holy shit!")
+			mult = (l - 4)*10
 		
 		if mult > 0:
 			var pos = get_at(WIDTH - 1, queued_line_clears.min()).position
