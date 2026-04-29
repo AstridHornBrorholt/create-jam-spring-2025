@@ -35,7 +35,6 @@ func get_score(level:int) -> int:
 
 # Cells that are useless/feelbad to get mixed in with other blocks
 const oops_only_types: Array[Cell.Type] = [
-	Cell.Type.Mirror,
 	Cell.Type.Sand,
 ]
 
