@@ -24,6 +24,8 @@ texture = ExtResource("3_4rw7v")
 
 [node name="EndScreenTetriminos" parent="." unique_id=71575191 instance=ExtResource("3_peiy7")]
 position = Vector2(-3, 769)
+scroll_speed = 250
+initial_progress = 600
 
 [node name="Stats" type="RichTextLabel" parent="." unique_id=1346514609]
 offset_left = 700.0

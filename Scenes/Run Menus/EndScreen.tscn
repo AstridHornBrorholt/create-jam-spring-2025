@@ -57,5 +57,7 @@ metadata/_custom_type_script = "uid://b8lh7on8j7j7u"
 
 [node name="ScrollingMinos" parent="." unique_id=141167371 instance=ExtResource("5_jh5rx")]
 position = Vector2(-62, 762)
+scroll_speed = 250
+initial_progress = 600
 
 [connection signal="pressed" from="Interactive/BackButton" to="." method="_on_back_button_pressed"]
