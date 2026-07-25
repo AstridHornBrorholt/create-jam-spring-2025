@@ -73,13 +73,13 @@ func _ready() -> void:
 	swap_held_arrow.visible = false
 	select_falling_button.visible = false
 	swap_falling_arrow.visible = false
-	next_wiggler.rotation_rate = 0
-	next_offer_wiggler.rotation_rate = 0
-	held_wiggler.rotation_rate = 0
-	held_offer_wiggler.rotation_rate = 0
+	next_wiggler.wiggle = false
+	next_offer_wiggler.wiggle = false
+	held_wiggler.wiggle = false
+	held_offer_wiggler.wiggle = false
 	held_missing_text.visible = false
-	falling_wiggler.rotation_rate = 0
-	falling_offer_wiggler.rotation_rate = 0
+	falling_wiggler.wiggle = false
+	falling_offer_wiggler.wiggle = false
 	
 	next_tetriminos.setup(CurrentRun.previously_next)
 	next_offer_tetriminos.setup(TetriminoGenerator.generate_tetrimino(next_tetriminos.get_size(), CurrentRun.game_mode.random_piece_types(CurrentRun.level)))
@@ -116,34 +116,34 @@ func _process(delta: float) -> void:
 		State.Selecting:
 			if select_next_button.has_focus():
 				swap_next_arrow.modulate = Color("ffffff")
-				next_wiggler.rotation_rate = 5
-				next_offer_wiggler.rotation_rate = 5
+				next_wiggler.wiggle = true
+				next_offer_wiggler.wiggle = true
 				swap_held_arrow.modulate = Color("aaaaaa")
-				held_wiggler.rotation_rate = 0
-				held_offer_wiggler.rotation_rate = 0
+				held_wiggler.wiggle = false
+				held_offer_wiggler.wiggle = false
 				swap_falling_arrow.modulate = Color("aaaaaa")
-				falling_wiggler.rotation_rate = 0
-				falling_offer_wiggler.rotation_rate = 0
+				falling_wiggler.wiggle = false
+				falling_offer_wiggler.wiggle = false
 			elif select_held_button.has_focus():
 				swap_next_arrow.modulate = Color("aaaaaa")
-				next_wiggler.rotation_rate = 0
-				next_offer_wiggler.rotation_rate = 0
+				next_wiggler.wiggle = false
+				next_offer_wiggler.wiggle = false
 				swap_held_arrow.modulate = Color("ffffff")
-				held_wiggler.rotation_rate = 5
-				held_offer_wiggler.rotation_rate = 5
+				held_wiggler.wiggle = true
+				held_offer_wiggler.wiggle = true
 				swap_falling_arrow.modulate = Color("aaaaaa")
-				falling_wiggler.rotation_rate = 0
-				falling_offer_wiggler.rotation_rate = 0
+				falling_wiggler.wiggle = false
+				falling_offer_wiggler.wiggle = false
 			elif select_falling_button.has_focus():
 				swap_next_arrow.modulate = Color("aaaaaa")
-				next_wiggler.rotation_rate = 0
-				next_offer_wiggler.rotation_rate = 0
+				next_wiggler.wiggle = false
+				next_offer_wiggler.wiggle = false
 				swap_held_arrow.modulate = Color("aaaaaa")
-				held_wiggler.rotation_rate = 0
-				held_offer_wiggler.rotation_rate = 0
+				held_wiggler.wiggle = false
+				held_offer_wiggler.wiggle = false
 				swap_falling_arrow.modulate = Color("ffffff")
-				falling_wiggler.rotation_rate = 5
-				falling_offer_wiggler.rotation_rate = 5
+				falling_wiggler.wiggle = true
+				falling_offer_wiggler.wiggle = true
 
 func start_selecting():
 	state = State.Selecting

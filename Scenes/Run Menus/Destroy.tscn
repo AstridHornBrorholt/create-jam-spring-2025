@@ -30,6 +30,7 @@ texture = ExtResource("9_aacq3")
 [node name="Wiggler" type="Node2D" parent="Next" unique_id=101202835]
 position = Vector2(6, -3)
 script = ExtResource("2_2sqnx")
+rotation_rate = 30
 rotation_multiplier = 0.05
 
 [node name="NextTetriminos" type="Node2D" parent="Next/Wiggler" unique_id=851071080]
@@ -64,6 +65,7 @@ position = Vector2(-704, 0)
 [node name="Wiggler" type="Node2D" parent="Held" unique_id=836004486]
 position = Vector2(3, -7)
 script = ExtResource("2_2sqnx")
+rotation_rate = 30
 rotation_multiplier = 0.05
 
 [node name="HeldTetriminos" type="Node2D" parent="Held/Wiggler" unique_id=579647145]
@@ -110,6 +112,7 @@ position = Vector2(672, 0)
 [node name="Wiggler" type="Node2D" parent="Falling" unique_id=1360235532]
 position = Vector2(3, -7)
 script = ExtResource("2_2sqnx")
+rotation_rate = 30
 rotation_multiplier = 0.05
 
 [node name="FallingTetriminos" type="Node2D" parent="Falling/Wiggler" unique_id=407707134]

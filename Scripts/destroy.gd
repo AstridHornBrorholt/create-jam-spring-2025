@@ -46,10 +46,10 @@ func _ready() -> void:
 	select_next_button.visible = false
 	select_held_button.visible = false
 	select_falling_button.visible = false
-	next_wiggler.rotation_rate = 0
-	held_wiggler.rotation_rate = 0
+	next_wiggler.wiggle = false
+	held_wiggler.wiggle = false
 	held_missing_text.visible = false
-	falling_wiggler.rotation_rate = 0
+	falling_wiggler.wiggle = false
 	
 	next_tetriminos.setup(CurrentRun.previously_next)
 	next_start = CurrentRun.previously_next_position
@@ -83,16 +83,16 @@ func _process(delta: float) -> void:
 				start_selecting()
 		State.Selecting:
 			if select_next_button.has_focus():
-				next_wiggler.rotation_rate = 30
-				held_wiggler.rotation_rate = 0
-				falling_wiggler.rotation_rate = 0
+				next_wiggler.wiggle = true
+				held_wiggler.wiggle = false
+				falling_wiggler.wiggle = false
 			elif select_held_button.has_focus():
-				next_wiggler.rotation_rate = 0
-				held_wiggler.rotation_rate = 30
-				falling_wiggler.rotation_rate = 0
+				next_wiggler.wiggle = false
+				held_wiggler.wiggle = true
+				falling_wiggler.wiggle = false
 			elif select_falling_button.has_focus():
-				next_wiggler.rotation_rate = 0
-				falling_wiggler.rotation_rate = 30
+				next_wiggler.wiggle = false
+				falling_wiggler.wiggle = true
 		State.DestroyingSelected:
 			destroy_progress = min(1, destroy_progress + delta*destroy_rate)
 			if destroy_progress >= 1:
@@ -119,9 +119,9 @@ func destroy(tetriminos:Tetriminos):
 	select_held_button.visible = false
 	select_next_button.visible = false
 	select_falling_button.visible = false
-	held_wiggler.rotation_rate = 0
-	next_wiggler.rotation_rate = 0
-	falling_wiggler.rotation_rate = 0
+	held_wiggler.wiggle = false
+	next_wiggler.wiggle = false
+	falling_wiggler.wiggle = false
 	CurrentRun.remove_from_permanent_stash(tetriminos.template)
 	
 	for cell in tetriminos.cells:

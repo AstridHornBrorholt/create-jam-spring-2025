@@ -33,6 +33,7 @@ position = Vector2(0, 40)
 [node name="Wiggler" type="Node2D" parent="Next" unique_id=101202835]
 position = Vector2(6, -3)
 script = ExtResource("3_xkx2h")
+rotation_rate = 5
 rotation_multiplier = 0.05
 
 [node name="NextTetriminos" type="Node2D" parent="Next/Wiggler" unique_id=851071080]
@@ -73,6 +74,7 @@ position = Vector2(-704, 40)
 [node name="Wiggler" type="Node2D" parent="Held" unique_id=836004486]
 position = Vector2(3, -7)
 script = ExtResource("3_xkx2h")
+rotation_rate = 5
 rotation_multiplier = 0.05
 
 [node name="HeldTetriminos" type="Node2D" parent="Held/Wiggler" unique_id=579647145]
@@ -125,6 +127,7 @@ position = Vector2(672, 40)
 [node name="Wiggler" type="Node2D" parent="Falling" unique_id=1360235532]
 position = Vector2(3, -7)
 script = ExtResource("3_xkx2h")
+rotation_rate = 5
 rotation_multiplier = 0.05
 
 [node name="FallingTetriminos" type="Node2D" parent="Falling/Wiggler" unique_id=407707134]
@@ -138,6 +141,7 @@ position = Vector2(295, 295)
 [node name="Wiggler" type="Node2D" parent="NextOffer" unique_id=47546257]
 position = Vector2(3, -7)
 script = ExtResource("3_xkx2h")
+rotation_rate = 5
 rotation_multiplier = 0.05
 
 [node name="NextTetriminos" type="Node2D" parent="NextOffer/Wiggler" unique_id=1656338273]
@@ -151,6 +155,7 @@ position = Vector2(877, 295)
 [node name="Wiggler" type="Node2D" parent="HeldOffer" unique_id=904658414]
 position = Vector2(3, -7)
 script = ExtResource("3_xkx2h")
+rotation_rate = 5
 rotation_multiplier = 0.05
 
 [node name="HeldTetriminos" type="Node2D" parent="HeldOffer/Wiggler" unique_id=1271003227]
@@ -164,6 +169,7 @@ position = Vector2(1605, 295)
 [node name="Wiggler" type="Node2D" parent="FallingOffer" unique_id=211418976]
 position = Vector2(3, -7)
 script = ExtResource("3_xkx2h")
+rotation_rate = 5
 rotation_multiplier = 0.05
 
 [node name="FallingTetriminos" type="Node2D" parent="FallingOffer/Wiggler" unique_id=458194417]
