@@ -94,13 +94,20 @@ func _ready() -> void:
 	max_time = remaining_time
 	remaining_time_label.set_max_time(max_time)
 	
+	if run_state.previously_falling != null and !run_state.previously_falling.is_empty():
+		spawn_new_tetriminos(run_state.previously_falling)
+		run_state.remove_from_curent_stash(run_state.previously_falling)
+	
 	if run_state.previously_next != null and !run_state.previously_next.is_empty():
 		next_tetriminos.setup(run_state.previously_next)
 		run_state.remove_from_curent_stash(run_state.previously_next)
+	else:
+		get_next_tetriminos_from_deck()
 	
 	if run_state.previously_held != null and !run_state.previously_held.is_empty():
 		held_tetriminos.setup(run_state.previously_held)
 		run_state.remove_from_curent_stash(run_state.previously_held)
+	
 
 func out_of_bounds(x: int, y: int) -> bool:
 	# NOTE: There is no lower bound on y axis (upwards)
@@ -449,7 +456,7 @@ func try_move_falling_tetriminos_x(delta: int) -> bool:
 
 # Returns true if it moved; false if landed OR if null
 func try_move_falling_tetriminos_down(land: bool=true) -> bool:
-	if falling_tetriminos == null:
+	if falling_tetriminos == null or falling_tetriminos.template.is_empty():
 		return false
 	falling_tetriminos.grid_pos.y += 1
 	falling_tetriminos.position.y += CELL_SIZE
