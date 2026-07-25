@@ -11,6 +11,7 @@ class_name RewardIndicator
 var create_icon:Texture2D = preload("res://Sprites/Create.png")
 var modify_icon:Texture2D = preload("res://Sprites/ModifyIcon.png")
 var destroy_icon:Texture2D = preload("res://Sprites/Destroy.png")
+var swap_icon:Texture2D = preload("res://Sprites/Swap.png")
 
 func _ready() -> void:
 	set_reward_type(self.type)
@@ -32,6 +33,9 @@ func set_reward_type(reward_type:LevelOption.RewardType):
 		LevelOption.RewardType.Destroy:
 			icon.texture = destroy_icon
 			label.text = "Destroy"
+		LevelOption.RewardType.Swap:
+			icon.texture = swap_icon
+			label.text = "Swap"
 		LevelOption.RewardType.Nothing:
 			icon.texture = null
 			label.text = ""

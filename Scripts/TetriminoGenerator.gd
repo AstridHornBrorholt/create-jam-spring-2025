@@ -1,12 +1,12 @@
 class_name TetriminoGenerator
 
-func tetrimino_hash(tetrimino: Array[CellTemplate]) -> int:
+static func tetrimino_hash(tetrimino: Array[CellTemplate]) -> int:
 	var _hash = 0
 	for cell in tetrimino:
 		_hash ^= cell.pos.x + cell.pos.y * 100
 	return _hash
 
-func generate_tetrimino(size:int, types:Array[Cell.Type]) -> TetriminosTemplate:		
+static func generate_tetrimino(size:int, types:Array[Cell.Type]) -> TetriminosTemplate:		
 	var tetrimino: Array[CellTemplate] = []
 	var possible_next_positions: Array[Vector2i] = [Vector2i(0, 0)]
 	var used_positions: Array[Vector2i] = []

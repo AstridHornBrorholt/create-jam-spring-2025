@@ -80,6 +80,9 @@ func remove_from_curent_stash(tetriminos:TetriminosTemplate):
 	
 	assert(false, "Failed to remove tetriminos because it does not apear to be in current_stash.")
 
+func add_to_permanent_stash(tetriminos:TetriminosTemplate):
+	stash.push_back(tetriminos)
+
 func remove_from_permanent_stash(tetriminos:TetriminosTemplate):
 	for i in stash.size():
 		if stash[i].equals(tetriminos):
@@ -87,8 +90,6 @@ func remove_from_permanent_stash(tetriminos:TetriminosTemplate):
 			return
 	
 	assert(false, "Failed to remove tetriminos because it does not apear to be in stash.")
-
-
 
 func get_level(): # returns [score_goal, time_limit]
 	return [game_mode.get_score(level), game_mode.get_time(level)]

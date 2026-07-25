@@ -94,6 +94,10 @@ func _ready() -> void:
 	max_time = remaining_time
 	remaining_time_label.set_max_time(max_time)
 	
+	if run_state.previously_next != null and !run_state.previously_next.is_empty():
+		next_tetriminos.setup(run_state.previously_next)
+		run_state.remove_from_curent_stash(run_state.previously_next)
+	
 	if run_state.previously_held != null and !run_state.previously_held.is_empty():
 		held_tetriminos.setup(run_state.previously_held)
 		run_state.remove_from_curent_stash(run_state.previously_held)
@@ -673,6 +677,8 @@ func _on_continue_button_pressed() -> void:
 			LevelOption.RewardType.Destroy:
 				get_tree().change_scene_to_file("res://Scenes/Run Menus/Destroy.tscn")
 			#LevelOption.RewardType.Modify:
+			LevelOption.RewardType.Swap:
+				get_tree().change_scene_to_file("res://Scenes/Run Menus/Swap.tscn")
 			LevelOption.RewardType.Nothing:
 				get_tree().change_scene_to_file("res://Scenes/Run Menus/NextLevelSelect.tscn")
 			_:

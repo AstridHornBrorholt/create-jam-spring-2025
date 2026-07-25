@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://b8lh7on8j7j7u" path="res://Scripts/ButtonWithShadow.gd" id="4_qa860"]
 [ext_resource type="AudioStream" uid="uid://dfdw01nor3p0w" path="res://SFX/explosion.wav" id="6_2sqnx"]
 [ext_resource type="PackedScene" uid="uid://b7njvl3j3a8jx" path="res://Prefabs/RewardIndicator.tscn" id="7_tuyx0"]
+[ext_resource type="Texture2D" uid="uid://dj7j4put16rls" path="res://Sprites/Gray.png" id="9_aacq3"]
 
 [node name="Destroy" type="Node2D" unique_id=1229755862]
 script = ExtResource("1_2sqnx")
@@ -16,6 +17,13 @@ script = ExtResource("1_2sqnx")
 z_index = -10
 texture = ExtResource("1_88i36")
 centered = false
+
+[node name="Gray" type="Sprite2D" parent="." unique_id=1512793574]
+modulate = Color(1, 1, 1, 0.14902)
+z_index = -10
+position = Vector2(960, 540)
+scale = Vector2(9.55846, 0.838174)
+texture = ExtResource("9_aacq3")
 
 [node name="Next" type="Node2D" parent="." unique_id=1520532743]
 
@@ -31,9 +39,9 @@ metadata/_custom_type_script = "uid://0mya0f5x0amh"
 
 [node name="SelectNext" type="Button" parent="." unique_id=1978023239]
 offset_left = 41.0
-offset_top = 287.0
+offset_top = 351.0
 offset_right = 553.0
-offset_bottom = 963.83
+offset_bottom = 1027.8301
 size_flags_horizontal = 4
 focus_neighbor_left = NodePath("../SelectFalling")
 focus_neighbor_right = NodePath("../SelectHeld")
@@ -48,7 +56,7 @@ script = ExtResource("4_qa860")
 metadata/_custom_type_script = "uid://b8lh7on8j7j7u"
 
 [node name="NextTarget" type="Node2D" parent="." unique_id=1540663747]
-position = Vector2(297, 512)
+position = Vector2(297, 554)
 
 [node name="Held" type="Node2D" parent="." unique_id=158497700]
 position = Vector2(-704, 0)
@@ -64,13 +72,13 @@ script = ExtResource("3_tuyx0")
 metadata/_custom_type_script = "uid://0mya0f5x0amh"
 
 [node name="HeldTarget" type="Node2D" parent="." unique_id=805133517]
-position = Vector2(897, 512)
+position = Vector2(897, 554)
 
 [node name="SelectHeld" type="Button" parent="." unique_id=928576244]
 offset_left = 641.0
-offset_top = 287.0
+offset_top = 351.0
 offset_right = 1153.0
-offset_bottom = 963.83
+offset_bottom = 1027.8301
 size_flags_horizontal = 4
 focus_neighbor_left = NodePath("../SelectNext")
 focus_neighbor_right = NodePath("../SelectFalling")
@@ -86,9 +94,9 @@ metadata/_custom_type_script = "uid://b8lh7on8j7j7u"
 
 [node name="HeldMissingText" type="RichTextLabel" parent="." unique_id=436051481]
 offset_left = 740.0
-offset_top = 437.0
+offset_top = 466.0
 offset_right = 1060.0
-offset_bottom = 597.0
+offset_bottom = 626.0
 theme = ExtResource("1_nh5yv")
 theme_override_font_sizes/normal_font_size = 45
 text = "Tip: 
@@ -111,9 +119,9 @@ metadata/_custom_type_script = "uid://0mya0f5x0amh"
 
 [node name="SelectFalling" type="Button" parent="." unique_id=1875445205]
 offset_left = 1357.0
-offset_top = 284.0
+offset_top = 348.0
 offset_right = 1869.0
-offset_bottom = 960.83
+offset_bottom = 1024.8301
 size_flags_horizontal = 4
 focus_neighbor_left = NodePath("../SelectHeld")
 focus_neighbor_right = NodePath("../SelectNext")
@@ -128,7 +136,7 @@ script = ExtResource("4_qa860")
 metadata/_custom_type_script = "uid://b8lh7on8j7j7u"
 
 [node name="FallingTarget" type="Node2D" parent="." unique_id=370172535]
-position = Vector2(1613, 509)
+position = Vector2(1613, 554)
 
 [node name="DestroySound" type="AudioStreamPlayer" parent="." unique_id=878509981]
 stream = ExtResource("6_2sqnx")

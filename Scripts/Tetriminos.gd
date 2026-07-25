@@ -27,3 +27,6 @@ func setup(templateʹ: TetriminosTemplate):
 		cell.grid_pos = ct.pos
 		cell.type = ct.type
 		cells.append(cell)
+
+func get_size() -> int:
+	return len(cells)
