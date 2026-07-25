@@ -22,3 +22,12 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	shadow.text = text
+
+# A Button object or other UI node works nice here.
+func set_focus(left, top, right, bottom, next, previous):
+	focus_neighbor_left = left.get_path()
+	focus_neighbor_top = top.get_path()
+	focus_neighbor_right = right.get_path()
+	focus_neighbor_bottom = bottom.get_path()
+	focus_next = next.get_path()
+	focus_previous = previous.get_path()

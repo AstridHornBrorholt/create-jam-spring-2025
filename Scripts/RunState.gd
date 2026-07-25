@@ -21,11 +21,11 @@ var highest_score = 0
 
 # Keep track of the pieces that were previously in the "held" and "next" positions, and the falling one.
 var previously_held:TetriminosTemplate = TetriminosTemplate.new([])
-var previously_held_position:Vector2
+var previously_held_position:Vector2 = Vector2.ZERO
 var previously_next:TetriminosTemplate = TetriminosTemplate.new([])
-var previously_next_position:Vector2
+var previously_next_position:Vector2 = Vector2.ZERO
 var previously_falling:TetriminosTemplate = TetriminosTemplate.new([])
-var previously_falling_position:Vector2
+var previously_falling_position:Vector2 = Vector2.ZERO
 
 # Used by the win screen. 
 var game_grid:Array #Houses game.grid, the [x][y] array with all the cells in them. 
@@ -60,16 +60,19 @@ func new_game():
 	current_stash = stash.duplicate()
 	current_stash.shuffle()
 
-func pop_from_stash():
+func renew_stash_if_needed():
 	if current_stash.size() <= 0:
 		current_stash = stash.duplicate()
 		current_stash.shuffle()
+		if previously_held != null:
+			remove_from_curent_stash(previously_held)
+
+func pop_from_stash():
+	renew_stash_if_needed()
 	return current_stash.pop_back()
 
 func peek_next():
-	if current_stash.size() <= 0:
-		current_stash = stash.duplicate()
-		current_stash.shuffle()
+	renew_stash_if_needed()
 	return current_stash.back()
 
 func remove_from_curent_stash(tetriminos:TetriminosTemplate):

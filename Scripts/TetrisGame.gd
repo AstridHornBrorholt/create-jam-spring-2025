@@ -107,7 +107,6 @@ func _ready() -> void:
 	if run_state.previously_held != null and !run_state.previously_held.is_empty():
 		held_tetriminos.setup(run_state.previously_held)
 		run_state.remove_from_curent_stash(run_state.previously_held)
-	
 
 func out_of_bounds(x: int, y: int) -> bool:
 	# NOTE: There is no lower bound on y axis (upwards)
@@ -253,6 +252,7 @@ func get_next_tetriminos_from_deck() -> TetriminosTemplate:
 	var next = run_state.pop_from_stash()
 	var next_next = run_state.peek_next()
 	next_tetriminos.setup(next_next)
+	CurrentRun.previously_next = next_tetriminos.template
 	return next
 
 func _process(delta):
@@ -402,6 +402,7 @@ func _on_tick() -> void:
 		hold_locked = true
 		var previously_held:TetriminosTemplate = held_tetriminos.template
 		held_tetriminos.setup(falling_tetriminos.template)
+		CurrentRun.previously_held = held_tetriminos.template
 		falling_tetriminos.queue_free()
 		spawn_new_tetriminos(previously_held)	# previously_held might be null, which is fine.
 		return
@@ -431,6 +432,7 @@ func spawn_new_tetriminos(template:TetriminosTemplate=null):
 	falling_tetriminos = tetriminos_prefab.instantiate()
 	add_child(falling_tetriminos)
 	falling_tetriminos.setup(template)
+	CurrentRun.previously_falling = falling_tetriminos.template
 	@warning_ignore("integer_division") var grid_pos = Vector2i(WIDTH / 2, 0)
 	falling_tetriminos.position = grid_pos * CELL_SIZE
 	falling_tetriminos.grid_pos = grid_pos

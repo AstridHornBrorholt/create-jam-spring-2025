@@ -3,14 +3,10 @@
 [ext_resource type="Script" uid="uid://sxfgenwt7cx3" path="res://Scripts/Swap.gd" id="1_cw5tr"]
 [ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="2_cw5tr"]
 [ext_resource type="Texture2D" uid="uid://dj7j4put16rls" path="res://Sprites/Gray.png" id="3_cw5tr"]
-[ext_resource type="Script" uid="uid://c1u6qwtwgcpxy" path="res://Scripts/Wiggler.gd" id="3_xkx2h"]
-[ext_resource type="Script" uid="uid://0mya0f5x0amh" path="res://Scripts/Tetriminos.gd" id="4_esxc4"]
 [ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="5_whoit"]
-[ext_resource type="Script" uid="uid://b8lh7on8j7j7u" path="res://Scripts/ButtonWithShadow.gd" id="6_blbjn"]
-[ext_resource type="AudioStream" uid="uid://cb6j4bnup52id" path="res://SFX/rotate.wav" id="8_cw5tr"]
+[ext_resource type="PackedScene" uid="uid://c4kjlkdc5cdrn" path="res://Prefabs/SwapOption.tscn" id="6_khecs"]
 [ext_resource type="PackedScene" uid="uid://b7njvl3j3a8jx" path="res://Prefabs/RewardIndicator.tscn" id="8_v374q"]
 [ext_resource type="PackedScene" uid="uid://driyn4ve6jeng" path="res://Prefabs/ButtonToChangeScene.tscn" id="10_xkx2h"]
-[ext_resource type="Texture2D" uid="uid://ref7i4bk0qgf" path="res://Sprites/SwapArrow.png" id="11_esxc4"]
 
 [node name="Swap" type="Node2D" unique_id=1229755862]
 script = ExtResource("1_cw5tr")
@@ -27,93 +23,33 @@ position = Vector2(960, 580)
 scale = Vector2(9.55846, 0.838174)
 texture = ExtResource("3_cw5tr")
 
-[node name="Next" type="Node2D" parent="." unique_id=1520532743]
-position = Vector2(0, 40)
+[node name="RewardIndicator" parent="." unique_id=1502803859 instance=ExtResource("8_v374q")]
+position = Vector2(1755, 61)
+type = 3
+wiggle = false
 
-[node name="Wiggler" type="Node2D" parent="Next" unique_id=101202835]
-position = Vector2(6, -3)
-script = ExtResource("3_xkx2h")
-rotation_rate = 5
-rotation_multiplier = 0.05
+[node name="Continue" parent="." unique_id=1380750691 instance=ExtResource("10_xkx2h")]
+offset_left = 754.0
+offset_top = 935.0
+offset_right = 1160.0
+offset_bottom = 1047.0
+text = "Continue"
+new_scene = "res://Scenes/Run Menus/NextLevelSelect.tscn"
 
-[node name="NextTetriminos" type="Node2D" parent="Next/Wiggler" unique_id=851071080]
-position = Vector2(-32, -32)
-script = ExtResource("4_esxc4")
-metadata/_custom_type_script = "uid://0mya0f5x0amh"
+[node name="Next" parent="." unique_id=1788458629 instance=ExtResource("6_khecs")]
+position = Vector2(320, 576)
 
-[node name="SelectNext" type="Button" parent="." unique_id=1978023239]
-offset_left = 41.0
-offset_top = 231.0
-offset_right = 553.0
-offset_bottom = 831.0
-size_flags_horizontal = 4
-focus_neighbor_left = NodePath("../SelectFalling")
-focus_neighbor_top = NodePath("../Continue")
-focus_neighbor_right = NodePath("../SelectHeld")
-focus_neighbor_bottom = NodePath("../Continue")
-focus_next = NodePath("../SelectHeld")
-focus_previous = NodePath("../Continue")
-theme = ExtResource("5_whoit")
-theme_override_font_sizes/font_size = 90
-text = "
+[node name="Held" parent="." unique_id=1922745461 instance=ExtResource("6_khecs")]
+position = Vector2(960, 580)
 
+[node name="Falling" parent="." unique_id=716724761 instance=ExtResource("6_khecs")]
+position = Vector2(1600, 580)
 
-
-
-Swap"
-autowrap_trim_flags = 0
-script = ExtResource("6_blbjn")
-metadata/_custom_type_script = "uid://b8lh7on8j7j7u"
-
-[node name="NextTarget" type="Node2D" parent="." unique_id=1540663747]
-position = Vector2(297, 594)
-
-[node name="Held" type="Node2D" parent="." unique_id=158497700]
-position = Vector2(-704, 40)
-
-[node name="Wiggler" type="Node2D" parent="Held" unique_id=836004486]
-position = Vector2(3, -7)
-script = ExtResource("3_xkx2h")
-rotation_rate = 5
-rotation_multiplier = 0.05
-
-[node name="HeldTetriminos" type="Node2D" parent="Held/Wiggler" unique_id=579647145]
-position = Vector2(2, 1)
-script = ExtResource("4_esxc4")
-metadata/_custom_type_script = "uid://0mya0f5x0amh"
-
-[node name="HeldTarget" type="Node2D" parent="." unique_id=805133517]
-position = Vector2(897, 594)
-
-[node name="SelectHeld" type="Button" parent="." unique_id=928576244]
-offset_left = 641.0
-offset_top = 231.0
-offset_right = 1153.0
-offset_bottom = 831.0
-size_flags_horizontal = 4
-focus_neighbor_left = NodePath("../SelectNext")
-focus_neighbor_top = NodePath("../Continue")
-focus_neighbor_right = NodePath("../SelectFalling")
-focus_neighbor_bottom = NodePath("../Continue")
-focus_next = NodePath(".")
-focus_previous = NodePath("../SelectFalling")
-theme = ExtResource("5_whoit")
-theme_override_font_sizes/font_size = 90
-text = "
-
-
-
-
-Swap"
-autowrap_trim_flags = 0
-script = ExtResource("6_blbjn")
-metadata/_custom_type_script = "uid://b8lh7on8j7j7u"
-
-[node name="HeldMissingText" type="RichTextLabel" parent="." unique_id=436051481]
-offset_left = 740.0
-offset_top = 506.0
-offset_right = 1060.0
-offset_bottom = 666.0
+[node name="HeldMissingText" type="RichTextLabel" parent="." unique_id=689378374]
+offset_left = 797.0
+offset_top = 496.0
+offset_right = 1117.0
+offset_bottom = 656.0
 theme = ExtResource("5_whoit")
 theme_override_font_sizes/normal_font_size = 45
 text = "Tip: 
@@ -121,124 +57,6 @@ Held pieces show up here"
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="Falling" type="Node2D" parent="." unique_id=825637039]
-position = Vector2(672, 40)
-
-[node name="Wiggler" type="Node2D" parent="Falling" unique_id=1360235532]
-position = Vector2(3, -7)
-script = ExtResource("3_xkx2h")
-rotation_rate = 5
-rotation_multiplier = 0.05
-
-[node name="FallingTetriminos" type="Node2D" parent="Falling/Wiggler" unique_id=407707134]
-position = Vector2(-29, -33)
-script = ExtResource("4_esxc4")
-metadata/_custom_type_script = "uid://0mya0f5x0amh"
-
-[node name="NextOffer" type="Node2D" parent="." unique_id=2039165793]
-position = Vector2(295, 295)
-
-[node name="Wiggler" type="Node2D" parent="NextOffer" unique_id=47546257]
-position = Vector2(3, -7)
-script = ExtResource("3_xkx2h")
-rotation_rate = 5
-rotation_multiplier = 0.05
-
-[node name="NextTetriminos" type="Node2D" parent="NextOffer/Wiggler" unique_id=1656338273]
-position = Vector2(-29, -33)
-script = ExtResource("4_esxc4")
-metadata/_custom_type_script = "uid://0mya0f5x0amh"
-
-[node name="HeldOffer" type="Node2D" parent="." unique_id=186125005]
-position = Vector2(877, 295)
-
-[node name="Wiggler" type="Node2D" parent="HeldOffer" unique_id=904658414]
-position = Vector2(3, -7)
-script = ExtResource("3_xkx2h")
-rotation_rate = 5
-rotation_multiplier = 0.05
-
-[node name="HeldTetriminos" type="Node2D" parent="HeldOffer/Wiggler" unique_id=1271003227]
-position = Vector2(-29, -33)
-script = ExtResource("4_esxc4")
-metadata/_custom_type_script = "uid://0mya0f5x0amh"
-
-[node name="FallingOffer" type="Node2D" parent="." unique_id=1562998952]
-position = Vector2(1605, 295)
-
-[node name="Wiggler" type="Node2D" parent="FallingOffer" unique_id=211418976]
-position = Vector2(3, -7)
-script = ExtResource("3_xkx2h")
-rotation_rate = 5
-rotation_multiplier = 0.05
-
-[node name="FallingTetriminos" type="Node2D" parent="FallingOffer/Wiggler" unique_id=458194417]
-position = Vector2(-29, -33)
-script = ExtResource("4_esxc4")
-metadata/_custom_type_script = "uid://0mya0f5x0amh"
-
-[node name="SelectFalling" type="Button" parent="." unique_id=1875445205]
-offset_left = 1357.0
-offset_top = 228.0
-offset_right = 1869.0
-offset_bottom = 828.0
-size_flags_horizontal = 4
-focus_neighbor_left = NodePath("../SelectHeld")
-focus_neighbor_top = NodePath("../Continue")
-focus_neighbor_right = NodePath("../SelectNext")
-focus_neighbor_bottom = NodePath("../Continue")
-focus_next = NodePath("../Continue")
-focus_previous = NodePath("../SelectNext")
-theme = ExtResource("5_whoit")
-theme_override_font_sizes/font_size = 90
-text = "
-
-
-
-
-Swap"
-autowrap_trim_flags = 0
-script = ExtResource("6_blbjn")
-metadata/_custom_type_script = "uid://b8lh7on8j7j7u"
-
-[node name="FallingTarget" type="Node2D" parent="." unique_id=370172535]
-position = Vector2(1613, 594)
-
-[node name="SwapSound" type="AudioStreamPlayer" parent="." unique_id=1113835426]
-stream = ExtResource("8_cw5tr")
-
-[node name="RewardIndicator" parent="." unique_id=1502803859 instance=ExtResource("8_v374q")]
-position = Vector2(1755, 61)
-type = 3
-wiggle = false
-
-[node name="Continue" parent="." unique_id=1380750691 instance=ExtResource("10_xkx2h")]
-offset_left = 692.0
-offset_top = 951.0
-offset_right = 1098.0
-offset_bottom = 1063.0
-focus_neighbor_top = NodePath("../SelectNext")
-focus_neighbor_bottom = NodePath("../SelectNext")
-focus_next = NodePath("../SelectNext")
-focus_previous = NodePath("../SelectFalling")
-text = "Continue"
-new_scene = "res://Scenes/Run Menus/NextLevelSelect.tscn"
-
-[node name="SwapNextArrow" type="Sprite2D" parent="." unique_id=1451717864]
-position = Vector2(293, 418.515)
-texture = ExtResource("11_esxc4")
-
-[node name="SwapHeldArrow" type="Sprite2D" parent="." unique_id=1463284366]
-position = Vector2(891, 418.515)
-texture = ExtResource("11_esxc4")
-
-[node name="SwapFallingArrow" type="Sprite2D" parent="." unique_id=1765623750]
-position = Vector2(1616, 418.515)
-texture = ExtResource("11_esxc4")
-
-[connection signal="mouse_entered" from="SelectNext" to="." method="_on_select_next_mouse_entered"]
-[connection signal="pressed" from="SelectNext" to="." method="_on_select_next_pressed"]
-[connection signal="mouse_entered" from="SelectHeld" to="." method="_on_select_held_mouse_entered"]
-[connection signal="pressed" from="SelectHeld" to="." method="_on_select_held_pressed"]
-[connection signal="mouse_entered" from="SelectFalling" to="." method="_on_select_falling_mouse_entered"]
-[connection signal="pressed" from="SelectFalling" to="." method="_on_select_falling_pressed"]
+[connection signal="on_swapped" from="Next" to="." method="_on_next_on_swapped"]
+[connection signal="on_swapped" from="Held" to="." method="_on_held_on_swapped"]
+[connection signal="on_swapped" from="Falling" to="." method="_on_falling_on_swapped"]

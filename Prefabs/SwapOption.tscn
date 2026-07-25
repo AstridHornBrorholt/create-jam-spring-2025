@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://c4kjlkdc5cdrn"]
+
+[ext_resource type="Script" uid="uid://c1u6qwtwgcpxy" path="res://Scripts/Wiggler.gd" id="1_cs7cf"]
+[ext_resource type="Script" uid="uid://dkvff2qirbrbm" path="res://Scripts/SwapOption.gd" id="1_oqubr"]
+[ext_resource type="Script" uid="uid://0mya0f5x0amh" path="res://Scripts/Tetriminos.gd" id="2_oqubr"]
+[ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="3_wygln"]
+[ext_resource type="Script" uid="uid://b8lh7on8j7j7u" path="res://Scripts/ButtonWithShadow.gd" id="4_k7e5b"]
+[ext_resource type="AudioStream" uid="uid://cb6j4bnup52id" path="res://SFX/rotate.wav" id="5_2x18d"]
+[ext_resource type="Texture2D" uid="uid://ref7i4bk0qgf" path="res://Sprites/SwapArrow.png" id="6_jajk2"]
+
+[node name="SwapOption" type="Node2D" unique_id=1788458629]
+script = ExtResource("1_oqubr")
+
+[node name="Wiggler" type="Node2D" parent="." unique_id=452504830]
+script = ExtResource("1_cs7cf")
+rotation_rate = 5
+rotation_multiplier = 0.05
+
+[node name="Tetriminos" type="Node2D" parent="Wiggler" unique_id=754625906]
+position = Vector2(-32, -32)
+script = ExtResource("2_oqubr")
+metadata/_custom_type_script = "uid://0mya0f5x0amh"
+
+[node name="SwapArrow" type="Sprite2D" parent="." unique_id=865062164]
+position = Vector2(-4, -175.48499)
+texture = ExtResource("6_jajk2")
+
+[node name="OfferWiggler" type="Node2D" parent="." unique_id=1802156769]
+position = Vector2(1, -306)
+script = ExtResource("1_cs7cf")
+rotation_rate = 5
+rotation_multiplier = 0.05
+
+[node name="Tetriminos" type="Node2D" parent="OfferWiggler" unique_id=229973223]
+position = Vector2(-29, -33)
+script = ExtResource("2_oqubr")
+metadata/_custom_type_script = "uid://0mya0f5x0amh"
+
+[node name="SwapButton" type="Button" parent="." unique_id=340434022]
+offset_left = -256.0
+offset_top = -363.0
+offset_right = 256.0
+offset_bottom = 237.0
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../SelectFalling")
+focus_neighbor_top = NodePath("../Continue")
+focus_neighbor_right = NodePath("../SelectHeld")
+focus_neighbor_bottom = NodePath("../Continue")
+focus_next = NodePath("../SelectHeld")
+focus_previous = NodePath("../Continue")
+theme = ExtResource("3_wygln")
+theme_override_font_sizes/font_size = 90
+text = "
+
+
+
+
+Swap"
+autowrap_trim_flags = 0
+script = ExtResource("4_k7e5b")
+metadata/_custom_type_script = "uid://b8lh7on8j7j7u"
+metadata/_edit_use_anchors_ = true
+
+[node name="SwapSound" type="AudioStreamPlayer" parent="." unique_id=1376405963]
+stream = ExtResource("5_2x18d")
+
+[connection signal="mouse_entered" from="SwapButton" to="." method="_on_swap_button_mouse_entered"]
+[connection signal="pressed" from="SwapButton" to="." method="_on_swap_button_pressed"]

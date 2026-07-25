@@ -90,7 +90,9 @@ func _process(delta: float) -> void:
 	level.modulate = color_focus
 
 func pick_random_reward() -> RewardType:
-	if CurrentRun.stash.size() == 1:
+	# Stash needs to be at least size 3 for the game to function.
+	# That way, there is always at least a held, next and fallnig piece.
+	if CurrentRun.stash.size() <= 3:
 		return RewardType.Create
 	else:
 		return [
