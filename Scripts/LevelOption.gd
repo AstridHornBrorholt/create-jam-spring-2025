@@ -17,8 +17,8 @@ var on_select:Callable
 
 var focused = false
 
-var scale_focus = Vector2.ONE
-@onready var scale_no_focus = level.transform.get_scale()
+@onready var scale_focus = level.transform.get_scale()
+@onready var scale_no_focus = scale_focus*0.9
 
 var color_focus = Color("#ffffffff")
 @onready var color_no_focus = level.modulate
@@ -81,7 +81,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if !focused:
 		level.modulate = color_no_focus
-		level.scale = scale_focus
+		level.scale = scale_no_focus
 		return
 	
 	focus_progress += delta*focus_rate

@@ -13,15 +13,14 @@
 script = ExtResource("1_1m5am")
 metadata/_edit_vertical_guides_ = [576.0]
 
-[node name="Gray" type="Sprite2D" parent="." unique_id=1542520773]
-modulate = Color(1, 1, 1, 0.14902)
-position = Vector2(4.49999, -43.5)
-scale = Vector2(2.33333, 3.47303)
-texture = ExtResource("1_x5qd5")
-
 [node name="Level" type="Node2D" parent="." unique_id=667078825]
 modulate = Color(0.7162962, 0.7162962, 0.7162962, 1)
-scale = Vector2(0.9, 0.9)
+
+[node name="Gray" type="Sprite2D" parent="Level" unique_id=1542520773]
+modulate = Color(1, 1, 1, 0.14902)
+position = Vector2(2.7777712, -32.77781)
+scale = Vector2(2.4378107, 3.5546336)
+texture = ExtResource("1_x5qd5")
 
 [node name="Map Transform" type="Sprite2D" parent="Level" unique_id=1898322061]
 self_modulate = Color(1, 1, 1, 0)
