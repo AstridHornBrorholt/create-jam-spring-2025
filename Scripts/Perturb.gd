@@ -3,9 +3,9 @@ extends Node2D
 @onready var animation_speed = Options.get_animation_speed()
 
 # This was the piece which was in the "next" spot
-@onready var next:SwapOption = $"Next"
-@onready var held:SwapOption = $"Held"
-@onready var falling:SwapOption = $"Falling"
+@onready var next:PerturbOption = $"Next"
+@onready var held:PerturbOption = $"Held"
+@onready var falling:PerturbOption = $"Falling"
 
 var held_missing:bool
 @onready var held_missing_text = $"HeldMissingText"
@@ -22,15 +22,15 @@ func _ready() -> void:
 	falling.setup(CurrentRun.previously_falling, CurrentRun.previously_falling_position)
 	
 	held_missing = CurrentRun.previously_held == null or CurrentRun.previously_held.is_empty()
-	held_missing_text.visible = CurrentRun.previously_held == null or CurrentRun.previously_held.is_empty()
+	held_missing_text.visible = held_missing
 	
 	# Set button navigation focus 
-	var n:ButtonWithShadow = $"Next/SwapButton"
-	var h:ButtonWithShadow = $"Held/SwapButton"
-	var f:ButtonWithShadow = $"Falling/SwapButton"
+	var n:ButtonWithShadow = $"Next/PerturbButton"
+	var h:ButtonWithShadow = $"Held/PerturbButton"
+	var f:ButtonWithShadow = $"Falling/PerturbButton"
 	var c:ButtonWithShadow = $"Continue"
 	
-	if CurrentRun.previously_held == null or CurrentRun.previously_held.is_empty():
+	if held_missing:
 		# ButtonWithShadow.set_focus(left, top, right, bottom, next, previous)
 		n.set_focus(f, c, f, c, f, c)
 		f.set_focus(n, c, n, c, c, n)
@@ -42,14 +42,12 @@ func _ready() -> void:
 		c.set_focus(n, h, f, h, n, f)
 	
 	n.grab_focus()
-	
-	
 
-func _on_next_on_swapped(new_template: TetriminosTemplate) -> void:
+func _on_next_on_perturbed(new_template: TetriminosTemplate) -> void:
 	CurrentRun.previously_next = new_template
 
-func _on_held_on_swapped(new_template: TetriminosTemplate) -> void:
+func _on_held_on_perturbed(new_template: TetriminosTemplate) -> void:
 	CurrentRun.previously_held = new_template
 
-func _on_falling_on_swapped(new_template: TetriminosTemplate) -> void:
+func _on_falling_on_perturbed(new_template: TetriminosTemplate) -> void:
 	CurrentRun.previously_falling = new_template

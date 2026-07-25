@@ -19,7 +19,7 @@ var wiggler_start:Vector2
 
 @onready var swap_sound:AudioStreamPlayer = $"SwapSound"
 
-enum State { Waiting, FlyingIn, Selecting, DestroyingSelected }
+enum State { Waiting, FlyingIn, Selecting }
 var state:State = State.Waiting
 
 var wait_progress = 0.0

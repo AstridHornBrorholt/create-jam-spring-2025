@@ -64,7 +64,7 @@ func renew_stash_if_needed():
 	if current_stash.size() <= 0:
 		current_stash = stash.duplicate()
 		current_stash.shuffle()
-		if previously_held != null:
+		if previously_held != null and !previously_held.is_empty():
 			remove_from_curent_stash(previously_held)
 
 func pop_from_stash():

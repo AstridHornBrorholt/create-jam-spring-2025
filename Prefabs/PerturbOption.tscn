@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://ter1nxxii0yj"]
+
+[ext_resource type="Script" uid="uid://4dulwy1qkniv" path="res://Scripts/PerturbOption.gd" id="1_qwv7p"]
+[ext_resource type="Script" uid="uid://c1u6qwtwgcpxy" path="res://Scripts/Wiggler.gd" id="2_pepjx"]
+[ext_resource type="Script" uid="uid://0mya0f5x0amh" path="res://Scripts/Tetriminos.gd" id="3_yhqji"]
+[ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="5_uk83u"]
+[ext_resource type="AudioStream" uid="uid://cb6j4bnup52id" path="res://SFX/rotate.wav" id="6_0x4ms"]
+[ext_resource type="Script" uid="uid://b8lh7on8j7j7u" path="res://Scripts/ButtonWithShadow.gd" id="6_h5yj5"]
+[ext_resource type="AudioStream" uid="uid://bti3rquj6gvmu" path="res://SFX/powerUp.wav" id="6_qwv7p"]
+
+[node name="PerturbOption" type="Node2D" unique_id=1788458629]
+script = ExtResource("1_qwv7p")
+
+[node name="Wiggler" type="Node2D" parent="." unique_id=452504830]
+script = ExtResource("2_pepjx")
+rotation_rate = 5
+rotation_multiplier = 0.05
+
+[node name="Tetriminos" type="Node2D" parent="Wiggler" unique_id=754625906]
+position = Vector2(-32, -32)
+script = ExtResource("3_yhqji")
+metadata/_custom_type_script = "uid://0mya0f5x0amh"
+
+[node name="PerturbButton" type="Button" parent="." unique_id=340434022]
+offset_left = -390.0
+offset_top = -318.0
+offset_right = 390.0
+offset_bottom = 280.90997
+theme = ExtResource("5_uk83u")
+theme_override_font_sizes/font_size = 90
+text = "
+
+
+
+
+Perturb (?)"
+autowrap_trim_flags = 0
+script = ExtResource("6_h5yj5")
+metadata/_custom_type_script = "uid://b8lh7on8j7j7u"
+metadata/_edit_use_anchors_ = true
+
+[node name="ErrorSound" type="AudioStreamPlayer" parent="." unique_id=1390060180]
+stream = ExtResource("6_0x4ms")
+
+[node name="PerturbSound" type="AudioStreamPlayer" parent="." unique_id=1376405963]
+stream = ExtResource("6_qwv7p")
+
+[connection signal="mouse_entered" from="PerturbButton" to="." method="_on_swap_button_mouse_entered"]
+[connection signal="pressed" from="PerturbButton" to="." method="_on_perturb_button_pressed"]
