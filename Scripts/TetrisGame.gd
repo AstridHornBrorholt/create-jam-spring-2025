@@ -96,17 +96,14 @@ func _ready() -> void:
 	
 	if run_state.previously_falling != null and !run_state.previously_falling.is_empty():
 		spawn_new_tetriminos(run_state.previously_falling)
-		run_state.remove_from_curent_stash(run_state.previously_falling)
 	
 	if run_state.previously_next != null and !run_state.previously_next.is_empty():
 		next_tetriminos.setup(run_state.previously_next)
-		run_state.remove_from_curent_stash(run_state.previously_next)
 	else:
 		next_tetriminos.setup(run_state.pop_from_stash())
 	
 	if run_state.previously_held != null and !run_state.previously_held.is_empty():
 		held_tetriminos.setup(run_state.previously_held)
-		run_state.remove_from_curent_stash(run_state.previously_held)
 
 func out_of_bounds(x: int, y: int) -> bool:
 	# NOTE: There is no lower bound on y axis (upwards)
