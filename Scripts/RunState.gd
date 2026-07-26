@@ -41,7 +41,6 @@ func reset():
 	next_score_goal = get_level()[0]
 	next_time_limit = get_level()[1]
 	next_map = MapSelector.get_empty().to_array()
-	# var tetrimino_generator = TetriminoGenerator.new()
 	stash = game_mode.get_starting_stash()
 	accumulated_score = 0
 	highest_score = 0
@@ -57,23 +56,21 @@ func set_game_mode(g:GameMode) -> void:
 	reset()
 
 func new_game():
-	current_stash = stash.duplicate()
-	current_stash.shuffle()
+	renew_stash_if_needed()
 
 func renew_stash_if_needed():
 	if current_stash.size() <= 0:
-		current_stash = stash.duplicate()
+		current_stash = []
+		for p in stash:
+			current_stash.append(p.duplicate())
 		current_stash.shuffle()
+		
 		if previously_held != null and !previously_held.is_empty():
 			remove_from_curent_stash(previously_held)
 
 func pop_from_stash():
 	renew_stash_if_needed()
 	return current_stash.pop_back()
-
-func peek_next():
-	renew_stash_if_needed()
-	return current_stash.back()
 
 func remove_from_curent_stash(tetriminos:TetriminosTemplate):
 	for i in current_stash.size():

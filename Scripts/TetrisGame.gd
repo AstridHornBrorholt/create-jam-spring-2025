@@ -102,7 +102,7 @@ func _ready() -> void:
 		next_tetriminos.setup(run_state.previously_next)
 		run_state.remove_from_curent_stash(run_state.previously_next)
 	else:
-		get_next_tetriminos_from_deck()
+		next_tetriminos.setup(run_state.pop_from_stash())
 	
 	if run_state.previously_held != null and !run_state.previously_held.is_empty():
 		held_tetriminos.setup(run_state.previously_held)
@@ -249,8 +249,8 @@ func _draw() -> void:
 
 
 func get_next_tetriminos_from_deck() -> TetriminosTemplate:
-	var next = run_state.pop_from_stash()
-	var next_next = run_state.peek_next()
+	var next = next_tetriminos.template.duplicate()
+	var next_next = run_state.pop_from_stash()
 	next_tetriminos.setup(next_next)
 	CurrentRun.previously_next = next_tetriminos.template
 	return next

@@ -24,7 +24,7 @@ func setup(templateʹ: TetriminosTemplate):
 		var cell: Cell = cell_prefab.instantiate()
 		add_child(cell)
 		cell.position = ct.pos * CELL_SIZE
-		cell.grid_pos = ct.pos
+		cell.grid_pos = Vector2i(ct.pos)
 		cell.type = ct.type
 		cells.append(cell)
 
