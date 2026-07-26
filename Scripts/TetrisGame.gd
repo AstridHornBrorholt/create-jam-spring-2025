@@ -101,6 +101,7 @@ func _ready() -> void:
 		next_tetriminos.setup(run_state.previously_next)
 	else:
 		next_tetriminos.setup(run_state.pop_from_stash())
+		run_state.previously_next = next_tetriminos.template
 	
 	if run_state.previously_held != null and !run_state.previously_held.is_empty():
 		held_tetriminos.setup(run_state.previously_held)

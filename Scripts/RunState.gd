@@ -67,6 +67,9 @@ func renew_stash_if_needed():
 		
 		if previously_held != null and !previously_held.is_empty():
 			remove_from_curent_stash(previously_held)
+		
+		if previously_next != null and !previously_next.is_empty():
+			remove_from_curent_stash(previously_next)
 
 func pop_from_stash():
 	renew_stash_if_needed()
