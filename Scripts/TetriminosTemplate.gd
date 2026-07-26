@@ -101,5 +101,25 @@ func center(cs:Array[CellTemplate]):
 	)
 	for c in cs:
 		c.pos -= adjust
+
+func prettyprint():
+	var result = ""
+	var min_corner = Vector2i()
+	var max_corner = Vector2i()
 	for cell in cells:
-		cell.pos -= adjust
+		min_corner.x = min(min_corner.x, cell.pos.x)
+		min_corner.y = min(min_corner.y, cell.pos.y)
+		max_corner.x = max(max_corner.x, cell.pos.x)
+		max_corner.y = max(max_corner.y, cell.pos.y)
+	
+	for y in range(min_corner.y - 1, max_corner.y + 1):
+		for x in range(min_corner.x - 1, max_corner.x + 1): 
+			var has_cell = false
+			for cell in cells:
+				has_cell = has_cell or cell.pos.x == x and cell.pos.y == y
+			if has_cell:
+				result += "▮"
+			else:
+					result += " "
+		result += "\n"
+	print(result)

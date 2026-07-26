@@ -58,6 +58,8 @@ horizontal_alignment = 1
 
 [node name="RewardIndicator" parent="Level" unique_id=1173157405 instance=ExtResource("6_jd67p")]
 position = Vector2(-5, -101)
+type = null
+wiggle = null
 
 [node name="SelectButton" type="Button" parent="." unique_id=1822852612]
 offset_left = -246.0

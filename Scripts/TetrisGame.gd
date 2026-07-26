@@ -564,7 +564,9 @@ func clear_full_rows():
 		
 		var l = len(queued_line_clears)
 		var mult = 0
-		if l == 2:
+		if l == 1:
+			pass
+		elif l == 2:
 			mult = 1
 		elif l == 3:
 			mult = 2
