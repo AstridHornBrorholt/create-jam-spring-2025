@@ -9,7 +9,6 @@ func _init() -> void:
 	name_color = Color("0000ffff")
 	common_oops_chance = 0.1
 	legendary_oops_chance = 0.05
-	prob_regular_size = 0.3
 
 func get_time(_level:int) -> float:
 	return 120

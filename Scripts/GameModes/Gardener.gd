@@ -26,8 +26,8 @@ func random_piece_types(level:int) -> Array[Cell.Type]:
 	if randf() < plant_pot_chance:
 		return [Cell.Type.PlantPot]
 	
-	var conk_creet = super.random_piece_types(level)
-	for i in len(conk_creet):
-		if conk_creet[i] == Cell.Type.Standard:
-			conk_creet[i] = Cell.Type.Plant
-	return conk_creet
+	var cells = super.random_piece_types(level)
+	for i in len(cells):
+		if cells[i] == Cell.Type.Standard:
+			cells[i] = Cell.Type.Plant
+	return cells

@@ -7,7 +7,6 @@ func _init() -> void:
 	border_color = Color("ff3225")
 	block_color = Color("ffb4ae")
 	name_color = Color("ff0000ff")
-	prob_regular_size = 0.3
 
 func get_time(_level:int) -> float:
 	return 70

@@ -62,7 +62,7 @@ func rand() -> Cell.Type:
 		result = Cell.random_special_type()
 	return result
 
-func random_piece_size(level:int) -> int:
+func random_piece_size(_level:int) -> int:
 	# Size: We want a good chance of generating the nice size-4 pieces
 	# And then we want more awkward sizes to become more common in the higher levels.
 	var size = 4
@@ -70,14 +70,6 @@ func random_piece_size(level:int) -> int:
 		return size
 	
 	size = randi_range(5, 8)
-	if level >= 15:
-		size = randi_range(5, 8)
-	elif level >= 10:
-		size = randi_range(4, 7)
-	elif level >= 5:
-		size = randi_range(4, 6)
-	else:
-		size = randi_range(4, 5)
 	
 	return size
 
@@ -86,34 +78,13 @@ func random_piece_types(level:int) -> Array[Cell.Type]:
 	if randf() < common_oops_chance: # Chance of "OOPS! All X!" effect
 		return [ common_oops_types.pick_random() ]
 		
-	if level >= 5 and randf() < legendary_oops_chance: # This is the good stuff
+	if level >= 3 and randf() < legendary_oops_chance: # This is the good stuff
 		return [ legendary_oops_types.pick_random() ]
 	
-	if level <= 10:
-		if randf() <= 0.5:
-			return [ standard, standard, rand(), rand() ]
-		return [ standard, standard, standard, rand() ]
-	elif level <= 15:
-		if randf() <= 0.5:
-			return [ standard, rand(), rand() ]
-		return [ standard, standard, rand() ]
-	elif level <= 20:
-		if randf() <= 0.5:
-			return [ standard, rand() ]
-		var r = rand()
-		return [ standard, r, r, rand() ]
-	elif level <= 25:
-		if randf() <= 0.5:
-			return [ rand(), rand() ]
-		var r = rand()
-		return [ r, r, rand() ]
-	else:
-		if randf() <= 0.5:
-			return [ rand(), rand(), rand(), rand() ]
-		var r = rand()
-		return [ r, r, r, rand() ]
-
-
+	if randf() <= 0.5:
+		return [ standard, rand() ]
+	var r = rand()
+	return [ standard, r, r, rand() ]
 
 
 var L = TetriminosTemplate.new([

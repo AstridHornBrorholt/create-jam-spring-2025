@@ -15,5 +15,5 @@ func random_piece_types(level:int) -> Array[Cell.Type]:
 	var result = super.random_piece_types(level)
 	for i in len(result):
 		if result[i] == Cell.Type.Clock:
-			result[i] = Cell.random_special_type()
+			result[i] = Cell.Type.Gold
 	return result
