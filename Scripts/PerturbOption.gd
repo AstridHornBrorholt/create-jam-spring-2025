@@ -97,4 +97,6 @@ func _on_perturb_button_pressed() -> void:
 	CurrentRun.add_to_permanent_stash(new_template)
 	
 	perturb_sound.play()
+	perturb_sound.pitch_scale += 0.6
+	wiggler.rotation_rate += 10
 	on_perturbed.emit(tetriminos.template)

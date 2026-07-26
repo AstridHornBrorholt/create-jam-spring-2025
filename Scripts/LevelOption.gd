@@ -1,7 +1,7 @@
 extends Node2D
 class_name LevelOption
 
-enum RewardType { Create, Modify, Destroy, Swap, Nothing }
+enum RewardType { Create, Modify, Destroy, Swap, Perturb, Nothing }
 
 var score_goal = 100
 var time_limit = 90 
@@ -99,7 +99,8 @@ func pick_random_reward() -> RewardType:
 			RewardType.Create, 
 			#RewardType.Modify, # Not implemented
 			RewardType.Destroy,
-			RewardType.Swap
+			RewardType.Swap,
+			RewardType.Perturb,
 			].pick_random()
 
 

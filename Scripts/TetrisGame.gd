@@ -688,6 +688,8 @@ func _on_continue_button_pressed() -> void:
 			#LevelOption.RewardType.Modify:
 			LevelOption.RewardType.Swap:
 				get_tree().change_scene_to_file("res://Scenes/Run Menus/Swap.tscn")
+			LevelOption.RewardType.Perturb:
+				get_tree().change_scene_to_file("res://Scenes/Run Menus/Perturb.tscn")
 			LevelOption.RewardType.Nothing:
 				get_tree().change_scene_to_file("res://Scenes/Run Menus/NextLevelSelect.tscn")
 			_:

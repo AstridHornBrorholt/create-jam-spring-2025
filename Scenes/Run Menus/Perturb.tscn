@@ -24,8 +24,9 @@ scale = Vector2(9.55846, 0.838174)
 texture = ExtResource("3_vqp0l")
 
 [node name="RewardIndicator" parent="." unique_id=1502803859 instance=ExtResource("4_ae1o0")]
-position = Vector2(1755, 61)
-type = 3
+position = Vector2(827, 148.00002)
+scale = Vector2(1.385, 1.385)
+type = 4
 wiggle = false
 
 [node name="Continue" parent="." unique_id=1380750691 instance=ExtResource("5_kr748")]

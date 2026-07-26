@@ -6,7 +6,7 @@
 [ext_resource type="Theme" uid="uid://0guyg45mewl2" path="res://Theming/retro.tres" id="5_uk83u"]
 [ext_resource type="AudioStream" uid="uid://cb6j4bnup52id" path="res://SFX/rotate.wav" id="6_0x4ms"]
 [ext_resource type="Script" uid="uid://b8lh7on8j7j7u" path="res://Scripts/ButtonWithShadow.gd" id="6_h5yj5"]
-[ext_resource type="AudioStream" uid="uid://bti3rquj6gvmu" path="res://SFX/powerUp.wav" id="6_qwv7p"]
+[ext_resource type="AudioStream" uid="uid://bqt70v2i5ek5s" path="res://SFX/re_roll.wav" id="7_0x4ms"]
 
 [node name="PerturbOption" type="Node2D" unique_id=1788458629]
 script = ExtResource("1_qwv7p")
@@ -43,7 +43,8 @@ metadata/_edit_use_anchors_ = true
 stream = ExtResource("6_0x4ms")
 
 [node name="PerturbSound" type="AudioStreamPlayer" parent="." unique_id=1376405963]
-stream = ExtResource("6_qwv7p")
+stream = ExtResource("7_0x4ms")
+pitch_scale = 0.4
 
 [connection signal="mouse_entered" from="PerturbButton" to="." method="_on_swap_button_mouse_entered"]
 [connection signal="pressed" from="PerturbButton" to="." method="_on_perturb_button_pressed"]
