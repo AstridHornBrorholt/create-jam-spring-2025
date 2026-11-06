@@ -29,6 +29,8 @@ const cell_collider:PackedScene = preload("res://Prefabs/CellCollider.tscn")
 @onready var reward_label:RichTextLabel = $"Reward"
 @onready var reward_indicator:RewardIndicator = $"RewardIndicator"
 
+@onready var boss:Boss = $"Boss"
+
 @onready var move_sound:AudioStreamPlayer = $"Sounds/Move"
 @onready var spin_sound:AudioStreamPlayer = $"Sounds/Spin"
 @onready var smash_sound:AudioStreamPlayer = $"Sounds/Smash"
@@ -50,13 +52,13 @@ var tick_number: int = 0 # The current tick count
 @export var move_sideways_interval: float = 0.1 # Time between moves in seconds
 @export var row_clear_modulation: Color = Color(1.2, 1.2, 1.2)
 
-var pause: bool = false
+var ended: bool = false
 var died: bool = false
 
 var smash_next: bool = false
 var hold_next: bool = false
 var hold_locked:bool = false
-var clearing: bool = false
+var paused: bool = false
 
 var grid: Array = []
 var falling_tetriminos: Tetriminos = null
@@ -255,14 +257,14 @@ func get_next_tetriminos_from_deck() -> TetriminosTemplate:
 
 func _process(delta):
 	queue_redraw()
-	if pause:
+	if ended:
 		if died:
 			background_music.pitch_scale -= delta/2
 		else:
 			background_music.volume_linear -= delta*0.5
 		return
 	
-	if clearing:
+	if paused:
 		return
 	
 	if Input.is_action_just_pressed("slam_down"):
@@ -358,14 +360,15 @@ func _process(delta):
 
 
 func _on_tick() -> void:
-	if pause or clearing:
+	if ended or paused:
 		return
 	tick_number += 1
 	
 	background.set_filled(remaining_time / max_time)
 	
-	clear_full_rows()
+	await clear_full_rows()
 	clear_queued_columns()
+	await boss.tick_callback(tick_number)
 
 	# Call on_tick for all cells in order of their type
 	var cell_type_to_cells: Dictionary[Cell.Type, Array] = {}
@@ -552,7 +555,7 @@ func clear_full_rows():
 	
 	if len(queued_line_clears) > 0:
 		score_counter.bump_streak()
-		clearing = true
+		paused = true
 		
 		for y in queued_line_clears:
 			for x in WIDTH:
@@ -614,7 +617,7 @@ func clear_full_rows():
 		for x in range(WIDTH):
 			shift_above_cells_down(x, y)
 	
-	clearing = false
+	paused = false
 	queued_line_clears.clear()
 	return len(cleared_lines) > 0
 
@@ -635,7 +638,7 @@ func win():
 		go_to_win_screen()
 	run_state.increment_level()
 	status_label.text = "[color=green]Winner! :-)[/color]"
-	pause = true
+	ended = true
 	win_sound.play()
 	reward_indicator.set_wiggle(true)
 	continue_button.visible = true
@@ -645,7 +648,7 @@ func dead():
 	run_state.register_score(score_counter.current_score)
 	status_label.text = "[color=red]DIED :'([/color]"
 	dead_sound.play()
-	pause = true
+	ended = true
 	died = true
 	continue_button.visible = true
 	continue_button.grab_focus()
