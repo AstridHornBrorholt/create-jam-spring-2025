@@ -601,7 +601,7 @@ func clear_full_rows():
 		for x in range(WIDTH):
 			var c: Cell = get_at(x, y)
 			if c == null:
-				pass
+				continue
 			clear_sound.pitch_scale = pitch
 			clear_sound.play()
 			pitch += 0.1
