@@ -1,4 +1,5 @@
 extends Node2D
+class_name AnimatedBackground
 
 @export var max_falling:int = 15
 @export var spawn_delay_min = 1
@@ -7,9 +8,11 @@ extends Node2D
 @export var fall_speed_max = 100
 @export var rotation_speed_min = -0.3
 @export var rotation_speed_max =  0.3
+@export var piece_types:Array[Cell.Type] = [Cell.Type.Standard]
+@export var max_piece_size = 3
+@export var min_piece_size = 5
 
 @onready var tetriminos_animated = preload("res://Prefabs/TetriminosAnimated.tscn")
-@onready var generator:TetriminoGenerator = TetriminoGenerator.new()
 
 const min_starting_x = 0
 const max_starting_x = 1920
@@ -28,12 +31,10 @@ func _process(delta: float) -> void:
 		
 func spawn_new():
 	var minos:TetriminosAnimated = tetriminos_animated.instantiate()
-	var size = randi_range(3, 5)
-	if randf() > 0.5:
+	var size = randi_range(min_piece_size, max_piece_size)
+	if randf() > 0.5 and min_piece_size < 4 and 4 < max_piece_size:
 		size = 4
-	var template:TetriminosTemplate = generator.generate_tetrimino(size, [Cell.Type.Standard])
-	for cell:CellTemplate in template.cells:
-		cell.type = Cell.Type.Standard
+	var template:TetriminosTemplate = TetriminoGenerator.generate_tetrimino(size, piece_types)
 	minos.setup(template)
 	self.add_child(minos)
 	
@@ -54,3 +55,6 @@ func spawn_new():
 	var y = starting_y
 	minos.position = Vector2(x, y)
 	minos.y_max = y_max
+
+func set_color(c:Color):
+	modulate = c

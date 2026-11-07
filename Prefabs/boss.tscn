@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://c3vvgwle34pqv"]
 
 [ext_resource type="Script" uid="uid://bqxvqbi63uecs" path="res://Scripts/Boss.gd" id="1_fj87s"]
-[ext_resource type="AudioStream" uid="uid://ddnrcj40pnlkf" path="res://SFX/angry.wav" id="1_ob2hh"]
-[ext_resource type="AudioStream" uid="uid://ki386l2babbp" path="res://SFX/place.wav" id="3_obrrb"]
+[ext_resource type="AudioStream" uid="uid://ddnrcj40pnlkf" path="res://SFX/Bosses/angry.wav" id="1_ob2hh"]
+[ext_resource type="AudioStream" uid="uid://ki386l2babbp" path="res://SFX/Bosses/place.wav" id="3_obrrb"]
 
-[node name="BossEffects" type="Node2D" unique_id=922976374]
+[node name="Boss" type="Node2D" unique_id=922976374]
 script = ExtResource("1_fj87s")
 
 [node name="Angry" type="AudioStreamPlayer" parent="." unique_id=1371220874]

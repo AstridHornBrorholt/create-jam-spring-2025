@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ki386l2babbp"
-path="res://.godot/imported/place.wav-3f8f8caedf5b8ae75b27b05de98ece46.sample"
+path="res://.godot/imported/place.wav-51e62bcb982e0ac5c2109388cd60c29f.sample"
 
 [deps]
 
-source_file="res://SFX/place.wav"
-dest_files=["res://.godot/imported/place.wav-3f8f8caedf5b8ae75b27b05de98ece46.sample"]
+source_file="res://SFX/Bosses/place.wav"
+dest_files=["res://.godot/imported/place.wav-51e62bcb982e0ac5c2109388cd60c29f.sample"]
 
 [params]
 

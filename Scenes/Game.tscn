@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dldbjt53d4g84" path="res://Sprites/backdrop.png" id="1_j5yw3"]
 [ext_resource type="PackedScene" path="res://Prefabs/AnimatedBackground.tscn" id="2_kldst"]
 [ext_resource type="PackedScene" uid="uid://bbk7cc4j1iwo6" path="res://Prefabs/Border.tscn" id="3_kldst"]
+[ext_resource type="PackedScene" uid="uid://c3vvgwle34pqv" path="res://Prefabs/boss.tscn" id="5_b2bpf"]
 
 [node name="Game" type="Node2D" unique_id=61963214]
 
@@ -20,5 +21,10 @@ z_index = -9
 [node name="Border" parent="." unique_id=1949955717 instance=ExtResource("3_kldst")]
 position = Vector2(800, 200)
 
-[node name="TetrisGame" parent="." unique_id=996205003 instance=ExtResource("1_iukft")]
+[node name="TetrisGame" parent="." unique_id=996205003 node_paths=PackedStringArray("boss") instance=ExtResource("1_iukft")]
 position = Vector2(800, 200)
+boss = NodePath("../Boss")
+
+[node name="Boss" parent="." unique_id=922976374 node_paths=PackedStringArray("game", "background") instance=ExtResource("5_b2bpf")]
+game = NodePath("../TetrisGame")
+background = NodePath("../AnimatedBackground")

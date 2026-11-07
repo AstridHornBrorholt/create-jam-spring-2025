@@ -29,7 +29,6 @@ const cell_collider:PackedScene = preload("res://Prefabs/CellCollider.tscn")
 @onready var reward_label:RichTextLabel = $"Reward"
 @onready var reward_indicator:RewardIndicator = $"RewardIndicator"
 
-@onready var boss:Boss = $"Boss"
 
 @onready var move_sound:AudioStreamPlayer = $"Sounds/Move"
 @onready var spin_sound:AudioStreamPlayer = $"Sounds/Spin"
@@ -51,6 +50,7 @@ var tick_number: int = 0 # The current tick count
 @export var move_fast_interval_ticks: int = 2
 @export var move_sideways_interval: float = 0.1 # Time between moves in seconds
 @export var row_clear_modulation: Color = Color(1.2, 1.2, 1.2)
+@export var boss:Boss
 
 var ended: bool = false
 var died: bool = false

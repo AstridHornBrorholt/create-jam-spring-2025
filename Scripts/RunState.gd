@@ -32,7 +32,7 @@ var game_grid:Array #Houses game.grid, the [x][y] array with all the cells in th
 var game_background_filledness:float # The decaying background
 var game_animated_background:Node2D # The "AnimatedBackground" with falling blocks
 
-var next_boss:Boss.Type = Boss.Type.Baraqiel
+var next_boss:Boss.Type = Boss.Type.Plant
 
 func _init() -> void:
 	reset()
