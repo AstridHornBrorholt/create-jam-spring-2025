@@ -5,8 +5,10 @@ var config:ConfigFile
 const OPTIONS_FILE = "user://options.cfg"
 const OPTIONS_VERSION = "🐬"
 
-func _ready() -> void:
+func _init() -> void:
 	config = load_or_create_config()
+
+func _ready() -> void:
 	set_volume_levels()
 	# No signal emitted on scene change. Have to detect ourselves
 	# https://www.reddit.com/r/godot/comments/iwwhsh/signal_for_scene_change/
@@ -77,8 +79,7 @@ func set_game_speed(value:float):
 	return config.save(OPTIONS_FILE)
 
 func get_game_speed() -> float:
-	var v =  config.get_value("Gameplay", "GameSpeed")
-	return v
+	return config.get_value("Gameplay", "GameSpeed")
 	
 func set_last_game_mode(value:int) -> void:
 	config.set_value("Menus", "LastGameMode", value)
