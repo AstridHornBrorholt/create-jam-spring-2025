@@ -12,3 +12,4 @@ stream = ExtResource("1_ob2hh")
 
 [node name="Place" type="AudioStreamPlayer" parent="." unique_id=1346531291]
 stream = ExtResource("3_obrrb")
+max_polyphony = 3

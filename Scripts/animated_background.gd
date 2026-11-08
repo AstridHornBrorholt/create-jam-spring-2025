@@ -25,10 +25,17 @@ var previous_x = 0
 
 func _process(delta: float) -> void:
 	spawn_delay -= delta
-	if get_child_count() < max_falling && spawn_delay < 0:
-		spawn_new()
-		spawn_delay = randf_range(spawn_delay_min, spawn_delay_max)
-		
+	if spawn_delay > 0 or get_child_count() > max_falling:
+		return
+	
+	spawn_new()
+	spawn_delay = randf_range(spawn_delay_min, spawn_delay_max)
+	
+	# Spawn some extra if low on pieces (mostly for initialization)
+	if get_child_count() < 3:
+		for i in 3:
+			spawn_new()
+
 func spawn_new():
 	var minos:TetriminosAnimated = tetriminos_animated.instantiate()
 	var size = randi_range(min_piece_size, max_piece_size)
