@@ -5,6 +5,25 @@
 [ext_resource type="PackedScene" path="res://Prefabs/AnimatedBackground.tscn" id="2_kldst"]
 [ext_resource type="PackedScene" uid="uid://bbk7cc4j1iwo6" path="res://Prefabs/Border.tscn" id="3_kldst"]
 [ext_resource type="PackedScene" uid="uid://c3vvgwle34pqv" path="res://Prefabs/boss.tscn" id="5_b2bpf"]
+[ext_resource type="Texture2D" uid="uid://tlpgps5yd22j" path="res://Sprites/ArrowLeft.png" id="7_dahhg"]
+[ext_resource type="Texture2D" uid="uid://dktelyysl8f2f" path="res://Sprites/ArrowLeftPressed.png" id="8_3so38"]
+[ext_resource type="Texture2D" uid="uid://cdw1s136kba0v" path="res://Sprites/ArrowRight.png" id="9_3cx6b"]
+[ext_resource type="Texture2D" uid="uid://ciutvspnktps2" path="res://Sprites/ArrowRightPressed.png" id="10_wxwew"]
+[ext_resource type="Texture2D" uid="uid://7kq4pspr3c8q" path="res://Sprites/buttons/Clockwise.png" id="11_alh3a"]
+[ext_resource type="Texture2D" uid="uid://cr0on3ivfsro6" path="res://Sprites/buttons/ClockwisePressed.png" id="12_4q8tf"]
+[ext_resource type="Texture2D" uid="uid://gcvq0i6omeqh" path="res://Sprites/buttons/Hold.png" id="13_x3xnh"]
+[ext_resource type="Texture2D" uid="uid://cj7n81yfdcvax" path="res://Sprites/buttons/HoldPressed.png" id="14_8r6kd"]
+[ext_resource type="Texture2D" uid="uid://cgn6ar6pb8ky7" path="res://Sprites/buttons/Slam.png" id="15_tfod6"]
+[ext_resource type="Texture2D" uid="uid://ctihd71mlbkka" path="res://Sprites/buttons/SlamPressed.png" id="16_rajel"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71axn"]
+size = Vector2(25, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3cx6b"]
+size = Vector2(25, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wxwew"]
+size = Vector2(50, 30)
 
 [node name="Game" type="Node2D" unique_id=61963214]
 
@@ -28,3 +47,55 @@ boss = NodePath("../Boss")
 [node name="Boss" parent="." unique_id=922976374 node_paths=PackedStringArray("game", "background") instance=ExtResource("5_b2bpf")]
 game = NodePath("../TetrisGame")
 background = NodePath("../AnimatedBackground")
+
+[node name="Touch Screen Controls" type="Node2D" parent="." unique_id=831531370]
+modulate = Color(1, 1, 1, 0.1764706)
+position = Vector2(436, 652)
+
+[node name="Left" type="TouchScreenButton" parent="Touch Screen Controls" unique_id=1225110847]
+position = Vector2(818, 17)
+scale = Vector2(14.0625, 14.10987)
+texture_normal = ExtResource("7_dahhg")
+texture_pressed = ExtResource("8_3so38")
+shape = SubResource("RectangleShape2D_71axn")
+passby_press = true
+action = "ui_left"
+visibility_mode = 1
+
+[node name="Right" type="TouchScreenButton" parent="Touch Screen Controls" unique_id=1473443469]
+position = Vector2(1170.0001, 17)
+scale = Vector2(14.0625, 14.10987)
+texture_normal = ExtResource("9_3cx6b")
+texture_pressed = ExtResource("10_wxwew")
+shape = SubResource("RectangleShape2D_3cx6b")
+passby_press = true
+action = "ui_right"
+visibility_mode = 1
+
+[node name="Rotate" type="TouchScreenButton" parent="Touch Screen Controls" unique_id=533261869]
+position = Vector2(994, -518)
+scale = Vector2(14.0625, 14.10987)
+texture_normal = ExtResource("11_alh3a")
+texture_pressed = ExtResource("12_4q8tf")
+shape = SubResource("RectangleShape2D_wxwew")
+passby_press = true
+action = "rotate_clockwise"
+visibility_mode = 1
+
+[node name="Hold" type="TouchScreenButton" parent="Touch Screen Controls" unique_id=125712281]
+position = Vector2(-172, -420)
+scale = Vector2(14.0625, 14.10987)
+texture_normal = ExtResource("13_x3xnh")
+texture_pressed = ExtResource("14_8r6kd")
+shape = SubResource("RectangleShape2D_wxwew")
+action = "hold"
+visibility_mode = 1
+
+[node name="Slam" type="TouchScreenButton" parent="Touch Screen Controls" unique_id=406613400]
+position = Vector2(-172, 17)
+scale = Vector2(14.0625, 14.10987)
+texture_normal = ExtResource("15_tfod6")
+texture_pressed = ExtResource("16_rajel")
+shape = SubResource("RectangleShape2D_wxwew")
+action = "slam_down"
+visibility_mode = 1
