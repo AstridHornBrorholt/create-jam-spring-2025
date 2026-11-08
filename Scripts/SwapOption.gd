@@ -70,7 +70,7 @@ func grab_focus():
 
 func start_selecting():
 	state = State.Selecting
-	if tetriminos.template.is_empty():
+	if tetriminos.template == null or tetriminos.template.is_empty():
 		return
 	offer_wiggler.visible = true
 	swap_button.visible = true

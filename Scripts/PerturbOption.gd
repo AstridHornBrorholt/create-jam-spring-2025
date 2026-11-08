@@ -62,7 +62,7 @@ func grab_focus():
 
 func start_selecting():
 	state = State.Selecting
-	if tetriminos.template.is_empty():
+	if tetriminos.template == null or tetriminos.template.is_empty():
 		return
 	update_perturb_button()
 	perturb_button.visible = true
