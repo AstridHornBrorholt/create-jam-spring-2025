@@ -23,7 +23,7 @@ func _ready() -> void:
 		level_label.text = "[color=red]Boss Level[/color]"
 		level_label.add_theme_font_size_override("normal_font_size", 280)
 		replace_text(target_label, "###", score_target)
-		replace_text(time_label, "??.??.??", str(minutes) + ":" + str(seconds))
+		replace_text(time_label, "??.??.??", "%02.0f" % minutes + ":" + "%02.0f" % seconds)
 		boss_level_label.text = "\n[color=blue]Level " + str(CurrentRun.level) + "[/color]"
 		boss_level_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
 		boss_type_label.text = "\n[color=red]" + Boss.get_description(CurrentRun.next_boss) + "[/color]"
@@ -36,28 +36,29 @@ func _ready() -> void:
 		replace_text(time_label, "??.??.??", str(minutes) + ":" + str(seconds))
 		replace_text(boss_level_label, "??", CurrentRun.next_boss_level)
 		replace_text(boss_type_label, "##", Boss.get_description(CurrentRun.next_boss))
-		
-		level_label.visible = false
-		target_label.visible = false
-		time_label.visible = false
-		boss_level_label.visible = false
-		boss_type_label.visible = false
-		
-		await get_tree().create_timer(0.5/animation_speed).timeout
-		level_label.visible = true
-		slam_sfx.play()
-		await get_tree().create_timer(1.6/animation_speed).timeout
-		time_label.visible = true
-		slam_sfx.play()
-		await get_tree().create_timer(0.8/animation_speed).timeout
-		target_label.visible = true
-		slam_sfx.play()
-		await get_tree().create_timer(0.8/animation_speed).timeout
-		boss_level_label.visible = true
-		slam_sfx.play()
-		await get_tree().create_timer(0.8/animation_speed).timeout
-		boss_type_label.visible = true
-		slam_sfx.play()
+	
+	# Attention-grabbing animation
+	level_label.visible = false
+	target_label.visible = false
+	time_label.visible = false
+	boss_level_label.visible = false
+	boss_type_label.visible = false
+	
+	await get_tree().create_timer(0.5/animation_speed).timeout
+	level_label.visible = true
+	slam_sfx.play()
+	await get_tree().create_timer(1.6/animation_speed).timeout
+	time_label.visible = true
+	slam_sfx.play()
+	await get_tree().create_timer(0.8/animation_speed).timeout
+	target_label.visible = true
+	slam_sfx.play()
+	await get_tree().create_timer(0.8/animation_speed).timeout
+	boss_level_label.visible = true
+	slam_sfx.play()
+	await get_tree().create_timer(0.8/animation_speed).timeout
+	boss_type_label.visible = true
+	slam_sfx.play()
 
 func replace_text(label:RichTextLabel, what, forwhat):
 	label.text = label.text.replace(what, str(forwhat))

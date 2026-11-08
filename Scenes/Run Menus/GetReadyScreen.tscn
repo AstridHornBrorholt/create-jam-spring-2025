@@ -37,7 +37,7 @@ offset_bottom = 530.0
 theme = ExtResource("4_uecyn")
 theme_override_font_sizes/normal_font_size = 200
 bbcode_enabled = true
-text = "[color=blue]Level ??[/color]  of ##"
+text = "Level [color=blue]??[/color]  of ##"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -99,7 +99,7 @@ vertical_alignment = 2
 
 [node name="Slam" type="AudioStreamPlayer" parent="." unique_id=1672678229]
 stream = ExtResource("6_7apxg")
-pitch_scale = 0.71
+pitch_scale = 0.35
 
 [node name="Interactive" type="Node2D" parent="." unique_id=1065887600]
 
