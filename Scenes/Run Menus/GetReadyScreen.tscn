@@ -9,6 +9,7 @@
 
 [node name="GetReadyScreen" type="Node2D" unique_id=1039866389]
 script = ExtResource("1_4rw7v")
+metadata/_edit_vertical_guides_ = [2060.0, 1736.0, 187.0]
 
 [node name="Black" type="Sprite2D" parent="." unique_id=1053784586]
 z_index = -10
@@ -27,25 +28,81 @@ position = Vector2(-3, 769)
 scroll_speed = 250
 initial_progress = 600
 
-[node name="Stats" type="RichTextLabel" parent="." unique_id=1346514609]
-offset_left = 700.0
-offset_top = 356.0
-offset_right = 1591.0
-offset_bottom = 769.0
+[node name="Level" type="RichTextLabel" parent="." unique_id=1346514609]
+offset_left = 187.0
+offset_top = 236.0
+offset_right = 1736.0
+offset_bottom = 530.0
+theme = ExtResource("4_uecyn")
+theme_override_font_sizes/normal_font_size = 200
+bbcode_enabled = true
+text = "[color=blue]Level ??[/color]  of ##"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 3
+vertical_alignment = 2
+
+[node name="Target" type="RichTextLabel" parent="." unique_id=326871375]
+offset_left = 943.0
+offset_top = 530.0
+offset_right = 1736.0
+offset_bottom = 621.0
 theme = ExtResource("4_uecyn")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
-text = "stats go here"
+text = "Score: [color=yellow]###[/color]"
 fit_content = true
 scroll_active = false
+horizontal_alignment = 2
+
+[node name="Time" type="RichTextLabel" parent="." unique_id=1624669573]
+offset_left = 187.0
+offset_top = 530.0
+offset_right = 943.0
+offset_bottom = 621.0
+theme = ExtResource("4_uecyn")
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "Time: [color=blue]??.??.??[/color]"
+fit_content = true
+scroll_active = false
+
+[node name="Boss Level" type="RichTextLabel" parent="." unique_id=1633660660]
+offset_left = 187.0
+offset_top = 56.0
+offset_right = 628.0
+offset_bottom = 309.0
+theme = ExtResource("4_uecyn")
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "Boss at:
+[color=red]Level ??[/color]"
+fit_content = true
+scroll_active = false
+vertical_alignment = 2
+
+[node name="Boss Type" type="RichTextLabel" parent="." unique_id=49439100]
+offset_left = 699.0
+offset_top = 56.0
+offset_right = 1736.0
+offset_bottom = 309.0
+theme = ExtResource("4_uecyn")
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "Type: 
+[color=red]##[/color]"
+fit_content = true
+scroll_active = false
+vertical_alignment = 2
 
 [node name="Interactive" type="Node2D" parent="." unique_id=1065887600]
 
 [node name="BeginButton" type="Button" parent="Interactive" unique_id=962677014]
-offset_left = 607.0
-offset_top = 883.0
-offset_right = 1315.0
-offset_bottom = 1007.0
+offset_left = 617.0
+offset_top = 870.0
+offset_right = 1305.0
+offset_bottom = 994.0
 theme = ExtResource("4_uecyn")
 theme_override_font_sizes/font_size = 90
 text = "Start"

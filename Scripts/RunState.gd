@@ -32,7 +32,8 @@ var game_grid:Array #Houses game.grid, the [x][y] array with all the cells in th
 var game_background_filledness:float # The decaying background
 var game_animated_background:Node2D # The "AnimatedBackground" with falling blocks
 
-var next_boss:Boss.Type = Boss.Type.Plant
+var next_boss:Boss.Type = Boss.choose_random()
+var next_boss_level = 5
 
 func _init() -> void:
 	reset()
@@ -104,6 +105,9 @@ func get_map() -> Array[Array]:
 
 func increment_level():
 	level += 1
+	if level > next_boss_level:
+		next_boss = Boss.choose_random()
+		next_boss_level += 5
 
 func register_score(score):
 	accumulated_score += score
