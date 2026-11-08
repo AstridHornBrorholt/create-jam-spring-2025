@@ -28,7 +28,7 @@ static func get_description(t:Type) -> String:
 		Type.Plant:
 			return "Spreading vines"
 		Type.Concrete:
-			return "Rows of cement"
+			return "Rows of concrete"
 		Type.Mirror:
 			return "Rows of mirrors"
 		Type.Sand:
