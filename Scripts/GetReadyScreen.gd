@@ -8,6 +8,7 @@ extends Node2D
 @onready var boss_level_label:RichTextLabel = $"Boss Level"
 @onready var boss_type_label:RichTextLabel = $"Boss Type"
 @onready var begin_button:Button = $"Interactive/BeginButton"
+@onready var slam_sfx:AudioStreamPlayer = $"Slam"
 
 func _ready() -> void:
 	begin_button.grab_focus()
@@ -44,14 +45,19 @@ func _ready() -> void:
 		
 		await get_tree().create_timer(0.5/animation_speed).timeout
 		level_label.visible = true
-		await get_tree().create_timer(1/animation_speed).timeout
-		target_label.visible = true
-		await get_tree().create_timer(0.5/animation_speed).timeout
+		slam_sfx.play()
+		await get_tree().create_timer(1.6/animation_speed).timeout
 		time_label.visible = true
-		await get_tree().create_timer(0.5/animation_speed).timeout
+		slam_sfx.play()
+		await get_tree().create_timer(0.8/animation_speed).timeout
+		target_label.visible = true
+		slam_sfx.play()
+		await get_tree().create_timer(0.8/animation_speed).timeout
 		boss_level_label.visible = true
-		await get_tree().create_timer(0.5/animation_speed).timeout
+		slam_sfx.play()
+		await get_tree().create_timer(0.8/animation_speed).timeout
 		boss_type_label.visible = true
+		slam_sfx.play()
 
 func replace_text(label:RichTextLabel, what, forwhat):
 	label.text = label.text.replace(what, str(forwhat))
